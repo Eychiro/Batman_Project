@@ -1,25 +1,25 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: J:/Unity projects/Batman_Project_GD2_3D3/Packages/manifest.json
+    m_FilePath: J:/Unity projects/Batman_Project/Batman_Project_GD2_3D3/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638990885324872534
-    m_Hash: 2612855067
+      ticks: 638991063285385943
+    m_Hash: 2879320561
   m_LockFileStatus:
-    m_FilePath: J:/Unity projects/Batman_Project_GD2_3D3/Packages/packages-lock.json
+    m_FilePath: J:/Unity projects/Batman_Project/Batman_Project_GD2_3D3/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638990885983615175
-    m_Hash: 4188978076
+      ticks: 638991063285425910
+    m_Hash: 2607657817
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
-m_ProjectPath: J:/Unity projects/Batman_Project_GD2_3D3/Packages
+m_ProjectPath: J:/Unity projects/Batman_Project/Batman_Project_GD2_3D3/Packages
 m_EditorVersion: 6000.2.12f1 (e89d5df0e333)
 m_ResolvedPackages:
 - packageId: com.unity.ai.navigation@2.0.9
@@ -27,7 +27,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.0.9
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ai.navigation@5218e4bf7edc
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ai.navigation@5218e4bf7edc
   assetPath: Packages/com.unity.ai.navigation
   name: com.unity.ai.navigation
   displayName: AI Navigation
@@ -160,7 +160,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.10.1
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.collab-proxy@b8d65294b30f
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.collab-proxy@b8d65294b30f
   assetPath: Packages/com.unity.collab-proxy
   name: com.unity.collab-proxy
   displayName: Unity Version Control
@@ -362,143 +362,12 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
-- packageId: com.unity.ide.rider@3.0.38
-  testable: 0
-  isDirectDependency: 1
-  version: 3.0.38
-  source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ide.rider@1f60b3138684
-  assetPath: Packages/com.unity.ide.rider
-  name: com.unity.ide.rider
-  displayName: JetBrains Rider Editor
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: 
-  description: The JetBrains Rider Editor package provides an integration for using
-    the JetBrains Rider IDE as a code editor for Unity. It adds support for generating
-    .csproj files for code completion and auto-discovery of installations.
-  errors: []
-  versions:
-    all:
-    - 1.0.2
-    - 1.0.6
-    - 1.0.8
-    - 1.1.0
-    - 1.1.1
-    - 1.1.2-preview
-    - 1.1.2-preview.2
-    - 1.1.3-preview.1
-    - 1.1.4-preview
-    - 1.1.4
-    - 1.2.0-preview
-    - 1.2.1
-    - 2.0.0-preview
-    - 2.0.1
-    - 2.0.2
-    - 2.0.3
-    - 2.0.5
-    - 2.0.7
-    - 3.0.1
-    - 3.0.2
-    - 3.0.3
-    - 3.0.4
-    - 3.0.5
-    - 3.0.6
-    - 3.0.7
-    - 3.0.9
-    - 3.0.10
-    - 3.0.12
-    - 3.0.13
-    - 3.0.14
-    - 3.0.15
-    - 3.0.16
-    - 3.0.17
-    - 3.0.18
-    - 3.0.20
-    - 3.0.21
-    - 3.0.22
-    - 3.0.24
-    - 3.0.25
-    - 3.0.26
-    - 3.0.27
-    - 3.0.28
-    - 3.0.31
-    - 3.0.34
-    - 3.0.35
-    - 3.0.36
-    - 3.0.37
-    - 3.0.38
-    compatible:
-    - 3.0.38
-    recommended: 3.0.38
-    deprecated:
-    - 3.0.37
-  dependencies:
-  - name: com.unity.ext.nunit
-    version: 1.0.6
-  resolvedDependencies:
-  - name: com.unity.ext.nunit
-    version: 2.0.5
-  keywords: []
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-    compliance:
-      status: 0
-      violations: []
-  hideInEditor: 1
-  entitlements:
-    licensingModel: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638938045127600000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 8a49d81ce92f334a07e3b71a8847b2f60dc12287
-    path: 
-  unityLifecycle:
-    version: 3.0.38
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-    isDiscoverable: 1
-  isDeprecated: 0
-  deprecationMessage: 
-  git:
-    hash: 
-    revision: 
-  upmReserved: '{"changelog":"- fix a regression, introduced in 3.0.37. New files
-    are not added in the project."}'
-  assetStore:
-    productId: 
-  fingerprint: 1f60b3138684c97af67aa8d911b1632ba916d29d
-  editorCompatibility:
-    compatibilityLevel: 0
-    minimumPackageVersion: 3.0.38
-    minimumUnityVersion: 2021.3.0a1
-  compliance:
-    status: 0
-    violation:
-      scopePatternExpression: 
-      message: 
-      readMoreLink: 
 - packageId: com.unity.ide.visualstudio@2.0.25
   testable: 0
   isDirectDependency: 1
   version: 2.0.25
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -612,7 +481,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.14.2
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.inputsystem@be6c4fd0abf5
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.inputsystem@be6c4fd0abf5
   assetPath: Packages/com.unity.inputsystem
   name: com.unity.inputsystem
   displayName: Input System
@@ -774,7 +643,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546
   assetPath: Packages/com.unity.multiplayer.center
   name: com.unity.multiplayer.center
   displayName: Multiplayer Center
@@ -870,7 +739,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 17.2.0
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.render-pipelines.universal@6c02063a0a76
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.render-pipelines.universal@6c02063a0a76
   assetPath: Packages/com.unity.render-pipelines.universal
   name: com.unity.render-pipelines.universal
   displayName: Universal Render Pipeline
@@ -997,7 +866,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.6.0
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.test-framework@d97b7cd61ded
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.test-framework@d97b7cd61ded
   assetPath: Packages/com.unity.test-framework
   name: com.unity.test-framework
   displayName: Test Framework
@@ -1087,7 +956,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.8.9
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.timeline@6b9e48457ddb
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.timeline@6b9e48457ddb
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -1285,7 +1154,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.0.0
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ugui@a73b706e285a
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ugui@a73b706e285a
   assetPath: Packages/com.unity.ugui
   name: com.unity.ugui
   displayName: Unity UI
@@ -1381,7 +1250,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.9.8
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.visualscripting@b4d700247d4b
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.visualscripting@b4d700247d4b
   assetPath: Packages/com.unity.visualscripting
   name: com.unity.visualscripting
   displayName: Visual Scripting
@@ -4274,7 +4143,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 2.0.5
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ext.nunit@031a54704bff
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.ext.nunit@031a54704bff
   assetPath: Packages/com.unity.ext.nunit
   name: com.unity.ext.nunit
   displayName: Custom NUnit
@@ -4354,7 +4223,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 17.2.0
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.render-pipelines.core@8d70e2c352d2
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.render-pipelines.core@8d70e2c352d2
   assetPath: Packages/com.unity.render-pipelines.core
   name: com.unity.render-pipelines.core
   displayName: Scriptable Render Pipeline Core
@@ -4480,7 +4349,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 17.2.0
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.shadergraph@33016d94899e
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.shadergraph@33016d94899e
   assetPath: Packages/com.unity.shadergraph
   name: com.unity.shadergraph
   displayName: Shader Graph
@@ -4596,7 +4465,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 17.0.3
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.render-pipelines.universal-config@8dc1aab4af1d
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.render-pipelines.universal-config@8dc1aab4af1d
   assetPath: Packages/com.unity.render-pipelines.universal-config
   name: com.unity.render-pipelines.universal-config
   displayName: Universal Render Pipeline Config
@@ -4704,7 +4573,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 4.9.3
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.searcher@1e17ce91558d
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.searcher@1e17ce91558d
   assetPath: Packages/com.unity.searcher
   name: com.unity.searcher
   displayName: Searcher
@@ -4802,7 +4671,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.8.25
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.burst@1df634d836b8
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.burst@1df634d836b8
   assetPath: Packages/com.unity.burst
   name: com.unity.burst
   displayName: Burst
@@ -5036,7 +4905,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.3.2
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.mathematics@8017b507cc74
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.mathematics@8017b507cc74
   assetPath: Packages/com.unity.mathematics
   name: com.unity.mathematics
   displayName: Mathematics
@@ -5137,7 +5006,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 2.6.2
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.collections@aea9d3bd5e19
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.collections@aea9d3bd5e19
   assetPath: Packages/com.unity.collections
   name: com.unity.collections
   displayName: Collections
@@ -5323,7 +5192,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.1
   source: 2
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c
   assetPath: Packages/com.unity.rendering.light-transport
   name: com.unity.rendering.light-transport
   displayName: Unity Light Transport Library
@@ -5429,7 +5298,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.11.5
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb
   assetPath: Packages/com.unity.nuget.mono-cecil
   name: com.unity.nuget.mono-cecil
   displayName: Mono Cecil
@@ -5524,7 +5393,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 3.2.0
   source: 1
-  resolvedPath: J:\Unity projects\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562
+  resolvedPath: J:\Unity projects\Batman_Project\Batman_Project_GD2_3D3\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562
   assetPath: Packages/com.unity.test-framework.performance
   name: com.unity.test-framework.performance
   displayName: Performance testing API
