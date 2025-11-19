@@ -1269,11 +1269,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1215260105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d797fc3c5ef092843be3a8df3140c5fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 45d48b3c99539fb42b0c6167ae66e1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
   "emptyPourD\xE9sactiver": {fileID: 1923191868}
-  interactibleCol: {fileID: 0}
 --- !u!136 &1215260107
 CapsuleCollider:
   m_ObjectHideFlags: 0
