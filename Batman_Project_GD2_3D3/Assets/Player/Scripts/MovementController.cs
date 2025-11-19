@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
     public Transform head;
     public float speed = 5f;
