@@ -478,3 +478,6 @@ crashlytics-build.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,unity,csharp
+/Batman_Project_GD2_3D3/Temp
+/Batman_Project_GD2_3D3/UserSettings/Layouts
+/Batman_Project_GD2_3D3/UserSettings
