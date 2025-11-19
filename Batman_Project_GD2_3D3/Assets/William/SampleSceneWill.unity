@@ -166,7 +166,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b75770d576c1fc04fb92ef04b51ba7e0, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 31fc89a1f0ed55344aa0c50f4067b3a7, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &76258939
 Transform:
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 411585027}
   - component: {fileID: 411585026}
   - component: {fileID: 411585025}
-  - component: {fileID: 411585024}
+  - component: {fileID: 411585030}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -612,21 +612,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &411585024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411585023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13511905ebf97314b915db8a181b8582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  agent: {fileID: 411585025}
-  range: 100
-  centrePoint: {fileID: 658650379}
 --- !u!195 &411585025
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -743,6 +728,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411585030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411585023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b2fc7311f9dca40b2eef3fb29a0aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomMovement
+  agent: {fileID: 411585025}
+  range: 100
+  centrePoint: {fileID: 658650379}
 --- !u!1 &544660246
 GameObject:
   m_ObjectHideFlags: 0
