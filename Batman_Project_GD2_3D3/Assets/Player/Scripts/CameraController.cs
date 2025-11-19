@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         flashlightSwitch = GetComponent<AudioSource>();
+        flashLight.gameObject.SetActive(false);
     }
 
     void Update()
