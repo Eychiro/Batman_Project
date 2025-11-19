@@ -29,15 +29,11 @@ public class CameraController : MonoBehaviour
 
         hand.localRotation = Quaternion.Euler(-rotationX, rotationY, 0);
 
-        // Mouvement simple et rapide qui suit la souris sans délai //
-        transform.localRotation = Quaternion.Euler(0, rotationY, 0);
-        _camera.localRotation = Quaternion.Euler(-rotationX, 0, 0);
-
         ActivateLight();
 
         // Mouvement réaliste qui met du délai à la camera pour suivre le mouvement //
-        // transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, rotationY, 0), cameraAcceleration * Time.deltaTime);
-        // _camera.localRotation = Quaternion.Lerp(_camera.localRotation, Quaternion.Euler(-rotationX, 0, 0), cameraAcceleration * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, rotationY, 0), cameraAcceleration * Time.deltaTime);
+        _camera.localRotation = Quaternion.Lerp(_camera.localRotation, Quaternion.Euler(-rotationX, 0, 0), cameraAcceleration * Time.deltaTime);
     }
 
     public void ActivateLight()
