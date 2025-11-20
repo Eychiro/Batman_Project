@@ -33,7 +33,6 @@ public class WillCameraController : MonoBehaviour
 
         ActivateLight();
 
-        // Mouvement réaliste qui met du délai à la camera pour suivre le mouvement //
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, rotationY, 0), cameraAcceleration * Time.deltaTime);
         _camera.localRotation = Quaternion.Lerp(_camera.localRotation, Quaternion.Euler(-rotationX, 0, 0), cameraAcceleration * Time.deltaTime);
     }
@@ -53,6 +52,8 @@ public class WillCameraController : MonoBehaviour
             {
                 isFlashlightOn = false;
             }
+
+            Debug.Log("Lampe allumée : " + isFlashlightOn);
         }
     }
 }

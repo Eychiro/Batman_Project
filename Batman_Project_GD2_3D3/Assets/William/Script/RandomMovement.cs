@@ -10,27 +10,22 @@ public class RandomMovement : MonoBehaviour
     public Transform centrePoint;
 
     public Transform player;
-    public float normalDetection = 5f;
-    public float lightDetection = 15f;
-    public bool isTooClose;
-    public bool isLightVisible;
+    public float normalDetection = 10f;
+    public float lightDetection = 100f;
     
     private WillCameraController playerScript;
     
     void Start()
     {
-      agent = GetComponent<NavMeshAgent>();
-      if (player != null)
-        {
-            playerScript = player.GetComponent<WillCameraController>();
-        }
+        agent = GetComponent<NavMeshAgent>();
+        playerScript = player.GetComponent<WillCameraController>();
     }
 
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        bool isTooClose = distanceToPlayer <= normalDetection;
+        bool isClose = distanceToPlayer <= normalDetection;
         
         bool isLightVisible = false;
         if (playerScript != null && playerScript.isFlashlightOn)
@@ -41,22 +36,22 @@ public class RandomMovement : MonoBehaviour
             }
         }
 
-        if (isTooClose || isLightVisible)
+        if (isClose == true || isLightVisible == true)
         {
-            ChasePlayer();
+            Poursuite();
         }
         else
         {
-            Patrol();
+            Recherche();
         }
     }
     
-    void ChasePlayer()
+    void Poursuite()
     {
         agent.SetDestination(player.position);
     }
 
-    void Patrol()
+    void Recherche()
     {
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -80,5 +75,18 @@ public class RandomMovement : MonoBehaviour
         }
         result = Vector3.zero;
         return false;
+    }
+
+    
+    //Juste pour vérifier la détection, pour playtest et balance
+    void OnDrawGizmosSelected()
+    {
+        //Normal
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, normalDetection);
+
+        //Lumière
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, lightDetection);
     }
 }

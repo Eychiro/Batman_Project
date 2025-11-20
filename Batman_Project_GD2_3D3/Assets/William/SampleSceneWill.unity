@@ -622,7 +622,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -743,6 +743,9 @@ MonoBehaviour:
   agent: {fileID: 411585025}
   range: 100
   centrePoint: {fileID: 658650379}
+  player: {fileID: 2041081040}
+  normalDetection: 10
+  lightDetection: 100
 --- !u!1 &544660246
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,15 +997,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618927031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0.88904524, z: -0, w: 0.45781943}
+  m_LocalPosition: {x: 15.36, y: 0.5, z: 15.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2041081040}
   - {fileID: 604708101}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -125.507, z: 0}
 --- !u!1 &658650375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,8 +1619,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2041081040}
-  - component: {fileID: 2041081041}
   - component: {fileID: 2041081042}
+  - component: {fileID: 2041081043}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1641,23 +1644,6 @@ Transform:
   - {fileID: 314109986}
   m_Father: {fileID: 618927035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2041081041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041081039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0c9f856d69d6dd43a92ac22786f1854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  _camera: {fileID: 314109986}
-  hand: {fileID: 604708101}
-  flashLight: {fileID: 544660250}
-  cameraSensitivity: 200
-  cameraAcceleration: 3
 --- !u!82 &2041081042
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1755,6 +1741,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2041081043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041081039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1196ea2fc5f95f248b803ef5cf927566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WillCameraController
+  _camera: {fileID: 314109986}
+  hand: {fileID: 604708101}
+  flashLight: {fileID: 544660250}
+  cameraSensitivity: 200
+  cameraAcceleration: 3
+  isFlashlightOn: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
