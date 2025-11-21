@@ -20,7 +20,6 @@ public class RandomMovementV2test : MonoBehaviour
     public Transform player;
     public float normalDetection = 10f;
     public float lightDetection = 100f;
-    public bool isLightVisible = false;
 
 
     public float minTempsPoursuite = 1f;
@@ -80,8 +79,7 @@ public class RandomMovementV2test : MonoBehaviour
     void SwitchToPoursuiteLight()
     {
         etatActuel = Etat.PoursuiteLight;
-        etatTimer = 10000f;
-        Debug.Log("Début de la poursuite pour : " + etatTimer + " secondes");
+        Debug.Log("Début de la poursuite (light)");
     }
 
     void SwitchToCooldown()
@@ -102,6 +100,12 @@ public class RandomMovementV2test : MonoBehaviour
     {
         agent.SetDestination(player.position);
 
+        if (CheckIfLightIsVisible())
+        {
+            SwitchToPoursuiteLight();
+            return;
+        }
+        
         if (etatTimer <= 0)
         {
             SwitchToCooldown();
@@ -112,10 +116,20 @@ public class RandomMovementV2test : MonoBehaviour
     {
         agent.SetDestination(player.position);
 
-        if (isLightVisible == false)
+        if (CheckIfLightIsVisible() == false)
         {
-            SwitchToCooldown();
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer <= normalDetection)
+            {
+                SwitchToPoursuite(); 
+            }
+            else
+            {
+                SwitchToRecherche();
+            }
         }
+
     }
 
     void UpdateRecherche()
@@ -133,23 +147,30 @@ public class RandomMovementV2test : MonoBehaviour
     void CheckForDetection()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        bool isClose = distanceToPlayer <= normalDetection;
         
-        bool isLightVisible = false;
-        if (playerScript != null && playerScript.isFlashlightOn)
+        if (CheckIfLightIsVisible())
         {
-            if (distanceToPlayer <= lightDetection) isLightVisible = true;
+            SwitchToPoursuiteLight();
+            return;
         }
 
-        if (isClose)
+        if (distanceToPlayer <= normalDetection)
         {
             SwitchToPoursuite();
         }
+    }
 
-        if (isLightVisible)
+    bool CheckIfLightIsVisible()
+    {
+        if (playerScript != null && playerScript.isFlashlightOn)
         {
-            SwitchToPoursuiteLight();
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer <= lightDetection)
+            {
+                return true;
+            }
         }
+        return false;
     }
 
     void CheckCooldownEnd()
