@@ -1,37 +1,37 @@
 using BetterTriggers;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    public GameObject emptyPourDésactiver;
+    public TextMeshProUGUI emptyPourDésactiver;
     public Trigger InteractionRange;
     public Trigger OutlinerRange;
-
+    public string TextItem = "Appuyer sur E pour interagir";
+    
     private bool playerInRange = false;
-    //private Outline _outline;
 
-    void Start()
+    void Awake()
     {
-        emptyPourDésactiver.SetActive(false);
-        //_outline = gameObject.GetComponent<Outline>();
-        //_outline.enabled = false;
-    }
-
-    private void Awake()
-    {
-        //J'ajoute la fonction Enter et Exit pour "InteractionRange" qui gère l'interaction avec les objets
         if (InteractionRange != null)
         {
-           InteractionRange.OnTriggerEntered += OnInteractionTriggeredEnter;
-           InteractionRange.OnTriggerExited += OnInteractionTriggeredExit;
+            InteractionRange.OnTriggerEntered += OnInteractionTriggeredEnter;
+            InteractionRange.OnTriggerExited += OnInteractionTriggeredExit;
         }
-        //J'ajoute la fonction Enter et Exit pour "OutlinerRange" qui gère l'effet d'outline de l'objet
         if (OutlinerRange != null)
         {
             OutlinerRange.OnTriggerEntered += OnOutlinerTriggeredEnter;
             OutlinerRange.OnTriggerExited += OnOutlinerTriggeredExit;
+        }
+    }
+
+    void Start()
+    {
+        if (emptyPourDésactiver != null)
+        {
+            emptyPourDésactiver.text = TextItem;
+            emptyPourDésactiver.ForceMeshUpdate(true); 
+            emptyPourDésactiver.enabled = false;
         }
     }
 
@@ -40,9 +40,12 @@ public class Interactible : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             playerInRange = true;
-
             Debug.Log("hello tu es dans le point d'interaction");
-            emptyPourDésactiver.SetActive(true);
+            
+            if (emptyPourDésactiver != null)
+            {
+                emptyPourDésactiver.enabled = true;
+            }
         }
     }
 
@@ -52,7 +55,11 @@ public class Interactible : MonoBehaviour
         {
             playerInRange = false;
             Debug.Log("aurevoir !");
-            emptyPourDésactiver.SetActive(false);
+            
+            if (emptyPourDésactiver != null)
+            {
+                emptyPourDésactiver.enabled = false;
+            }
         }
     }
     
@@ -60,7 +67,6 @@ public class Interactible : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            //_outline.enabled = true;
             gameObject.layer = 6;
             Debug.Log("l'objet devient lumière !");
         }
@@ -70,7 +76,6 @@ public class Interactible : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            //_outline.enabled = false;
             gameObject.layer = 0;
             Debug.Log("L'objet devient ténèbres !");
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     public Transform head;
-    public float speed = 5f;
+    public float speed = 4f;
     public float playerAcceleration = 2f;
 
     private Rigidbody rb;
@@ -17,6 +17,6 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         direction = Input.GetAxisRaw("Horizontal") * head.right + Input.GetAxisRaw("Vertical") * head.forward;
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, direction.normalized * playerAcceleration + rb.linearVelocity.y * Vector3.up, playerAcceleration * Time.deltaTime);
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, direction.normalized * speed + rb.linearVelocity.y * Vector3.up, playerAcceleration * Time.deltaTime);
     }
 }
