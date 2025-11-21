@@ -24,17 +24,20 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        rotationX += Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
-        rotationY += Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
+        var deltaclamped = Mathf.Clamp(Time.deltaTime, 0f, 1/120f);
+
+        rotationX += Input.GetAxis("Mouse Y") * cameraSensitivity * deltaclamped;
+        rotationY += Input.GetAxis("Mouse X") * cameraSensitivity * deltaclamped;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+
 
         hand.localRotation = Quaternion.Euler(-rotationX, rotationY, 0);
 
         ActivateLight();
 
         // Mouvement réaliste qui met du délai à la camera pour suivre le mouvement //
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, rotationY, 0), cameraAcceleration * Time.deltaTime);
-        _camera.localRotation = Quaternion.Lerp(_camera.localRotation, Quaternion.Euler(-rotationX, 0, 0), cameraAcceleration * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, rotationY, 0), cameraAcceleration * deltaclamped);
+        _camera.localRotation = Quaternion.Lerp(_camera.localRotation, Quaternion.Euler(-rotationX, 0, 0), cameraAcceleration * deltaclamped);
     }
 
     public void ActivateLight()
