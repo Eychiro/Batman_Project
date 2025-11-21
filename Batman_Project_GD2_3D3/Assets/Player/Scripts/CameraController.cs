@@ -14,6 +14,8 @@ public class CameraController : MonoBehaviour
     private float rotationY;
     private AudioSource flashlightSwitch;
 
+    public bool cameraLocked = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,12 +26,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        var deltaclamped = Mathf.Clamp(Time.deltaTime, 0f, 1/120f);
-
+        if (cameraLocked)
+        return;
         rotationX += Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
         rotationY += Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
-
 
         hand.localRotation = Quaternion.Euler(-rotationX, rotationY, 0);
 
@@ -39,10 +40,6 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, rotationY, 0), cameraAcceleration * Time.deltaTime);
         _camera.localRotation = Quaternion.Lerp(_camera.localRotation, Quaternion.Euler(-rotationX, 0, 0), cameraAcceleration * Time.deltaTime);
     }
-
-
-
-
 
     public void ActivateLight()
     {

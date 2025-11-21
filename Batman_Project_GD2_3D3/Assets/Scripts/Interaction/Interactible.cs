@@ -10,9 +10,17 @@ public class Interactible : MonoBehaviour
     public string TextItem = "Appuyer sur E pour interagir";
     
     private bool playerInRange = false;
+    [HideInInspector] public int randomNbr;
+
+    public int GetRandomInt()
+    {
+        return Random.Range(1, 9);
+    }
 
     void Awake()
     {
+        randomNbr = GetRandomInt();
+        
         if (InteractionRange != null)
         {
             InteractionRange.OnTriggerEntered += OnInteractionTriggeredEnter;
@@ -24,7 +32,7 @@ public class Interactible : MonoBehaviour
             OutlinerRange.OnTriggerExited += OnOutlinerTriggeredExit;
         }
     }
-
+    
     void Start()
     {
         if (emptyPourDésactiver != null)
@@ -80,12 +88,13 @@ public class Interactible : MonoBehaviour
             Debug.Log("L'objet devient ténèbres !");
         }
     }
-    
+        
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("tu viens d'appuyer sur le bouton !");
+            Debug.Log(randomNbr);
         }
     }
 }
