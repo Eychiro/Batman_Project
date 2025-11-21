@@ -166,7 +166,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 31fc89a1f0ed55344aa0c50f4067b3a7, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d7b1e8c4e148c1640977eae5a6795753, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &76258939
 Transform:
@@ -737,15 +737,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 411585023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b2fc7311f9dca40b2eef3fb29a0aaf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da34a98433c5ac4ebfa9b6269a6c9c9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomMovement
+  m_EditorClassIdentifier: Assembly-CSharp::RandomMovementV2
   agent: {fileID: 411585025}
   range: 100
   centrePoint: {fileID: 658650379}
   player: {fileID: 2041081040}
   normalDetection: 10
   lightDetection: 100
+  minTempsPoursuite: 1
+  maxTempsPoursuite: 10
+  minTempsCooldown: 1
+  maxTempsCooldown: 10
 --- !u!1 &544660246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1754,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2041081039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1196ea2fc5f95f248b803ef5cf927566, type: 3}
+  m_Script: {fileID: 11500000, guid: c88e13b8a39fcc6478cb2ae2ac12fae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WillCameraController
   _camera: {fileID: 314109986}

@@ -58,7 +58,6 @@ public class RandomMovement : MonoBehaviour
             Vector3 point;
             if (RandomPoint(centrePoint.position, range, out point))
             {
-                Debug.DrawRay(point,Vector3.up, Color.blue, 1.0f);
                 agent.SetDestination(point);
             }
         }
