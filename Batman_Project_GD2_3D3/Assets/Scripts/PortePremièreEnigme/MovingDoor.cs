@@ -1,9 +1,12 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MovingDoor : MonoBehaviour
 {
+    public float Truc {get;private set;}
+
     public GameObject keyPadCodePorte;
     public GameObject Indice1;
     public GameObject Indice2;
@@ -32,22 +35,22 @@ public class MovingDoor : MonoBehaviour
         if (Indice1 != null)
         {
             _indice1 = Indice1.GetComponent<Interactible>();
-            requiredCode[0] = _indice1.randomNbr;
+            requiredCode[0] = _indice1.RandomNbr;
         }
         if (Indice2 != null)
         {
             _indice2 = Indice2.GetComponent<Interactible>();
-            requiredCode[1] = _indice2.randomNbr;
+            requiredCode[1] = _indice2.RandomNbr;
         }
         if (Indice3 != null)
         {
             _indice3 = Indice3.GetComponent<Interactible>();
-            requiredCode[2] = _indice3.randomNbr;
+            requiredCode[2] = _indice3.RandomNbr;
         }
         if (Indice4 != null)
         {
             _indice4 = Indice4.GetComponent<Interactible>();
-            requiredCode[3] = _indice4.randomNbr;
+            requiredCode[3] = _indice4.RandomNbr;
         }
 
         requiredCodeToString = string.Join("", requiredCode);
@@ -78,13 +81,14 @@ public class MovingDoor : MonoBehaviour
     
     void Update()
     {
-        if(playerInRange && Input.GetKeyDown(KeyCode.E) || playerInRange && Input.GetMouseButtonDown(0))
+        if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("tu viens de cliquer !");
             keyPadCodePorte.SetActive(true);
             cameraController.cameraLocked = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            return;
         }
         
         if (nbrButtonsCliqued == requiredCode.Length)
@@ -93,9 +97,11 @@ public class MovingDoor : MonoBehaviour
             {
                 _inputCode.text = "";
                 nbrButtonsCliqued = 0;
-                gameObject.transform.position +=  Vector3.up * 2;
+                
+                gameObject.transform.position +=  Vector3.up * 3;
                 cameraController.cameraLocked = false;
                 keyPadCodePorte.SetActive(false);
+
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
@@ -104,11 +110,9 @@ public class MovingDoor : MonoBehaviour
                 audioSourceError.Play();
                 _inputCode.text = "";
                 nbrButtonsCliqued = 0;
-                return;
             }
         }
-        
-        if (keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
             cameraController.cameraLocked = false;
             keyPadCodePorte.SetActive(false);

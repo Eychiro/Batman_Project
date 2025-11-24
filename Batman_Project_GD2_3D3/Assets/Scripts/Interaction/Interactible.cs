@@ -9,8 +9,9 @@ public class Interactible : MonoBehaviour
     public Trigger OutlinerRange;
     public string TextItem = "Appuyer sur E pour interagir";
     
+    public int RandomNbr {get;private set;}
+
     private bool playerInRange = false;
-    [HideInInspector] public int randomNbr;
 
     public int GetRandomInt()
     {
@@ -19,7 +20,7 @@ public class Interactible : MonoBehaviour
 
     void Awake()
     {
-        randomNbr = GetRandomInt();
+        RandomNbr = GetRandomInt();
         
         if (InteractionRange != null)
         {
@@ -94,7 +95,7 @@ public class Interactible : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("tu viens d'appuyer sur le bouton !");
-            Debug.Log(randomNbr);
+            Debug.Log(RandomNbr);
         }
     }
 }
