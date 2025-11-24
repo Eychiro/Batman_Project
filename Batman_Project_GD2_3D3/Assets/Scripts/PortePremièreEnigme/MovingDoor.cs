@@ -1,12 +1,11 @@
 using System.Collections;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MovingDoor : MonoBehaviour
 {
-    public float Truc {get;private set;}
-
     public GameObject keyPadCodePorte;
     public GameObject Indice1;
     public GameObject Indice2;
@@ -27,9 +26,12 @@ public class MovingDoor : MonoBehaviour
 
     private AudioSource audioSourceError;
 
+    private Transform _targetToLook;
+
     void Start()
     {
         audioSourceError = GetComponent<AudioSource>();
+        _targetToLook = transform;
         
         keyPadCodePorte.SetActive(false);
         if (Indice1 != null)
@@ -84,6 +86,10 @@ public class MovingDoor : MonoBehaviour
         if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("tu viens de cliquer !");
+            
+            cameraController.transform.LookAt(_targetToLook.GetComponent<Renderer>().bounds.center);
+            cameraController.ResetPos();
+
             keyPadCodePorte.SetActive(true);
             cameraController.cameraLocked = true;
             Cursor.lockState = CursorLockMode.None;

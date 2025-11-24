@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -10,8 +11,8 @@ public class CameraController : MonoBehaviour
     public float cameraSensitivity = 200.0f;
     public float cameraAcceleration = 5.0f;
 
-    public float rotationX;
-    public float rotationY;
+    private float rotationX;
+    private float rotationY;
     private AudioSource flashlightSwitch;
 
     public bool cameraLocked = false;
@@ -48,5 +49,12 @@ public class CameraController : MonoBehaviour
             flashlightSwitch.Play();
             flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
         }
+    }
+
+    public void ResetPos()
+    {
+        Debug.Log(transform.localRotation.eulerAngles.x);
+        //rotationX = transform.localRotation.eulerAngles.x;
+        rotationY = transform.localRotation.eulerAngles.y;
     }
 }
