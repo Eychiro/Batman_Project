@@ -10,12 +10,14 @@ public class RandomMovementV2test : MonoBehaviour
         Recherche,
         Poursuite,
         PoursuiteLight,
-        Cooldown
+        Cooldown,
+        ObjetDetecPoursuite
     }
     
     public NavMeshAgent agent;
     public float range;
     public Transform centrePoint;
+    private Vector3 trapTargetPosition;
 
     public Transform player;
     public float normalDetection = 10f;
@@ -66,6 +68,11 @@ public class RandomMovementV2test : MonoBehaviour
                 UpdateRecherche();
                 CheckCooldownEnd();
                 break;
+
+            case Etat.ObjetDetecPoursuite:
+                UpdateObjDetecPoursuite();
+                CheckForDetection();
+                break;    
         }
     }
     
@@ -95,10 +102,24 @@ public class RandomMovementV2test : MonoBehaviour
         etatTimer = 0;
         Debug.Log("Retour en patrouille active");
     }
+    
+
+    void SwitchToObjetDetecPoursuite()
+    {
+        etatActuel = Etat.ObjetDetecPoursuite;
+        etatTimer = 60f;
+        Debug.Log("Le piège a été activé, Batman arrive !");
+    }
 
     void UpdatePoursuite()
     {
-        agent.SetDestination(player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        
+        if (distanceToPlayer <= normalDetection)
+        {
+            agent.SetDestination(player.position);
+
+        }
 
         if (CheckIfLightIsVisible())
         {
@@ -141,6 +162,21 @@ public class RandomMovementV2test : MonoBehaviour
             {
                 agent.SetDestination(point);
             }
+        }
+    }
+
+    void UpdateObjDetecPoursuite()
+    {
+        agent.SetDestination(trapTargetPosition);
+
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            SwitchToRecherche();
+        }
+        
+        if (etatTimer <= 0)
+        {
+            SwitchToRecherche();
         }
     }
 
@@ -192,6 +228,12 @@ public class RandomMovementV2test : MonoBehaviour
         }
         result = Vector3.zero;
         return false;
+    }
+
+    public void PlayerDetected(Vector3 trapPosition)
+    {
+        trapTargetPosition = trapPosition;
+        SwitchToObjetDetecPoursuite();
     }
 
     
