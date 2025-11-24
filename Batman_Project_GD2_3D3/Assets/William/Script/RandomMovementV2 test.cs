@@ -11,13 +11,14 @@ public class RandomMovementV2test : MonoBehaviour
         Poursuite,
         PoursuiteLight,
         Cooldown,
-        ObjetDetecPoursuite
+        ObjetDetecPoursuite,
+        Disparu
     }
     
     public NavMeshAgent agent;
     public float range;
     public Transform centrePoint;
-    private Vector3 trapTargetPosition;
+    private Vector3 objetTargetPosition;
     public Transform player;
     public float normalDetection = 10f;
     public float lightDetection = 100f;
@@ -27,8 +28,16 @@ public class RandomMovementV2test : MonoBehaviour
     public float minTempsCooldown = 1f;
     public float maxTempsCooldown = 10f;
 
+    public float minTempsAvantDisparition = 90f;
+    public float maxTimeAvantDisparition = 150f;
+    public float disparitionDuree = 60f;
+
+    public Transform spawnPointA;
+    public Transform spawnPointB;
+    
     private Etat etatActuel;
     private float etatTimer;
+    private float disparitionCountdownTimer;
     
     private WillCameraController playerScript;
     
@@ -37,7 +46,17 @@ public class RandomMovementV2test : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         playerScript = player.GetComponent<WillCameraController>();
 
+        Vector3 positionApparition = ChoixSpawn();
+        agent.Warp(positionApparition);
+
+        ResetDisappearCountdown();
         SwitchToRecherche();
+    }
+
+    void ResetDisappearCountdown()
+    {
+        disparitionCountdownTimer = Random.Range(minTempsAvantDisparition, maxTimeAvantDisparition);
+        Debug.Log("Prochaine disparition de Batman dans: " + disparitionCountdownTimer + " secondes.");
     }
 
     void Update()
@@ -45,6 +64,19 @@ public class RandomMovementV2test : MonoBehaviour
         if (etatTimer > 0)
         {
             etatTimer -= Time.deltaTime;
+        }
+
+        if (etatActuel != Etat.Disparu)
+        {
+            if (disparitionCountdownTimer > 0)
+            {
+                disparitionCountdownTimer -= Time.deltaTime;
+            }
+            if (disparitionCountdownTimer <= 0)
+            {
+                SwitchToDisparu();
+                return;
+            }
         }
 
         switch (etatActuel)
@@ -71,9 +103,24 @@ public class RandomMovementV2test : MonoBehaviour
                 UpdateObjDetecPoursuite();
                 CheckForDetection();
                 break;    
+
+            case Etat.Disparu:
+                UpdateDisparu();
+                break;   
         }
     }
     
+    void SwitchToDisparu()
+    {
+        etatActuel = Etat.Disparu;
+        etatTimer = disparitionDuree;
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        agent.enabled = false; 
+        
+        Debug.Log("Batman a disparu !");
+    }
+
     void SwitchToPoursuite()
     {
         etatActuel = Etat.Poursuite;
@@ -106,9 +153,25 @@ public class RandomMovementV2test : MonoBehaviour
     {
         etatActuel = Etat.ObjetDetecPoursuite;
         etatTimer = 60f;
-        Debug.Log("Le piège a été activé, Batman arrive !");
+        Debug.Log("L'objet a été activé, Batman arrive !");
     }
 
+    void UpdateDisparu()
+    {
+        if (etatTimer <= 0)
+        {
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Collider>().enabled = true;
+            agent.enabled = true; 
+            Vector3 positionApparition = ChoixSpawn();
+            agent.Warp(positionApparition);
+            ResetDisappearCountdown();
+            SwitchToRecherche();
+            
+            Debug.Log("Batman est de retour!");
+        }
+    }
+    
     void UpdatePoursuite()
     {
         float distancePlayer = Vector3.Distance(transform.position, player.position);
@@ -165,7 +228,7 @@ public class RandomMovementV2test : MonoBehaviour
 
     void UpdateObjDetecPoursuite()
     {
-        agent.SetDestination(trapTargetPosition);
+        agent.SetDestination(objetTargetPosition);
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -229,11 +292,34 @@ public class RandomMovementV2test : MonoBehaviour
         return false;
     }
 
-    public void ObjetDetected(Vector3 trapPosition)
+    public void ObjetDetected(Vector3 objetPosition)
     {
-        trapTargetPosition = trapPosition;
+        if (etatActuel == Etat.Disparu) return;
+        
+        objetTargetPosition = objetPosition;
         SwitchToObjetDetecPoursuite();
     }
+
+    Vector3 ChoixSpawn()
+{
+    if (spawnPointA == null || spawnPointB == null || player == null)
+    {
+        Debug.LogError("Erreur : Points de spawn ou référence au joueur manquant(s).");
+        return transform.position; 
+    }
+
+    float distA = Vector3.Distance(spawnPointA.position, player.position);
+    float distB = Vector3.Distance(spawnPointB.position, player.position);
+
+    if (distA > distB)
+    {
+        return spawnPointA.position;
+    }
+    else
+    {
+        return spawnPointB.position;
+    }
+}
 
     
     //Juste pour vérifier la détection, pour playtest et balance
@@ -248,4 +334,3 @@ public class RandomMovementV2test : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lightDetection);
     }
 }
-

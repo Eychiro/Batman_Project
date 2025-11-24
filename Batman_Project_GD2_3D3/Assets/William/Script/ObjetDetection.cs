@@ -2,32 +2,31 @@ using UnityEngine;
 
 public class ObjetDetection : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public RandomMovementV2test BatmanIA;
+
+    public float cooldown = 3f;
+    private float prochaineActivation = 0f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    public RandomMovementV2test BatmanIA;
-    public MonoBehaviour playerMovementScript; // Le script de mouvement du joueur
-
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && Time.time >= prochaineActivation)
         { 
             if (BatmanIA != null)
             {
                 BatmanIA.ObjetDetected(transform.position); 
+                prochaineActivation = Time.time + cooldown;
             }
-
-            gameObject.SetActive(false);
         }
     }
 }
