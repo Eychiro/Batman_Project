@@ -5,13 +5,20 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
     public TextMeshProUGUI emptyPourDésactiver;
+    public GameObject backgroundNoteIndice;
+    public TextMeshProUGUI noteIndiceEnigme1;
+
     public Trigger InteractionRange;
     public Trigger OutlinerRange;
+
     public string TextItem = "Appuyer sur E pour interagir";
-    
     public int RandomNbr {get;private set;}
 
+    public string prefixePhrase;
+    public string suffixePhrase;
+
     private bool playerInRange = false;
+    private bool _noteAffichee = false;
 
     public int GetRandomInt()
     {
@@ -42,6 +49,13 @@ public class Interactible : MonoBehaviour
             emptyPourDésactiver.ForceMeshUpdate(true); 
             emptyPourDésactiver.enabled = false;
         }
+
+        if (noteIndiceEnigme1 != null)
+        {
+            noteIndiceEnigme1.ForceMeshUpdate(true); 
+            noteIndiceEnigme1.enabled = false;
+            backgroundNoteIndice.SetActive(false);
+        }
     }
 
     void OnInteractionTriggeredEnter(Collider collider)
@@ -49,7 +63,6 @@ public class Interactible : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("hello tu es dans le point d'interaction");
             
             if (emptyPourDésactiver != null)
             {
@@ -63,11 +76,17 @@ public class Interactible : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             playerInRange = false;
-            Debug.Log("aurevoir !");
             
             if (emptyPourDésactiver != null)
             {
                 emptyPourDésactiver.enabled = false;
+            
+                if (_noteAffichee)
+                {
+                    noteIndiceEnigme1.enabled = false;
+                    backgroundNoteIndice.SetActive(false);
+                    _noteAffichee = false;
+                }
             }
         }
     }
@@ -77,7 +96,6 @@ public class Interactible : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             gameObject.layer = 6;
-            Debug.Log("l'objet devient lumière !");
         }
     }
 
@@ -86,16 +104,33 @@ public class Interactible : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             gameObject.layer = 0;
-            Debug.Log("L'objet devient ténèbres !");
         }
     }
         
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && !_noteAffichee && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("tu viens d'appuyer sur le bouton !");
             Debug.Log(RandomNbr);
+
+            if (noteIndiceEnigme1 != null)
+            {
+                _noteAffichee = true;
+                noteIndiceEnigme1.enabled = true;
+                emptyPourDésactiver.enabled = false;
+                backgroundNoteIndice.SetActive(true);
+                noteIndiceEnigme1.text = prefixePhrase + " " + RandomNbr + " " + suffixePhrase;
+                return;
+            }
         }
+
+        if (playerInRange && _noteAffichee && Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("tu veux te barrer !");
+                noteIndiceEnigme1.enabled = false;
+                emptyPourDésactiver.enabled = true;
+                backgroundNoteIndice.SetActive(false);
+                _noteAffichee = false;
+            }
     }
 }

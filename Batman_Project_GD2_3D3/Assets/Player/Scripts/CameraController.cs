@@ -10,8 +10,8 @@ public class CameraController : MonoBehaviour
     public float cameraSensitivity = 200.0f;
     public float cameraAcceleration = 5.0f;
 
-    private float rotationX;
-    private float rotationY;
+    public float rotationX;
+    public float rotationY;
     private AudioSource flashlightSwitch;
 
     public bool cameraLocked = false;

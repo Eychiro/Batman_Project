@@ -78,7 +78,7 @@ public class MovingDoor : MonoBehaviour
             nbrButtonsCliqued = 0;
         }
     }
-    
+
     void Update()
     {
         if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
@@ -90,7 +90,7 @@ public class MovingDoor : MonoBehaviour
             Cursor.visible = true;
             return;
         }
-        
+
         if (nbrButtonsCliqued == requiredCode.Length)
         {        // Si le code est bon
             if (_inputCode.text == requiredCodeToString)
@@ -112,6 +112,7 @@ public class MovingDoor : MonoBehaviour
                 nbrButtonsCliqued = 0;
             }
         }
+        
         if (keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
             cameraController.cameraLocked = false;
