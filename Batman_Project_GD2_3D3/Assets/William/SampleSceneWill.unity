@@ -1002,7 +1002,7 @@ Transform:
   m_GameObject: {fileID: 618927031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.88904524, z: -0, w: 0.45781943}
-  m_LocalPosition: {x: 15.36, y: 0.5, z: 15.84}
+  m_LocalPosition: {x: -12.73, y: 0.5, z: -7.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1406,7 +1406,7 @@ GameObject:
   - component: {fileID: 1159564819}
   - component: {fileID: 1159564818}
   m_Layer: 0
-  m_Name: piege
+  m_Name: ObjetDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1424,6 +1424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2697860bbfe88414ca485293bc632521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  BatmanIA: {fileID: 411585030}
+  playerMovementScript: {fileID: 618927034}
 --- !u!65 &1159564819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1885,7 +1887,7 @@ MonoBehaviour:
   hand: {fileID: 604708101}
   flashLight: {fileID: 544660250}
   cameraSensitivity: 200
-  cameraAcceleration: 3
+  cameraAcceleration: 5
   isFlashlightOn: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

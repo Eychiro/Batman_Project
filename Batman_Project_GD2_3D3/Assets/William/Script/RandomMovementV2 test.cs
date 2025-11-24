@@ -18,11 +18,9 @@ public class RandomMovementV2test : MonoBehaviour
     public float range;
     public Transform centrePoint;
     private Vector3 trapTargetPosition;
-
     public Transform player;
     public float normalDetection = 10f;
     public float lightDetection = 100f;
-
 
     public float minTempsPoursuite = 1f;
     public float maxTempsPoursuite = 10f;
@@ -113,9 +111,9 @@ public class RandomMovementV2test : MonoBehaviour
 
     void UpdatePoursuite()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        float distancePlayer = Vector3.Distance(transform.position, player.position);
         
-        if (distanceToPlayer <= normalDetection)
+        if (distancePlayer <= normalDetection)
         {
             agent.SetDestination(player.position);
 
@@ -139,9 +137,9 @@ public class RandomMovementV2test : MonoBehaviour
 
         if (CheckIfLightIsVisible() == false)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            float distancePlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distanceToPlayer <= normalDetection)
+            if (distancePlayer <= normalDetection)
             {
                 SwitchToPoursuite(); 
             }
@@ -182,7 +180,7 @@ public class RandomMovementV2test : MonoBehaviour
 
     void CheckForDetection()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        float distancePlayer = Vector3.Distance(transform.position, player.position);
         
         if (CheckIfLightIsVisible())
         {
@@ -190,7 +188,7 @@ public class RandomMovementV2test : MonoBehaviour
             return;
         }
 
-        if (distanceToPlayer <= normalDetection)
+        if (distancePlayer <= normalDetection)
         {
             SwitchToPoursuite();
         }
@@ -200,8 +198,9 @@ public class RandomMovementV2test : MonoBehaviour
     {
         if (playerScript != null && playerScript.isFlashlightOn)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer <= lightDetection)
+            float distancePlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distancePlayer <= lightDetection)
             {
                 return true;
             }
@@ -230,7 +229,7 @@ public class RandomMovementV2test : MonoBehaviour
         return false;
     }
 
-    public void PlayerDetected(Vector3 trapPosition)
+    public void ObjetDetected(Vector3 trapPosition)
     {
         trapTargetPosition = trapPosition;
         SwitchToObjetDetecPoursuite();

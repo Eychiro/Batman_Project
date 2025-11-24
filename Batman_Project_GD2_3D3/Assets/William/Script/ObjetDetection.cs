@@ -21,11 +21,10 @@ public class ObjetDetection : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            
+        { 
             if (BatmanIA != null)
             {
-                BatmanIA.PlayerDetected(transform.position); 
+                BatmanIA.ObjetDetected(transform.position); 
             }
 
             gameObject.SetActive(false);
