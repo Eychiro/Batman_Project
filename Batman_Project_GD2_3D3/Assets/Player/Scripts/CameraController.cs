@@ -55,5 +55,6 @@ public class CameraController : MonoBehaviour
     {
         rotationX = 0;
         rotationY = transform.localRotation.eulerAngles.y;
+        _camera.localRotation = Quaternion.identity;
     }
 }

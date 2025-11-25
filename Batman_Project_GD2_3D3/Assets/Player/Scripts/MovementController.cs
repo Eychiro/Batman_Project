@@ -9,6 +9,8 @@ public class MovementController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 direction;
 
+    public bool movementLocked = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,7 +18,10 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        direction = Input.GetAxisRaw("Horizontal") * head.right + Input.GetAxisRaw("Vertical") * head.forward;
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, direction.normalized * speed + rb.linearVelocity.y * Vector3.up, playerAcceleration * Time.deltaTime);
+        if (!movementLocked)
+        {
+            direction = Input.GetAxisRaw("Horizontal") * head.right + Input.GetAxisRaw("Vertical") * head.forward;
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, direction.normalized * speed + rb.linearVelocity.y * Vector3.up, playerAcceleration * Time.deltaTime);
+        }
     }
 }
