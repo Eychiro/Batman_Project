@@ -53,8 +53,7 @@ public class CameraController : MonoBehaviour
 
     public void ResetPos()
     {
-        Debug.Log(transform.localRotation.eulerAngles.x);
-        //rotationX = transform.localRotation.eulerAngles.x;
+        rotationX = 0;
         rotationY = transform.localRotation.eulerAngles.y;
     }
 }
