@@ -1,7 +1,9 @@
+using System.Collections;
 using NUnit.Framework;
 using UnityEditor.Analytics;
 using UnityEngine;
 using UnityEngine.AI;
+//using UnityEngine.SceneManagement; utile pour relancer le niveau
 
 public class RandomMovementV2test : MonoBehaviour
 {
@@ -38,6 +40,12 @@ public class RandomMovementV2test : MonoBehaviour
     private Etat etatActuel;
     private float etatTimer;
     private float disparitionCountdownTimer;
+
+    public float mortDistance = 2.5f;
+    public float tempsJumpscare = 0.1f; 
+    private bool jeuFini = false;
+
+    public float stopDistance = 1.0f;
     
     private WillCameraController playerScript;
     
@@ -61,6 +69,13 @@ public class RandomMovementV2test : MonoBehaviour
 
     void Update()
     {
+        if (jeuFini) return;
+
+        if (etatActuel != Etat.Disparu)
+        {
+            VerifMort();
+        }
+        
         if (etatTimer > 0)
         {
             etatTimer -= Time.deltaTime;
@@ -125,12 +140,14 @@ public class RandomMovementV2test : MonoBehaviour
     {
         etatActuel = Etat.Poursuite;
         etatTimer = Random.Range(minTempsPoursuite, maxTempsPoursuite);
+        agent.stoppingDistance = stopDistance;
         Debug.Log("Début de la poursuite pour : " + etatTimer + " secondes");
     }
 
     void SwitchToPoursuiteLight()
     {
         etatActuel = Etat.PoursuiteLight;
+        agent.stoppingDistance = stopDistance;
         Debug.Log("Début de la poursuite (light)");
     }
 
@@ -145,6 +162,7 @@ public class RandomMovementV2test : MonoBehaviour
     {
         etatActuel = Etat.Recherche;
         etatTimer = 0;
+        agent.stoppingDistance = 0.1f;
         Debug.Log("Retour en patrouille active");
     }
     
@@ -321,6 +339,31 @@ public class RandomMovementV2test : MonoBehaviour
     }
 }
 
+void VerifMort()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= mortDistance)
+        {
+            StartCoroutine(GameOverSequence());
+        }
+    }
+
+    IEnumerator GameOverSequence()
+    {
+        if (jeuFini) yield break;
+        jeuFini = true;
+        agent.isStopped = true; 
+        agent.velocity = Vector3.zero;
+        if (playerScript != null) playerScript.enabled = false;
+        Debug.Log("Normalement le jeu commence à s'arrêter là");    
+
+
+        yield return new WaitForSeconds(tempsJumpscare);
+        Time.timeScale = 0f;
+        Debug.Log("Normalement le jeu s'arrête là");    
+    }
+
     
     //Juste pour vérifier la détection, pour playtest et balance
     void OnDrawGizmosSelected()
@@ -332,5 +375,10 @@ public class RandomMovementV2test : MonoBehaviour
         //Lumière
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, lightDetection);
+
+        
+        //Mort
+        Gizmos.color = Color.purple;
+        Gizmos.DrawWireSphere(transform.position, mortDistance);
     }
 }
