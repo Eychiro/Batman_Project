@@ -267,7 +267,7 @@ public class RandomMovementV2test : MonoBehaviour
 
     void CheckForDetection()
     {
-        if (estCache && !detecteAvantCache) 
+        if ((estCache && !detecteAvantCache) || !EstDansLaZoneActuelle(player.position)) 
         return;
         
         float distancePlayer = Vector3.Distance(transform.position, player.position);
@@ -321,7 +321,7 @@ public class RandomMovementV2test : MonoBehaviour
 
     public void ObjetDetected(Vector3 objetPosition)
     {
-        if (etatActuel == Etat.Disparu) 
+        if (etatActuel == Etat.Disparu || !EstDansLaZoneActuelle(objetPosition)) 
         return;
         
         objetTargetPosition = objetPosition;
@@ -349,7 +349,7 @@ public class RandomMovementV2test : MonoBehaviour
     }
 }
 
-void VerifMort()
+    void VerifMort()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -377,6 +377,28 @@ void VerifMort()
         yield return new WaitForSeconds(tempsJumpscare);
         Time.timeScale = 0f;
         Debug.Log("Normalement le jeu s'arrête là");    
+    }
+
+    bool EstDansLaZoneActuelle(Vector3 targetPosition)
+{
+    float distanceCentre = Vector3.Distance(targetPosition, centrePoint.position);
+    
+    if (distanceCentre > range + 5f) 
+    {
+        return false;
+    }
+    return true;
+}
+
+    public void ChangementZone(Transform nouveauCentre, float nouvelleRange, Transform nouveauSpawnA, Transform nouveauSpawnB)
+    {
+        centrePoint = nouveauCentre;
+        range = nouvelleRange;
+        spawnPointA = nouveauSpawnA;
+        spawnPointB = nouveauSpawnB;
+
+        SwitchToDisparu();
+        etatTimer = 15f;
     }
 
     

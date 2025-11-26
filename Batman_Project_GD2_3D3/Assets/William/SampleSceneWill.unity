@@ -1767,7 +1767,7 @@ GameObject:
   - component: {fileID: 1015637687}
   - component: {fileID: 1015637686}
   - component: {fileID: 1015637685}
-  - component: {fileID: 1015637684}
+  - component: {fileID: 1015637690}
   m_Layer: 0
   m_Name: 'Cachette '
   m_TagString: Untagged
@@ -1775,24 +1775,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1015637684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015637683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7917749d62a57f64dbc7268175346698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  "emptyPourD\xE9sactiver": {fileID: 1736611077}
-  Player: {fileID: 618927035}
-  cameraController: {fileID: 2041081043}
-  flashLight: {fileID: 544660250}
-  textItem: Appuyer sur E pour rentrer dans la cachette
-  BatmanAI: {fileID: 411585030}
 --- !u!65 &1015637685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1908,6 +1890,24 @@ Transform:
   - {fileID: 204539502}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1015637690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015637683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cba53717ea68844e96535ca8ff4154c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WillCachette
+  "emptyPourD\xE9sactiver": {fileID: 1736611077}
+  Player: {fileID: 618927035}
+  cameraController: {fileID: 2041081043}
+  flashLight: {fileID: 544660250}
+  textItem: Appuyer sur E pour rentrer dans la cachette
+  BatmanAI: {fileID: 411585030}
 --- !u!1 &1035220166
 GameObject:
   m_ObjectHideFlags: 0
