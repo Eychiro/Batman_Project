@@ -2,51 +2,102 @@ using UnityEngine;
  
 public class PointerController : MonoBehaviour
 {
-    public Transform pointA; // Reference to the starting point
-    public Transform pointB; // Reference to the ending point
-    public RectTransform safeZone; // Reference to the safe zone RectTransform
-    public float moveSpeed = 100f; // Speed of the pointer movement
+    public Transform pointA; // Reference point de départ
+    public Transform pointB; // Reference point de fin
+    public RectTransform safeZone; // Reference safe Zone
+    public float moveSpeed = 200f; // Vitesse du mouvement de la barre
  
-    private float direction = 1f; // 1 for moving towards B, -1 for moving towards A
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
- 
+    private int successCount = 0;
+    private Vector3 originalSafeZoneWidth;
+    public bool _alreadyOpened = false;
+
     void Start()
     {
         pointerTransform = GetComponent<RectTransform>();
         targetPosition = pointB.position;
+        originalSafeZoneWidth = safeZone.localScale;
+        
+        // Largeur de la safe zone
+        float safeZoneWidth = safeZone.rect.width;
+        
+        // Position aléatoire entre min et max, en laissant de la marge pour la largeur
+        float randomX = Random.Range(pointA.position.x + safeZoneWidth / 2f, pointB.position.x - safeZoneWidth / 2f);
+        
+        Vector3 newSafeZone = new Vector3(randomX, safeZone.position.y, safeZone.position.z);
+        safeZone.position = newSafeZone;
     }
  
     void Update()
     {
-        // Move the pointer towards the target position
+        // pointer va vers la target position
         pointerTransform.position = Vector3.MoveTowards(pointerTransform.position, targetPosition, moveSpeed * Time.deltaTime);
  
-        // Change direction if the pointer reaches one of the points
+        // si le point est atteint, alors changer la direction
         if (Vector3.Distance(pointerTransform.position, pointA.position) < 0.1f)
         {
             targetPosition = pointB.position;
-            direction = 1f;
         }
         else if (Vector3.Distance(pointerTransform.position, pointB.position) < 0.1f)
         {
             targetPosition = pointA.position;
-            direction = -1f;
         }
  
-        // Check for input
+        // check input
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CheckSuccess();
         }
     }
  
-    void CheckSuccess()
+    private void SuccessModifier()
     {
-        // Check if the pointer is within the safe zone
+        // Largeur de la safe zone
+        float newSafeZoneWidth = safeZone.rect.width;
+        
+        // Position aléatoire entre min et max, en laissant de la marge pour la largeur
+        float randomX = Random.Range(pointA.position.x + newSafeZoneWidth / 2f, pointB.position.x - newSafeZoneWidth / 2f);
+        
+        Vector3 newSafeZone = new Vector3(randomX, safeZone.position.y, safeZone.position.z);
+        safeZone.position = newSafeZone;
+
+        safeZone.localScale = new Vector3(safeZone.localScale.x - 0.2f, safeZone.localScale.y, safeZone.localScale.z);
+        moveSpeed += 200;
+    }
+
+    public void LeavingModifier()
+    {
+        if (_alreadyOpened)
+        {
+            safeZone.localScale = originalSafeZoneWidth;
+
+            float newSafeZoneWidth = safeZone.rect.width;
+        
+            // Position aléatoire entre min et max, en laissant de la marge pour la largeur
+            float randomX = Random.Range(pointA.position.x + newSafeZoneWidth / 2f, pointB.position.x - newSafeZoneWidth / 2f);
+        
+            Vector3 newSafeZone = new Vector3(randomX, safeZone.position.y, safeZone.position.z);
+            safeZone.position = newSafeZone;
+
+            moveSpeed = 200;
+            successCount = 0;
+        }
+        else
+        _alreadyOpened = true;
+    }
+    
+    private void CheckSuccess()
+    {
+        // Check if pointer is in safe Zone
         if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null))
         {
             Debug.Log("Success!");
+            successCount += 1;
+            if (successCount < 6)
+            {
+                SuccessModifier();
+            }
         }
         else
         {

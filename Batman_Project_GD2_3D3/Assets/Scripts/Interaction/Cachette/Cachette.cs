@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cachette : MonoBehaviour
 {
-    public TextMeshProUGUI emptyPourDésactiver;
+    public TextMeshProUGUI cachetteText;
     public Transform Player;
     public CameraController cameraController;
     public Light flashLight;
@@ -19,13 +19,12 @@ public class Cachette : MonoBehaviour
     {
         _playerMovement = Player.GetComponent<MovementController>();
         
-        if (emptyPourDésactiver != null)
+        if (cachetteText != null)
         {
-            emptyPourDésactiver.text = textItem;
-            emptyPourDésactiver.ForceMeshUpdate(true); 
-            emptyPourDésactiver.enabled = false;
+            cachetteText.text = textItem;
+            cachetteText.ForceMeshUpdate(true);
+            cachetteText.enabled = false;
         }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -34,9 +33,9 @@ public class Cachette : MonoBehaviour
         {
             playerInRange = true;
             
-            if (emptyPourDésactiver != null)
+            if (cachetteText != null)
             {
-                emptyPourDésactiver.enabled = true;
+                cachetteText.enabled = true;
             }
         }
     }
@@ -47,9 +46,9 @@ public class Cachette : MonoBehaviour
         {
             playerInRange = false;
             
-            if (emptyPourDésactiver != null)
+            if (cachetteText != null)
             {
-                emptyPourDésactiver.enabled = false;
+                cachetteText.enabled = false;
             }
         }
     }
@@ -68,7 +67,7 @@ public class Cachette : MonoBehaviour
             cameraController._camera.localRotation = Quaternion.identity;
             flashLight.gameObject.SetActive(false);
             _playerMovement.movementLocked = true;
-            emptyPourDésactiver.text = "Appuyer sur E pour sortir de la cachette";
+            cachetteText.text = "Appuyer sur E pour sortir de la cachette";
 
             cameraController.cameraLocked = true;
             return;
@@ -85,7 +84,7 @@ public class Cachette : MonoBehaviour
             Player.transform.position = transform.GetChild(1).position;
             cameraController.ResetPos();
             _playerMovement.movementLocked = false;
-            emptyPourDésactiver.text = "Appuyer sur E pour rentrer dans la cachette";
+            cachetteText.text = "Appuyer sur E pour rentrer dans la cachette";
         }
     }
 }
