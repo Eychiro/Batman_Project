@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Unity.VisualScripting;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,42 +11,102 @@ public class MainMenu : MonoBehaviour
     public GameObject GroupeTitre;
     public GameObject GroupeBoutonsPrincipaux;
     public GameObject GroupeOption;
+    public Image EcranNoir;
+    public Image THUNDER;
+    private float OpacityNoir;
 
-    public GameObject VolumeText;
-    private float Volume;
+    public AudioSource Musique;
+    public AudioSource SonEclair;
+    public AudioSource SonClic;
+
+    public TextMeshProUGUI VolumeText;
+    public Slider SliderVolume;
+    private float Volume = 50f;
+
+    public float FadeTime = 2f;
 
     
     void Start()
-    {
-        GroupeTitre.SetActive(true);
+    {   
+        Musique.time = 4f;
+        Musique.Play();
+        EcranNoir.gameObject.SetActive(true);
+        EcranNoir.color = new Color32(0,0,0,255);
+        GroupeTitre.SetActive(false);
+        THUNDER.gameObject.SetActive(false);
         GroupeBoutonsPrincipaux.SetActive(false);
         GroupeOption.SetActive(false);
+        StartCoroutine(Introduction());
+        
     }
+
+
+    IEnumerator Introduction()
+    {
+        var elapsed = 0f;
+
+        yield return new WaitForSeconds(1f);
+
+        while (elapsed < FadeTime)
+        {
+            elapsed += Time.deltaTime;
+
+            var ratio = elapsed / FadeTime;
+
+            EcranNoir.color = Color32.Lerp(new Color32(0,0,0,255),new Color32(0,0,0,100), ratio);
+
+            yield return null;
+        }
+
+        elapsed = 0f;
+
+        while (elapsed < FadeTime)
+        {
+            elapsed += Time.deltaTime;
+
+            var ratio = elapsed / FadeTime;
+
+            EcranNoir.color = Color32.Lerp(new Color32(0,0,0,100),new Color32(0,0,0,255), ratio);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        StartCoroutine(ThunderEffect());
+        EcranNoir.color = new Color32(0,0,0,0);
+        EcranNoir.gameObject.SetActive(false);
+        GroupeTitre.SetActive(true);
+    }
+
 
     public void PressedTitre()
     {
         GroupeTitre.SetActive(false);
         GroupeBoutonsPrincipaux.SetActive(true);
+        SonClic.Play();
     }
 
     public void PressedJouer()
     {
-        GroupeBoutonsPrincipaux.SetActive(false);
-        SceneManager.LoadScene("SampleSceneWill");
-        Debug.Log("PLAY");
+        StartCoroutine(JeuLancer());
+        SonClic.Play();
     }
 
     public void PressedOption()
     {
         Debug.Log("OPTION");
+        PressedVolume();
         GroupeBoutonsPrincipaux.SetActive(false);
         GroupeOption.SetActive(true);
+        SonClic.Play();
     }
 
     public void PressedQuitter()
     {
         Debug.Log("QUIT");
         Application.Quit();
+        SonClic.Play();
     }
 
     public void PressedRetour()
@@ -51,10 +114,62 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Retour");
         GroupeOption.SetActive(false);
         GroupeBoutonsPrincipaux.SetActive(true);
+        SonClic.Play();
     }
 
     public void PressedVolume()
     {
-        Volume = 10;
+        Volume = SliderVolume.value;
+        //VolumeText.text = "Volume:" + Volume.ToString();
+        VolumeText.text = $"Volume: {Volume}%";
+        Debug.Log(Volume);
+    }
+
+    IEnumerator ThunderEffect()
+    {
+        THUNDER.gameObject.SetActive(true);
+        var elapsed = 0f;
+        FadeTime = 0.25f;
+        SonEclair.Play();
+
+        while (elapsed < FadeTime)
+        {
+            elapsed += Time.deltaTime;
+
+            var ratio = elapsed / FadeTime;
+
+            THUNDER.color = Color32.Lerp(new Color32(255,255,255,255),new Color32(255,255,255,0), ratio);
+
+            yield return null;
+        }
+        THUNDER.gameObject.SetActive(false);
+    }
+
+    IEnumerator JeuLancer()
+    {
+        var elapsed = 0f;
+        FadeTime = 2f;
+        
+        EcranNoir.gameObject.SetActive(true);
+        EcranNoir.color = new Color32(0,0,0,0);
+        GroupeBoutonsPrincipaux.SetActive(false);
+
+        while (elapsed < FadeTime)
+        {
+            elapsed += Time.deltaTime;
+
+            var ratio = elapsed / FadeTime;
+
+            Musique.volume = Mathf.Lerp(1,0,ratio);
+            EcranNoir.color = Color32.Lerp(new Color32(0,0,0,0),new Color32(0,0,0,255), ratio);
+
+            yield return null;
+        }
+        Musique.volume = 0f;
+
+        yield return new WaitForSeconds(2f);
+
+        Debug.Log("PLAY");
+        SceneManager.LoadScene("SampleSceneWill");
     }
 }
