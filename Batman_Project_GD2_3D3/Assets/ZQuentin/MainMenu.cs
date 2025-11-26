@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject GroupeTitre;
     public GameObject GroupeBoutonsPrincipaux;
     public GameObject GroupeOption;
+    public GameObject GroupeCredit;
     public Image EcranNoir;
     public Image THUNDER;
     private float OpacityNoir;
@@ -36,8 +37,8 @@ public class MainMenu : MonoBehaviour
         THUNDER.gameObject.SetActive(false);
         GroupeBoutonsPrincipaux.SetActive(false);
         GroupeOption.SetActive(false);
+        GroupeCredit.SetActive(false);
         StartCoroutine(Introduction());
-        
     }
 
 
@@ -79,6 +80,12 @@ public class MainMenu : MonoBehaviour
         GroupeTitre.SetActive(true);
     }
 
+    public void PressedCredit()
+    {
+        GroupeBoutonsPrincipaux.SetActive(false);
+        GroupeCredit.SetActive(true);
+        SonClic.Play();
+    }
 
     public void PressedTitre()
     {
@@ -113,6 +120,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Retour");
         GroupeOption.SetActive(false);
+        GroupeCredit.SetActive(false);
         GroupeBoutonsPrincipaux.SetActive(true);
         SonClic.Play();
     }
