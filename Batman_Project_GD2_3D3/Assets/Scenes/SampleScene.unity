@@ -3547,6 +3547,7 @@ MonoBehaviour:
   cameraController: {fileID: 2041081043}
   flashLight: {fileID: 544660250}
   textItem: Appuyer sur E pour rentrer dans la cachette
+  BatmanAI: {fileID: 0}
 --- !u!1 &1199185904
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class Cachette : MonoBehaviour
 {
     public TextMeshProUGUI emptyPourDésactiver;
     public Transform Player;
-    public WillCameraController cameraController;
+    public CameraController cameraController;
     public Light flashLight;
     public string textItem = "Appuyer sur E pour rentrer dans la cachette";
 
