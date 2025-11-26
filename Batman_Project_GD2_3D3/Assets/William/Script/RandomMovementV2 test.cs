@@ -369,10 +369,7 @@ public class RandomMovementV2test : MonoBehaviour
         agent.velocity = Vector3.zero;
 
         if (playerScript != null) 
-        playerScript.enabled = false;
-
-        Debug.Log("Normalement le jeu commence à s'arrêter là");    
-
+        playerScript.enabled = false;   
 
         yield return new WaitForSeconds(tempsJumpscare);
         Time.timeScale = 0f;
