@@ -5,13 +5,15 @@ public class Cachette : MonoBehaviour
 {
     public TextMeshProUGUI emptyPourDésactiver;
     public Transform Player;
-    public CameraController cameraController;
+    public WillCameraController cameraController;
     public Light flashLight;
     public string textItem = "Appuyer sur E pour rentrer dans la cachette";
 
     private bool playerInRange = false;
     private bool _isHidden = false;
     private MovementController _playerMovement;
+
+    public RandomMovementV2test BatmanAI;
 
     void Start()
     {
@@ -57,6 +59,10 @@ public class Cachette : MonoBehaviour
         if (playerInRange && !_isHidden && Input.GetKeyDown(KeyCode.E))
         {
             _isHidden = true;
+
+            if (BatmanAI != null) 
+            BatmanAI.estCache = true;
+
             Player.transform.position = transform.GetChild(0).position;
             cameraController.transform.rotation = transform.GetChild(0).rotation;
             cameraController._camera.localRotation = Quaternion.identity;
@@ -71,6 +77,10 @@ public class Cachette : MonoBehaviour
         if (playerInRange && _isHidden && Input.GetKeyDown(KeyCode.E))
         {
             _isHidden = false;
+
+            if (BatmanAI != null) 
+            BatmanAI.estCache = false;
+            
             cameraController.cameraLocked = false;
             Player.transform.position = transform.GetChild(1).position;
             cameraController.ResetPos();

@@ -46,6 +46,9 @@ public class RandomMovementV2test : MonoBehaviour
     private bool jeuFini = false;
 
     public float stopDistance = 1.0f;
+
+    public bool estCache = false;
+    private bool detecteAvantCache = false;
     
     private WillCameraController playerScript;
     
@@ -69,7 +72,8 @@ public class RandomMovementV2test : MonoBehaviour
 
     void Update()
     {
-        if (jeuFini) return;
+        if (jeuFini) 
+        return;
 
         if (etatActuel != Etat.Disparu)
         {
@@ -141,6 +145,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatActuel = Etat.Poursuite;
         etatTimer = Random.Range(minTempsPoursuite, maxTempsPoursuite);
         agent.stoppingDistance = stopDistance;
+        detecteAvantCache = true;
         Debug.Log("Début de la poursuite pour : " + etatTimer + " secondes");
     }
 
@@ -163,6 +168,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatActuel = Etat.Recherche;
         etatTimer = 0;
         agent.stoppingDistance = 0.1f;
+        detecteAvantCache = false;
         Debug.Log("Retour en patrouille active");
     }
     
@@ -261,6 +267,9 @@ public class RandomMovementV2test : MonoBehaviour
 
     void CheckForDetection()
     {
+        if (estCache && !detecteAvantCache) 
+        return;
+        
         float distancePlayer = Vector3.Distance(transform.position, player.position);
         
         if (CheckIfLightIsVisible())
@@ -312,7 +321,8 @@ public class RandomMovementV2test : MonoBehaviour
 
     public void ObjetDetected(Vector3 objetPosition)
     {
-        if (etatActuel == Etat.Disparu) return;
+        if (etatActuel == Etat.Disparu) 
+        return;
         
         objetTargetPosition = objetPosition;
         SwitchToObjetDetecPoursuite();
@@ -343,7 +353,7 @@ void VerifMort()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= mortDistance)
+        if (distanceToPlayer <= mortDistance && (!estCache || detecteAvantCache))
         {
             StartCoroutine(GameOverSequence());
         }
@@ -351,11 +361,16 @@ void VerifMort()
 
     IEnumerator GameOverSequence()
     {
-        if (jeuFini) yield break;
+        if (jeuFini)
+        yield break;
+
         jeuFini = true;
         agent.isStopped = true; 
         agent.velocity = Vector3.zero;
-        if (playerScript != null) playerScript.enabled = false;
+
+        if (playerScript != null) 
+        playerScript.enabled = false;
+
         Debug.Log("Normalement le jeu commence à s'arrêter là");    
 
 
