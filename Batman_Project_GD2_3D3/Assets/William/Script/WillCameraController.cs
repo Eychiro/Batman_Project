@@ -15,6 +15,8 @@ public class WillCameraController : MonoBehaviour
     private AudioSource flashlightSwitch;
     public bool isFlashlightOn = false;
 
+    public bool cameraLocked = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,6 +27,8 @@ public class WillCameraController : MonoBehaviour
 
     void Update()
     {
+        if (cameraLocked)
+        return;
         rotationX += Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
         rotationY += Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
@@ -55,5 +59,12 @@ public class WillCameraController : MonoBehaviour
 
             Debug.Log("Lampe allumée : " + isFlashlightOn);
         }
+    }
+
+    public void ResetPos()
+    {
+        rotationX = 0;
+        rotationY = transform.localRotation.eulerAngles.y;
+        _camera.localRotation = Quaternion.identity;
     }
 }
