@@ -14,11 +14,12 @@ public class MainMenu : MonoBehaviour
     public GameObject GroupeCredit;
     public Image EcranNoir;
     public Image THUNDER;
-    private float OpacityNoir;
 
     public AudioSource Musique;
     public AudioSource SonEclair;
     public AudioSource SonClic;
+
+    public GameObject MainCamera;
 
     public TextMeshProUGUI VolumeText;
     public Slider SliderVolume;
@@ -56,6 +57,7 @@ public class MainMenu : MonoBehaviour
             var ratio = elapsed / FadeTime;
 
             EcranNoir.color = Color32.Lerp(new Color32(0,0,0,255),new Color32(0,0,0,100), ratio);
+            MainCamera.transform.position = Vector3.Lerp(new Vector3(0,0,-10), new Vector3(0,0,-5) , ratio);
 
             yield return null;
         }
@@ -69,6 +71,7 @@ public class MainMenu : MonoBehaviour
             var ratio = elapsed / FadeTime;
 
             EcranNoir.color = Color32.Lerp(new Color32(0,0,0,100),new Color32(0,0,0,255), ratio);
+            MainCamera.transform.position = Vector3.Lerp(new Vector3(0,0,-5), new Vector3(0,0,0) , ratio);
 
             yield return null;
         }
@@ -173,6 +176,7 @@ public class MainMenu : MonoBehaviour
 
             Musique.volume = Mathf.Lerp(1,0,ratio);
             EcranNoir.color = Color32.Lerp(new Color32(0,0,0,0),new Color32(0,0,0,255), ratio);
+            MainCamera.transform.position = Vector3.Lerp(new Vector3(0,0,0), new Vector3(0,0,2.5f) , ratio);
 
             yield return null;
         }
