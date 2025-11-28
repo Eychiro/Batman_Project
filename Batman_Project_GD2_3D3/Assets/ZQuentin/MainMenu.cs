@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
     
     void Start()
     {   
+        AudioListener.volume = Volume/100;
         Musique.time = 4f;
         Musique.Play();
         EcranNoir.gameObject.SetActive(true);
@@ -107,6 +108,7 @@ public class MainMenu : MonoBehaviour
         GroupeBoutonsPrincipaux.SetActive(false);
         GroupeOption.SetActive(true);
         SonClic.Play();
+        AudioListener.volume = Volume/100;
     }
 
     public void PressedQuitter()
@@ -130,6 +132,7 @@ public class MainMenu : MonoBehaviour
         Volume = SliderVolume.value;
         //VolumeText.text = "Volume:" + Volume.ToString();
         VolumeText.text = $"Volume: {Volume}%";
+        AudioListener.volume = Volume/100;
         Debug.Log(Volume);
     }
 
