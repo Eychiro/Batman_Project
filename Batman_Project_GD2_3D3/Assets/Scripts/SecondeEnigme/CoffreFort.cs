@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -9,10 +10,13 @@ public class CoffreFort : MonoBehaviour
     public CameraController cameraController;
     public string textItem = "Appuyer sur E pour tenter d'ouvrir le coffre";
     public PointerController pointerController;
+    public float durationOpeningDoor = 3f;
+
+    [HideInInspector] public MovementController _playerMovement;
+    [HideInInspector] public bool _isOpened = false;
 
     private bool playerInRange = false;
     private bool _uiAffichee = false;
-    private MovementController _playerMovement;
 
     void Start()
     {
@@ -33,7 +37,7 @@ public class CoffreFort : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&& !_isOpened)
         {
             playerInRange = true;
             
@@ -46,7 +50,7 @@ public class CoffreFort : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_isOpened)
         {
             playerInRange = false;
             
@@ -57,9 +61,29 @@ public class CoffreFort : MonoBehaviour
         }
     }
 
+    private IEnumerator MoveDoor()
+    {
+        float time = 0f;
+        Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 3, transform.localPosition.z);
+
+        while(time <= durationOpeningDoor)
+        {
+            float t = time / durationOpeningDoor;
+            time += Time.deltaTime;
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, t);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+    
+    public void CoroutineMoveDoor()
+    {
+        StartCoroutine(MoveDoor());
+    }
+
     void Update()
     {
-        if (playerInRange && !_uiAffichee && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && !_uiAffichee && !_isOpened && Input.GetKeyDown(KeyCode.E))
         {
             pointerController.LeavingModifier();
             _uiAffichee = true;

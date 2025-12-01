@@ -6,21 +6,18 @@ public class PointerController : MonoBehaviour
     public Transform pointB; // Reference point de fin
     public RectTransform safeZone; // Reference safe Zone
     public float moveSpeed = 200f; // Vitesse du mouvement de la barre
-    public CameraController cameraController;
-    public Transform Player;
-
+    public CoffreFort coffreFort;
+    
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
     private int successCount = 0;
     private Vector3 originalSafeZoneWidth;
-    private MovementController _playerMovement;
 
-    public bool _alreadyOpened = false;
+    [HideInInspector] public bool _alreadyOpened = false;
 
     void Start()
     {
         pointerTransform = GetComponent<RectTransform>();
-        _playerMovement = Player.GetComponent<MovementController>();
 
         targetPosition = pointB.position;
         originalSafeZoneWidth = safeZone.localScale;
@@ -104,7 +101,7 @@ public class PointerController : MonoBehaviour
         {
             Debug.Log("Success!");
             successCount += 1;
-            if (successCount < 5)
+            if (successCount < 1)
             {
                 SuccessModifier();
             }
@@ -112,9 +109,11 @@ public class PointerController : MonoBehaviour
             {
             // Reussite du coffre fort
             transform.parent.gameObject.SetActive(false);
-            _playerMovement.movementLocked = false;
-            cameraController.cameraLocked = false;
-            
+            coffreFort._playerMovement.movementLocked = false;
+            coffreFort.cameraController.cameraLocked = false;
+            coffreFort.coffreFortText.enabled = false;
+            coffreFort._isOpened = true;
+            coffreFort.CoroutineMoveDoor();
             }
         }
         else

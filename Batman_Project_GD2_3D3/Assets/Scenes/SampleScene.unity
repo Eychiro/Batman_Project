@@ -814,6 +814,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309253706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5508717563713331895, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+  m_PrefabInstance: {fileID: 975567357049491816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc30c80c41e8a94e9819f411701e324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &314109985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1116,9 @@ MonoBehaviour:
   cameraController: {fileID: 2041081043}
   textItem: Appuyer sur E pour tenter d'ouvrir le coffre
   pointerController: {fileID: 1939477106}
+  durationOpeningDoor: 3
+  _playerMovement: {fileID: 0}
+  _isOpened: 0
 --- !u!1 &346329513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2149,7 @@ Transform:
   m_GameObject: {fileID: 618927031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9994749, z: -0, w: 0.03240355}
-  m_LocalPosition: {x: -14.55, y: 0.5, z: 2.08}
+  m_LocalPosition: {x: -15.86, y: 0.5, z: 11.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3205,7 +3219,7 @@ Transform:
   m_GameObject: {fileID: 915029773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.16, y: 0, z: 8.03}
+  m_LocalPosition: {x: -21, y: 0, z: 8.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3861,7 +3875,7 @@ Transform:
   m_GameObject: {fileID: 1181582455}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.93, y: 1.16, z: 11.59321}
+  m_LocalPosition: {x: -11.45, y: 1.16, z: 12.8}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5194,8 +5208,7 @@ MonoBehaviour:
   pointB: {fileID: 1193494597}
   safeZone: {fileID: 398476478}
   moveSpeed: 200
-  cameraController: {fileID: 2041081043}
-  Player: {fileID: 618927035}
+  coffreFort: {fileID: 343467410}
   _alreadyOpened: 0
 --- !u!114 &1939477107
 MonoBehaviour:
@@ -6030,6 +6043,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056676930}
   m_CullTransparentMesh: 1
+--- !u!1001 &975567357049491816
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 916543245188164902, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: badge
+      value: 
+      objectReference: {fileID: 309253706}
+    - target: {fileID: 916543245188164902, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: "emptyPourD\xE9sactiver"
+      value: 
+      objectReference: {fileID: 17449575}
+    - target: {fileID: 1673594521536698868, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_Name
+      value: Porte Badge(Pivot)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508717563713331895, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: "emptyPourD\xE9sactiver"
+      value: 
+      objectReference: {fileID: 17449575}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6048,3 +6130,4 @@ SceneRoots:
   - {fileID: 1181582459}
   - {fileID: 343467409}
   - {fileID: 915029774}
+  - {fileID: 975567357049491816}
