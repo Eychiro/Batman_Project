@@ -3,7 +3,7 @@ using UnityEngine;
 public class FlaqueEffet : MonoBehaviour
 {
     public float slowFactor = 0.5f;
-
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

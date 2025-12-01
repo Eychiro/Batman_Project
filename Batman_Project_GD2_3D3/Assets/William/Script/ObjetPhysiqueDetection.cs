@@ -6,10 +6,12 @@ public class ObjetPhysiqueDetection : MonoBehaviour
 
     public float cooldown = 5f;
     private float timerCooldown;
+    public AudioClip SonAlerte;
+    private AudioSource audioSource;
 
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -37,6 +39,7 @@ public class ObjetPhysiqueDetection : MonoBehaviour
 
         if (Alerte)
         {
+            audioSource.PlayOneShot(SonAlerte);
             BatmanIA.ObjetDetected(transform.position);
             timerCooldown = cooldown;
         }

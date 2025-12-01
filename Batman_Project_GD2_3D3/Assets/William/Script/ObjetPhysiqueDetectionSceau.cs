@@ -9,10 +9,12 @@ public class ObjetPhysiqueDetectionSceau : MonoBehaviour
 
     public GameObject flaquePrefab; 
     private bool flaqueCree = false;
+    public AudioClip SonAlerte;
+    private AudioSource audioSource;
 
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -41,6 +43,7 @@ public class ObjetPhysiqueDetectionSceau : MonoBehaviour
         if (Alerte)
         {
             BatmanIA.ObjetDetected(transform.position);
+            audioSource.PlayOneShot(SonAlerte);
             CreationFlaque(collision.contacts[0].point);
             timerCooldown = cooldown;
         }
