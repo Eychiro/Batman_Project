@@ -6,16 +6,22 @@ public class PointerController : MonoBehaviour
     public Transform pointB; // Reference point de fin
     public RectTransform safeZone; // Reference safe Zone
     public float moveSpeed = 200f; // Vitesse du mouvement de la barre
- 
+    public CameraController cameraController;
+    public Transform Player;
+
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
     private int successCount = 0;
     private Vector3 originalSafeZoneWidth;
+    private MovementController _playerMovement;
+
     public bool _alreadyOpened = false;
 
     void Start()
     {
         pointerTransform = GetComponent<RectTransform>();
+        _playerMovement = Player.GetComponent<MovementController>();
+
         targetPosition = pointB.position;
         originalSafeZoneWidth = safeZone.localScale;
         
@@ -89,19 +95,51 @@ public class PointerController : MonoBehaviour
     
     private void CheckSuccess()
     {
+        float newSafeZoneWidth;
+        float randomX;
+        Vector3 newSafeZone;
+
         // Check if pointer is in safe Zone
         if (RectTransformUtility.RectangleContainsScreenPoint(safeZone, pointerTransform.position, null))
         {
             Debug.Log("Success!");
             successCount += 1;
-            if (successCount < 6)
+            if (successCount < 5)
             {
                 SuccessModifier();
+            }
+            else
+            {
+            // Reussite du coffre fort
+            transform.parent.gameObject.SetActive(false);
+            _playerMovement.movementLocked = false;
+            cameraController.cameraLocked = false;
+            
             }
         }
         else
         {
             Debug.Log("Fail!");
+            if (successCount > 0)
+            {
+                successCount -= 1;
+                moveSpeed -= 200;
+                safeZone.localScale = new Vector3(safeZone.localScale.x + 0.2f, safeZone.localScale.y, safeZone.localScale.z);
+                
+                newSafeZoneWidth = safeZone.rect.width;
+                
+                // Position aléatoire entre min et max, en laissant de la marge pour la largeur
+                randomX = Random.Range(pointA.position.x + newSafeZoneWidth / 2f, pointB.position.x - newSafeZoneWidth / 2f);
+                
+                newSafeZone = new Vector3(randomX, safeZone.position.y, safeZone.position.z);
+                safeZone.position = newSafeZone;
+            }
+            newSafeZoneWidth = safeZone.rect.width;
+
+            randomX = Random.Range(pointA.position.x + newSafeZoneWidth / 2f, pointB.position.x - newSafeZoneWidth / 2f);
+            
+            newSafeZone = new Vector3(randomX, safeZone.position.y, safeZone.position.z);
+            safeZone.position = newSafeZone;
         }
     }
 }
