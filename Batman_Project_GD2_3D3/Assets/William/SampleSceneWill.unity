@@ -773,6 +773,7 @@ GameObject:
   - component: {fileID: 411585025}
   - component: {fileID: 411585030}
   - component: {fileID: 411585031}
+  - component: {fileID: 411585032}
   m_Layer: 0
   m_Name: Batman
   m_TagString: Untagged
@@ -954,6 +955,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &411585032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411585023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6dceab065c6854388ca5d733d9969d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomMovementV3test
+  agent: {fileID: 411585025}
+  range: 100
+  centrePoint: {fileID: 658650379}
+  player: {fileID: 2041081040}
+  normalDetection: 7
+  lightDetection: 100
+  minTempsPoursuite: 1
+  maxTempsPoursuite: 10
+  minTempsCooldown: 1
+  maxTempsCooldown: 10
+  minTempsAvantDisparition: 30
+  maxTimeAvantDisparition: 45
+  disparitionDuree: 30
+  spawnPointA: {fileID: 1821096686}
+  spawnPointB: {fileID: 1035220167}
+  mortDistance: 2
+  tempsJumpscare: 0.1
+  stopDistance: 1
+  estCache: 0
 --- !u!1 &544660246
 GameObject:
   m_ObjectHideFlags: 0
