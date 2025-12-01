@@ -49,6 +49,8 @@ public class RandomMovementV2test : MonoBehaviour
 
     public bool estCache = false;
     private bool detecteAvantCache = false;
+
+    private bool isDormant = true;
     
     private WillCameraController playerScript;
     
@@ -57,11 +59,12 @@ public class RandomMovementV2test : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         playerScript = player.GetComponent<WillCameraController>();
 
-        Vector3 positionApparition = ChoixSpawn();
-        agent.Warp(positionApparition);
+        isDormant = true;
+        etatActuel = Etat.Disparu;
 
-        ResetDisappearCountdown();
-        SwitchToRecherche();
+        agent.enabled = false;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Renderer>().enabled = false;
     }
 
     void ResetDisappearCountdown()
@@ -72,7 +75,7 @@ public class RandomMovementV2test : MonoBehaviour
 
     void Update()
     {
-        if (jeuFini) 
+        if (jeuFini || isDormant) 
         return;
 
         if (etatActuel != Etat.Disparu)
@@ -387,17 +390,47 @@ public class RandomMovementV2test : MonoBehaviour
     return true;
 }
 
-    public void ChangementZone(Transform nouveauCentre, float nouvelleRange, Transform nouveauSpawnA, Transform nouveauSpawnB)
+    public void ActiverEtChangerZone(Transform nouvCentre, float nouvRange, Transform nouvSpawnA, Transform nouvSpawnB, float delaiFX)
     {
-        centrePoint = nouveauCentre;
-        range = nouvelleRange;
-        spawnPointA = nouveauSpawnA;
-        spawnPointB = nouveauSpawnB;
+        centrePoint = nouvCentre;
+        range = nouvRange;
+        spawnPointA = nouvSpawnA;
+        spawnPointB = nouvSpawnB;
 
-        SwitchToDisparu();
-        etatTimer = 15f;
+            if (isDormant)
+        {
+            isDormant = false;
+        }
+
+        StartCoroutine(SequenceApparition(delaiFX));
     }
 
+    IEnumerator SequenceApparition(float delai)
+    {
+        SwitchToDisparu(); 
+        yield return new WaitForSeconds(delai);
+
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<Collider>().enabled = true;
+        agent.enabled = true; 
+
+        Vector3 positionApparition = ChoixSpawn();
+        agent.Warp(positionApparition);
+
+        ResetDisappearCountdown();
+        SwitchToRecherche();
+    }
+
+    public void DisparitionForcee()
+{
+    if (etatActuel != Etat.Disparu)
+    {
+        SwitchToDisparu();
+    }
+    
+    etatTimer = float.MaxValue; 
+    disparitionCountdownTimer = -1f;
+}
     
     //Juste pour vérifier la détection, pour playtest et balance
     void OnDrawGizmosSelected()

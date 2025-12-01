@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 //using UnityEngine.SceneManagement; utile pour relancer le niveau
 
-public class RandomMovementV3test : MonoBehaviour
+public class RandomMovementV2testV12 : MonoBehaviour
 {
     private enum Etat
     {
@@ -397,6 +397,11 @@ public class RandomMovementV3test : MonoBehaviour
         spawnPointA = nouvSpawnA;
         spawnPointB = nouvSpawnB;
 
+            if (isDormant)
+        {
+            isDormant = false;
+        }
+
         StartCoroutine(SequenceApparition(delaiFX));
     }
 
@@ -405,7 +410,6 @@ public class RandomMovementV3test : MonoBehaviour
         SwitchToDisparu(); 
         yield return new WaitForSeconds(delai);
 
-        isDormant = false;
         GetComponent<Renderer>().enabled = true;
         GetComponent<Collider>().enabled = true;
         agent.enabled = true; 
@@ -417,6 +421,16 @@ public class RandomMovementV3test : MonoBehaviour
         SwitchToRecherche();
     }
 
+    public void DisparitionForcee()
+{
+    if (etatActuel != Etat.Disparu)
+    {
+        SwitchToDisparu();
+    }
+    
+    etatTimer = float.MaxValue; 
+    disparitionCountdownTimer = -1f;
+}
     
     //Juste pour vérifier la détection, pour playtest et balance
     void OnDrawGizmosSelected()

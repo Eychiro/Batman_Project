@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ZoneTrigger : MonoBehaviour
+public class ZoneApparition : MonoBehaviour
 {
-    public RandomMovementV3test batmanIA;
+    public RandomMovementV2test batmanIA;
 
     // Tout est à modifier en fonction de la zone ici
     public Transform nouveauCentrePoint;
