@@ -9,16 +9,11 @@ public class GameOver : MonoBehaviour
     public Image logo;
     public GameObject Bouttons;
     public Image EcranNoir;
-    string currentSceneName = SceneManager.GetActiveScene().name;
-
 
 
     void Start()
     {
         this.gameObject.SetActive(false);
-
-        //test a enlever
-        LancerGameOver();
     }
 
     public void LancerGameOver()
