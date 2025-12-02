@@ -918,15 +918,16 @@ MonoBehaviour:
   maxTempsPoursuite: 10
   minTempsCooldown: 1
   maxTempsCooldown: 10
-  minTempsAvantDisparition: 80
-  maxTimeAvantDisparition: 120
-  disparitionDuree: 30
+  minTempsAvantDisparition: 10
+  maxTimeAvantDisparition: 15
+  disparitionDuree: 10
   spawnPointA: {fileID: 1821096686}
   spawnPointB: {fileID: 1035220167}
   mortDistance: 2
   tempsJumpscare: 0.1
   stopDistance: 1
   estCache: 0
+  positionStandby: {x: 0, y: 0, z: 0}
 --- !u!54 &411585031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -965,6 +966,7 @@ GameObject:
   - component: {fileID: 544660247}
   - component: {fileID: 544660250}
   - component: {fileID: 544660248}
+  - component: {fileID: 544660251}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -1026,7 +1028,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 0.6792453, g: 0.13777146, b: 0.13777146, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Intensity: 700
   m_Range: 17.102291
   m_SpotAngle: 45.311295
@@ -1081,6 +1083,25 @@ Light:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &544660251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544660246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba4e97d3dce2c24e9fc0a696edcc50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangementCouleur
+  batmanIA: {fileID: 411585030}
+  safeColor: {r: 1, g: 1, b: 1, a: 1}
+  dangerColor: {r: 0.6784314, g: 0.13725491, b: 0.13725491, a: 1}
+  nombreDeFlashs: 8
+  minVitesseFlash: 0.04
+  maxVitesseFlash: 0.07
+  dureeCoupure: 0.02
 --- !u!1 &604708100
 GameObject:
   m_ObjectHideFlags: 0

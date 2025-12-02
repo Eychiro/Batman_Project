@@ -52,6 +52,8 @@ public class RandomMovementV2test : MonoBehaviour
 
     private bool isDormant = true;
 
+    public Vector3 positionStandby; //position déterminée dans le niveau, en dehors de tout contact pour éviter collision
+
     public bool IsAgentActive
     {
         get { return agent != null && agent.enabled; }
@@ -63,6 +65,7 @@ public class RandomMovementV2test : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         playerScript = player.GetComponent<WillCameraController>();
+        agent.Warp(positionStandby);
 
         isDormant = true;
         etatActuel = Etat.Disparu;
@@ -141,6 +144,7 @@ public class RandomMovementV2test : MonoBehaviour
     {
         etatActuel = Etat.Disparu;
         etatTimer = disparitionDuree;
+        agent.Warp(positionStandby);
         GetComponent<Renderer>().enabled = false;
         //GetComponent<Collider>().enabled = false;
         agent.enabled = false; 
