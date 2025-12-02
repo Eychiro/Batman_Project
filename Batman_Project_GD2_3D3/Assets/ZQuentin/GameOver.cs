@@ -16,14 +16,14 @@ public class GameOver : MonoBehaviour
         this.gameObject.SetActive(false);
 
         //debug
-        LancerGameOver();
+        //LancerGameOver();
     }
 
     public void LancerGameOver()
     {
         this.gameObject.SetActive(true);
-        //Cursor.lockState = CursorLockMode.None ;
-        //Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None ;
+        Cursor.visible = true;
         StartCoroutine(GameOverRoutine());
     }
 
@@ -31,11 +31,6 @@ public class GameOver : MonoBehaviour
     {
         var elapsed = 0f;
         var FadeTime = 1.5f;
-
-        //test
-        yield return new WaitForSeconds(2f);
-        Cursor.lockState = CursorLockMode.None ;
-        Cursor.visible = true;
 
         EcranNoir.gameObject.SetActive(true);
         
