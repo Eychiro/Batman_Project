@@ -66,7 +66,7 @@ public class PointerController : MonoBehaviour
         safeZone.position = newSafeZone;
 
         safeZone.localScale = new Vector3(safeZone.localScale.x - 0.2f, safeZone.localScale.y, safeZone.localScale.z);
-        moveSpeed += 200;
+        moveSpeed += 300;
     }
 
     public void LeavingModifier()
@@ -122,7 +122,7 @@ public class PointerController : MonoBehaviour
             if (successCount > 0)
             {
                 successCount -= 1;
-                moveSpeed -= 200;
+                moveSpeed -= 300;
                 safeZone.localScale = new Vector3(safeZone.localScale.x + 0.2f, safeZone.localScale.y, safeZone.localScale.z);
                 
                 newSafeZoneWidth = safeZone.rect.width;
