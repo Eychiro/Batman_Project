@@ -62,7 +62,7 @@ public class ObjetPhysiqueDetectionSceau : MonoBehaviour
             return;
         }
         
-        GameObject flaque = Instantiate(flaquePrefab, position, Quaternion.identity);
+        GameObject flaque = Instantiate(flaquePrefab, position + new Vector3(0f, -0.33f, 0f), Quaternion.identity);
     
         flaqueCree = true;
     }

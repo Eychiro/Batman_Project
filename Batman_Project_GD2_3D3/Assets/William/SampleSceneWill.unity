@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.02322891, g: 0.041153792, b: 0.16981131, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -790,7 +790,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -918,8 +918,8 @@ MonoBehaviour:
   maxTempsPoursuite: 10
   minTempsCooldown: 1
   maxTempsCooldown: 10
-  minTempsAvantDisparition: 30
-  maxTimeAvantDisparition: 45
+  minTempsAvantDisparition: 80
+  maxTimeAvantDisparition: 120
   disparitionDuree: 30
   spawnPointA: {fileID: 1821096686}
   spawnPointB: {fileID: 1035220167}
@@ -950,7 +950,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1026,7 +1026,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6792453, g: 0.13777146, b: 0.13777146, a: 0}
   m_Intensity: 700
   m_Range: 17.102291
   m_SpotAngle: 45.311295

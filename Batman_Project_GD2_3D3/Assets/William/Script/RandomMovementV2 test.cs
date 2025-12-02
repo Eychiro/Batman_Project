@@ -51,6 +51,11 @@ public class RandomMovementV2test : MonoBehaviour
     private bool detecteAvantCache = false;
 
     private bool isDormant = true;
+
+    public bool IsAgentActive
+    {
+        get { return agent != null && agent.enabled; }
+    }
     
     private WillCameraController playerScript;
     
@@ -63,7 +68,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatActuel = Etat.Disparu;
 
         agent.enabled = false;
-        GetComponent<Collider>().enabled = false;
+        //GetComponent<Collider>().enabled = false;
         GetComponent<Renderer>().enabled = false;
     }
 
@@ -137,7 +142,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatActuel = Etat.Disparu;
         etatTimer = disparitionDuree;
         GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        //GetComponent<Collider>().enabled = false;
         agent.enabled = false; 
         
         Debug.Log("Batman a disparu !");
