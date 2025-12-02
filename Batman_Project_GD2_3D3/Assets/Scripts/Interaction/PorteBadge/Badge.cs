@@ -1,17 +1,71 @@
+using BetterTriggers;
 using TMPro;
 using UnityEngine;
 
 public class Badge : MonoBehaviour
 {
-    public TextMeshProUGUI emptyPourDésactiver;
-    
+    public TextMeshProUGUI emptyBadgeText;
+    public Trigger InteractionRange;
+    public Trigger OutlinerRange;
+
     [HideInInspector] public bool badgeTaken = false;
 
     private bool playerInRange = false;
 
-    void Start()
+    void Awake()
+    {        
+        if (InteractionRange != null)
+        {
+            InteractionRange.OnTriggerEntered += OnInteractionTriggeredEnter;
+            InteractionRange.OnTriggerExited += OnInteractionTriggeredExit;
+        }
+        if (OutlinerRange != null)
+        {
+            OutlinerRange.OnTriggerEntered += OnOutlinerTriggeredEnter;
+            OutlinerRange.OnTriggerExited += OnOutlinerTriggeredExit;
+        }
+    }
+
+    void OnInteractionTriggeredEnter(Collider collider)
     {
-        
+        if (collider.CompareTag("Player"))
+        {
+            playerInRange = true;
+            
+            if (emptyBadgeText != null)
+            {
+                emptyBadgeText.enabled = true;
+            }
+        }
+    }
+
+    void OnInteractionTriggeredExit(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            playerInRange = false;
+            
+            if (emptyBadgeText != null)
+            {
+                emptyBadgeText.enabled = false;
+            }
+        }
+    }
+    
+    void OnOutlinerTriggeredEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            gameObject.layer = 6;
+        }
+    }
+
+    void OnOutlinerTriggeredExit(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            gameObject.layer = 0;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -20,9 +74,9 @@ public class Badge : MonoBehaviour
         {
             playerInRange = true;
             
-            if (emptyPourDésactiver != null)
+            if (emptyBadgeText != null)
             {
-                emptyPourDésactiver.enabled = true;
+                emptyBadgeText.enabled = true;
             }
         }
     }
@@ -33,9 +87,9 @@ public class Badge : MonoBehaviour
         {
             playerInRange = false;
             
-            if (emptyPourDésactiver != null)
+            if (emptyBadgeText != null)
             {
-                emptyPourDésactiver.enabled = false;
+                emptyBadgeText.enabled = false;
             }
         }
     }
@@ -45,7 +99,7 @@ public class Badge : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             badgeTaken = true;
-            emptyPourDésactiver.enabled = false;
+            emptyBadgeText.enabled = false;
             Destroy(gameObject);
         }
     }

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class PorteBadge : MonoBehaviour
 {
-    public TextMeshProUGUI emptyPourDésactiver;
+    public TextMeshProUGUI emptyPorteBadgeText;
     public Badge badge;
     private bool playerInRange = false;
     private bool _isClosed = true;
-
-    void Start()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,9 +15,14 @@ public class PorteBadge : MonoBehaviour
         {
             playerInRange = true;
             
-            if (emptyPourDésactiver != null)
+            if (emptyPorteBadgeText != null)
             {
-                emptyPourDésactiver.enabled = true;
+                emptyPorteBadgeText.enabled = true;
+
+                if (badge.badgeTaken)
+                {
+                    emptyPorteBadgeText.text = "Appuyez sur E pour ouvrir la porte";
+                }
             }
         }
     }
@@ -33,9 +33,9 @@ public class PorteBadge : MonoBehaviour
         {
             playerInRange = false;
             
-            if (emptyPourDésactiver != null)
+            if (emptyPorteBadgeText != null)
             {
-                emptyPourDésactiver.enabled = false;
+                emptyPorteBadgeText.enabled = false;
             }
         }
     }
@@ -57,7 +57,7 @@ public class PorteBadge : MonoBehaviour
         if (playerInRange && _isClosed && badge.badgeTaken && Input.GetKeyDown(KeyCode.E))
         {
             _isClosed = false;
-            emptyPourDésactiver.enabled = false;
+            emptyPorteBadgeText.enabled = false;
 
             StartCoroutine(MovePorte());
         }
