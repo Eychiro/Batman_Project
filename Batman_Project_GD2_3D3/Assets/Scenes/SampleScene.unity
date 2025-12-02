@@ -2205,6 +2205,7 @@ GameObject:
   - component: {fileID: 618927034}
   - component: {fileID: 618927033}
   - component: {fileID: 618927032}
+  - component: {fileID: 618927036}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2295,6 +2296,18 @@ Transform:
   - {fileID: 604708101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 176.286, z: 0}
+--- !u!114 &618927036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618927031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4344efa1ca7e54d82bacbc5f5311bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &658650375
 GameObject:
   m_ObjectHideFlags: 0
@@ -6397,6 +6410,18 @@ PrefabInstance:
       propertyPath: "emptyPourD\xE9sactiver"
       value: 
       objectReference: {fileID: 783677327}
+    - target: {fileID: 5918738130171931510, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5918738130171931510, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5918738130171931510, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
+      propertyPath: m_Size.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7547363052745523035, guid: 8ca83d2da1306b84f8ea06452b7bf37f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.63

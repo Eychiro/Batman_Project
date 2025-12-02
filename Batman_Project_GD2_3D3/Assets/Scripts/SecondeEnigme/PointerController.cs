@@ -101,7 +101,7 @@ public class PointerController : MonoBehaviour
         {
             Debug.Log("Success!");
             successCount += 1;
-            if (successCount < 1)
+            if (successCount < 5)
             {
                 SuccessModifier();
             }
