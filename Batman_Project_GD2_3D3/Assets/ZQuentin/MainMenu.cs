@@ -184,6 +184,6 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         Debug.Log("PLAY");
-        SceneManager.LoadScene("SampleSceneWill");
+        SceneManager.LoadScene("William/SampleSceneWill");
     }
 }
