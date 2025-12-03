@@ -399,7 +399,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -2850,7 +2850,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
@@ -3636,7 +3636,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
         m_TargetAssemblyTypeName: MovingDoor, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
