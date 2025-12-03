@@ -62,12 +62,12 @@ public class RandomMovementV2test : MonoBehaviour
         get { return agent != null && agent.enabled; }
     }
     
-    private WillCameraController playerScript;
+    private CameraController playerScript;
     
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        playerScript = player.GetComponent<WillCameraController>();
+        playerScript = player.GetComponent<CameraController>();
         agent.Warp(positionStandby);
 
         isDormant = true;

@@ -689,7 +689,7 @@ MonoBehaviour:
   tempsJumpscare: 0.1
   stopDistance: 1
   estCache: 0
-  positionStandby: {x: 0, y: 0, z: 0}
+  positionStandby: {x: -39.85, y: 36.26, z: -3.08}
   GameoverObject: {fileID: 0}
 --- !u!195 &154567865
 NavMeshAgent:
@@ -9573,6 +9573,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: batmanIA
+      value: 
+      objectReference: {fileID: 154567864}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: dangerColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -9679,7 +9683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2043079366
 MonoBehaviour:
   m_ObjectHideFlags: 0
