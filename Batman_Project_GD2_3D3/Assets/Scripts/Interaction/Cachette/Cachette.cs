@@ -8,12 +8,11 @@ public class Cachette : MonoBehaviour
     public CameraController cameraController;
     public Light flashLight;
     public string textItem = "Appuyer sur E pour rentrer dans la cachette";
+    public RandomMovementV2test BatmanAI;
 
     private bool playerInRange = false;
     private bool _isHidden = false;
     private MovementController _playerMovement;
-
-    public RandomMovementV2test BatmanAI;
 
     void Start()
     {

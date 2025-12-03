@@ -13,7 +13,7 @@ public class WillCameraController : MonoBehaviour
     private float rotationX;
     private float rotationY;
     private AudioSource flashlightSwitch;
-    public bool isFlashlightOn = false;
+    [HideInInspector] public bool isFlashlightOn = false;
 
     public bool cameraLocked = false;
 

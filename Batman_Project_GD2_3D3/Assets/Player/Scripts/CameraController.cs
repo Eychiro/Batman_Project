@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public Light flashLight;
     public float cameraSensitivity = 200.0f;
     public float cameraAcceleration = 5.0f;
+    [HideInInspector] public bool isFlashlightOn = false;
 
     private float rotationX;
     private float rotationY;
@@ -48,6 +49,17 @@ public class CameraController : MonoBehaviour
         {
             flashlightSwitch.Play();
             flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            if (flashLight.gameObject.activeSelf == true)
+            {
+                isFlashlightOn = true;
+            }
+            else
+            {
+                isFlashlightOn = false;
+            }
+
+            Debug.Log("Lampe allumée : " + isFlashlightOn);
         }
     }
 
