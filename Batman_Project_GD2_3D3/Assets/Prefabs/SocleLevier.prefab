@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   textLevier: {fileID: 0}
+  coffreFortArtefact: {fileID: 0}
   InteractionRange: {fileID: 7344986756309082960}
   OutlinerRange: {fileID: 7607493464134117760}
 --- !u!1 &3046872956878138082
@@ -259,7 +260,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.283, y: -1.8371, z: 1.475}
-  m_LocalScale: {x: 0.2716, y: 0.28408, z: 0.25324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3304139071385494931}
