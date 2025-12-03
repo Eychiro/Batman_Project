@@ -1,3 +1,4 @@
+using System.Collections;
 using BetterTriggers;
 using TMPro;
 using UnityEngine;
