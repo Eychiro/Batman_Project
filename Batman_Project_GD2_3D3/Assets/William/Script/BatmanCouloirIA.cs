@@ -4,33 +4,64 @@ using UnityEngine;
 public class BatmanCouloirIA : MonoBehaviour
 {
     public GameObject GameoverObject;
-    public float mortDistance = 2.5f;
     public float tempsJumpscare = 0.1f; 
     private bool jeuFini = false;
     private CameraController playerScript;
-    public Vector3 positionStandby; //position déterminée dans le niveau, en dehors de tout contact pour éviter collision
     public Transform player;
 
-
+    public float vitesseDeplacement = 1.0f;
+    public Vector3 positionStandby;
+    public Vector3 positionDebut;
+    public Vector3 positionCible;
+    private bool estArrive = false; 
+    private bool estActif = false;
 
     void Start()
     {
-        playerScript = player.GetComponent<CameraController>();
         this.transform.position = positionStandby;
-
-        GetComponent<Renderer>().enabled = false;
+        
+        playerScript = player.GetComponent<CameraController>();
     }
-
+    
     void Update()
     {
-        VerifMort();
+        if (estActif && !jeuFini)
+        {
+            DeplacerBatman();
+        }
     }
 
-    void VerifMort()
+    public void ApparaitreEtCommencer()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (estActif) return;
 
-        if (distanceToPlayer <= mortDistance)
+        this.transform.position = positionDebut;
+        estActif = true;
+    }
+
+    void DeplacerBatman()
+    {
+        if (estArrive)
+        {
+            return;
+        }
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            positionCible,
+            vitesseDeplacement * Time.deltaTime
+        );
+        
+        if (Vector3.Distance(transform.position, positionCible) < 0.001f)
+        {
+            estArrive = true;
+            Debug.Log("Batman a atteint sa position cible.");
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
             StartCoroutine(GameOverSequence());
         }
