@@ -54,6 +54,9 @@ public class RandomMovementV2test : MonoBehaviour
 
     public Vector3 positionStandby; //position déterminée dans le niveau, en dehors de tout contact pour éviter collision
 
+    public GameObject GameoverObject;
+    
+
     public bool IsAgentActive
     {
         get { return agent != null && agent.enabled; }
@@ -384,8 +387,9 @@ public class RandomMovementV2test : MonoBehaviour
         playerScript.enabled = false;   
 
         yield return new WaitForSeconds(tempsJumpscare);
-        Time.timeScale = 0f;
-        Debug.Log("Normalement le jeu s'arrête là");    
+        Debug.Log("Normalement le jeu s'arrête là");
+        GameObject.Find("Pause Object").SetActive(false);  
+        GameoverObject.GetComponent<GameOver>().LancerGameOver();  
     }
 
     bool EstDansLaZoneActuelle(Vector3 targetPosition)

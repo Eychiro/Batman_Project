@@ -18,7 +18,7 @@ public class Pause : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             BoutonPause();
         }
@@ -39,6 +39,9 @@ public class Pause : MonoBehaviour
     
     public void PauseActiver()
     {
+        Cursor.lockState = CursorLockMode.None ;
+        Cursor.visible = true;
+        Time.timeScale = 0f;
         PauseVisible = true;
         Canva.SetActive(true);
         Son.Play();
@@ -46,6 +49,9 @@ public class Pause : MonoBehaviour
 
     public void PauseDeactiver()
     {
+        Cursor.lockState = CursorLockMode.Locked ;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
         PauseVisible = false;
         Canva.SetActive(false);
         Son.Play();
