@@ -29,7 +29,10 @@ public class MainMenu : MonoBehaviour
     
     void Start()
     {   
-        AudioListener.volume = Volume/100;
+        Time.timeScale = 1f;
+        Volume = AudioListener.volume * 100f;
+        VolumeText.text = $"Volume: {Volume}%";
+        SliderVolume.value = Volume;
         Musique.time = 4f;
         Musique.Play();
         EcranNoir.gameObject.SetActive(true);

@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour
     public Image logo;
     public GameObject Bouttons;
     public Image EcranNoir;
+    public Image Jumpscare;
 
 
     void Start()
@@ -30,12 +31,33 @@ public class GameOver : MonoBehaviour
     IEnumerator GameOverRoutine()
     {
         var elapsed = 0f;
-        var FadeTime = 1.5f;
+        var FadeTime = 1f;
+        var ScaleJump = 1f;
+        var rotationPrep = 0f;
 
         EcranNoir.gameObject.SetActive(true);
-        
+        Jumpscare.gameObject.SetActive(true);  
+
+        while (elapsed < FadeTime)
+        {
+            elapsed += 0.1f;
+            
+            Jumpscare.transform.Rotate(Vector3.forward * rotationPrep *-1);
+            rotationPrep = Random.Range(-40.0f, 40.0f);
+            Jumpscare.transform.Rotate(Vector3.forward * rotationPrep);
+            ScaleJump = Random.Range(150,200);
+            Jumpscare.transform.localScale = new Vector3(ScaleJump/100,ScaleJump/100,ScaleJump/100);
+            yield return new WaitForSeconds(0.1f);
+            yield return null;
+        }
+
+        Jumpscare.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(1f);
         
+        elapsed = 0f;
+        FadeTime = 1.5f;
+
         while (elapsed < FadeTime)
         {
             elapsed += Time.deltaTime;
