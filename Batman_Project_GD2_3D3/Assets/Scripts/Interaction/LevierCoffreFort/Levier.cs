@@ -6,11 +6,13 @@ using System.Collections;
 public class Levier : MonoBehaviour
 {
     public TextMeshProUGUI textLevier;
+    public GameObject coffreFortArtefact;
 
     public Trigger InteractionRange;
     public Trigger OutlinerRange;
 
     private bool playerInRange = false;
+    private bool _isUsed = false;
 
     void Awake()
     {        
@@ -37,7 +39,7 @@ public class Levier : MonoBehaviour
 
     void OnInteractionTriggeredEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && !_isUsed)
         {
             playerInRange = true;
             
@@ -63,7 +65,7 @@ public class Levier : MonoBehaviour
 
     void OnOutlinerTriggeredEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && !_isUsed)
         {
             gameObject.layer = 6;
         }
@@ -77,28 +79,57 @@ public class Levier : MonoBehaviour
         }
     }
 
-    IEnumerator MoveCoffreFort()
-        {
-            yield return new WaitForSeconds(0.5f);
-            // Animation du coffre Fort ici
-        }
+    IEnumerator RotateLevier()
+    {
+        float t = 0;
 
-    IEnumerator MoveLevier()
+        while (t < 0.5f)
         {
-            float t = 0;
-            while (t < 1)
-            {
-                t += Time.deltaTime;
-                transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, Quaternion.Euler(transform.parent.rotation.x - 45, transform.parent.rotation.y, transform.parent.rotation.z), t);
-                yield return null;
-            }
+            t += Time.deltaTime;
+            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(45, 0, 0), t);
+            yield return new WaitForSeconds(0.01f);
         }
+        StartCoroutine(MoveCoffreFort());
+    }
+
+    IEnumerator MoveCoffreFort()
+    {
+        float t = 0;
+        Vector3 targetPosition = new Vector3(coffreFortArtefact.transform.localPosition.x, coffreFortArtefact.transform.localPosition.y - 4, coffreFortArtefact.transform.localPosition.z);
+
+        while (t < 0.5f)
+        {
+            t += Time.deltaTime;
+            coffreFortArtefact.transform.localPosition = Vector3.Lerp(coffreFortArtefact.transform.localPosition, targetPosition, t);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        StartCoroutine(RotatePorteCoffreFort());
+    }
+
+    IEnumerator RotatePorteCoffreFort()
+    {
+        float t = 0;
+        Transform porteCoffreFort = coffreFortArtefact.transform.GetChild(0);
+
+        while (t < 0.5f)
+        {
+            t += Time.deltaTime;
+            porteCoffreFort.localRotation = Quaternion.Lerp(porteCoffreFort.localRotation, Quaternion.Euler(0, 90, 0), t);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && !_isUsed && Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(MoveLevier());
+            _isUsed = true;
+            textLevier.enabled = false;
+            gameObject.layer = 0;
+
+            StartCoroutine(RotateLevier());
         }
     }
 }
