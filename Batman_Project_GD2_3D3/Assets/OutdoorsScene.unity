@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
+  m_AmbientSkyColor: {r: 0.008276968, g: 0.013810311, b: 0.05660379, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -4479,7 +4479,7 @@ Transform:
   m_GameObject: {fileID: 860580133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -86.69, y: 0.03168, z: 9.84}
+  m_LocalPosition: {x: -89.06, y: 0.03168, z: 9.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5501,7 +5501,7 @@ Transform:
   m_GameObject: {fileID: 1106119979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -104.05, y: 0.03168, z: 5.12}
+  m_LocalPosition: {x: -70.6, y: 0.03168, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6113,8 +6113,8 @@ MonoBehaviour:
   - {x: 19.07, y: 15.84, z: 17.6}
   - {x: 13.54, y: 15.84, z: -30.8}
   - {x: -38.3, y: 27.94, z: -23.33}
-  "minD\xE9lai": 30
-  "maxD\xE9lai": 45
+  "minD\xE9lai": 10
+  "maxD\xE9lai": 10
 --- !u!114 &1217224064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7082,6 +7082,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5730790148752486872, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
+--- !u!114 &1359520120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3297816652908608080, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+  m_PrefabInstance: {fileID: 2039844318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4344efa1ca7e54d82bacbc5f5311bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1361869257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4186581745895945665, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
@@ -10224,6 +10235,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 154567864}
     - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: batmanCouloir
+      value: 
+      objectReference: {fileID: 750065193}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: dangerColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -10235,6 +10250,22 @@ PrefabInstance:
       propertyPath: dangerColor.r
       value: 0.5283019
       objectReference: {fileID: 0}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: batmanClassique
+      value: 
+      objectReference: {fileID: 154567864}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: batmanAgents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: 'batmanAgents.Array.data[0]'
+      value: 
+      objectReference: {fileID: 154567864}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: 'batmanAgents.Array.data[1]'
+      value: 
+      objectReference: {fileID: 750065193}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70.09
@@ -10279,6 +10310,30 @@ PrefabInstance:
       propertyPath: BatmanPos
       value: 
       objectReference: {fileID: 154567869}
+    - target: {fileID: 3791076381631708295, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: m_Range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791076381631708295, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: m_Intensity
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791076381631708295, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: m_SpotAngle
+      value: 42.112507
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070547614450371968, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: batmanCouloir
+      value: 
+      objectReference: {fileID: 750065193}
+    - target: {fileID: 5070547614450371968, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: batmanClassique
+      value: 
+      objectReference: {fileID: 154567864}
+    - target: {fileID: 5070547614450371968, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: heartBeatScript
+      value: 
+      objectReference: {fileID: 1359520120}
     - target: {fileID: 5286238395204218381, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_Name
       value: Player
@@ -10330,7 +10385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2043079366
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ChangementCouleur : MonoBehaviour
 {
-    public RandomMovementV2test batmanIA;
+    public RandomMovementV2test batmanClassique;
+    public BatmanCouloirIA batmanCouloir; 
 
     public Color safeColor = Color.white;
     public Color dangerColor = Color.red;
@@ -29,10 +30,13 @@ public class ChangementCouleur : MonoBehaviour
 
     void Update()
     {
-        if (batmanIA == null || _flashlight == null) 
+        if (_flashlight == null) 
         return;
 
-        bool batmanEstLa = batmanIA.IsAgentActive;
+        bool dangerCouloir = (batmanCouloir != null && batmanCouloir.IsAgentActive);
+        bool dangerClassique = (batmanClassique != null && batmanClassique.IsAgentActive);
+        
+        bool batmanEstLa = dangerCouloir || dangerClassique;
 
         if (batmanEstLa != _isDangerMode)
         {

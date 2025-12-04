@@ -16,6 +16,11 @@ public class BatmanCouloirIA : MonoBehaviour
     private bool estArrive = false; 
     private bool estActif = false;
 
+    public bool IsAgentActive
+    {
+        get { return estActif && !estArrive; }
+    }
+
     void Start()
     {
         this.transform.position = positionStandby;
@@ -55,6 +60,7 @@ public class BatmanCouloirIA : MonoBehaviour
         if (Vector3.Distance(transform.position, positionCible) < 0.001f)
         {
             estArrive = true;
+            estActif = false;
             Debug.Log("Batman a atteint sa position cible.");
         }
     }

@@ -148,6 +148,7 @@ MonoBehaviour:
   flashLight: {fileID: 3791076381631708295}
   cameraSensitivity: 200
   cameraAcceleration: 4
+  isFlashlightOn: 0
   cameraLocked: 0
 --- !u!1 &2392417113416867978
 GameObject:
@@ -332,6 +333,7 @@ GameObject:
   - component: {fileID: 299369503369672599}
   - component: {fileID: 3297816652908608080}
   - component: {fileID: 5365149140180669409}
+  - component: {fileID: 5070547614450371968}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -532,6 +534,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5070547614450371968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286238395204218381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da18fa8f62a094049ab301203d25bd8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeartBeatController
 --- !u!1 &8182099756232803755
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba4e97d3dce2c24e9fc0a696edcc50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangementCouleur
-  batmanIA: {fileID: 0}
+  batmanClassique: {fileID: 0}
+  batmanCouloir: {fileID: 0}
   safeColor: {r: 1, g: 1, b: 1, a: 1}
   dangerColor: {r: 1, g: 0, b: 0, a: 1}
   nombreDeFlashs: 7
