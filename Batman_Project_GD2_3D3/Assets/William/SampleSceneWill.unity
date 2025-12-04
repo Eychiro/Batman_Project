@@ -664,10 +664,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   GameoverObject: {fileID: 0}
-  mortDistance: 2.5
   tempsJumpscare: 0.1
-  positionStandby: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
+  vitesseDeplacement: 1
+  positionStandby: {x: 0, y: 0, z: 0}
+  positionDebut: {x: 0, y: 0, z: 0}
+  positionCible: {x: 0, y: 0, z: 0}
 --- !u!136 &334423669
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2204,9 +2206,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3495759729570953280, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495759729570953280, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3848868610774600119, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
       propertyPath: m_Name
       value: Pause Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336690003430480888, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336690003430480888, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336690003430480888, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5408487852201367942, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3270,6 +3292,73 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2015113996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015113999}
+  - component: {fileID: 2015113998}
+  - component: {fileID: 2015113997}
+  m_Layer: 0
+  m_Name: ZoneEclair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2015113997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015113996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51a8e9e6c4281b4399c9f58eb202697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneDisparition
+  batmanIA: {fileID: 411585030}
+--- !u!65 &2015113998
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015113996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.13, y: 5.13, z: 5.13}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2015113999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015113996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.46, y: 2.58, z: 6.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041081039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,7 +3734,7 @@ Transform:
   m_GameObject: {fileID: 2103810552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.97, y: 15.84, z: -6.75}
+  m_LocalPosition: {x: 3.4, y: 16.9, z: -30.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3663,6 +3752,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726d9afb19d2e9e49984b5443a169155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxLightIntensity: 15000
+  preLightDuration: 0.02
+  peakDuration: 0.05
+  fadeDuration: 0.08
+  minNumSubsequentStrokes: 2
+  maxNumSubsequentStrokes: 4
+  subsequentStrokeDelay: 0.08
+  subsequentStrokeIntensityFactor: 0.4
+  strikeLocations:
+  - {x: 19.07, y: 15.84, z: 17.6}
+  - {x: 13.54, y: 15.84, z: -30.8}
+  - {x: -38.3, y: 27.94, z: -23.33}
+  "minD\xE9lai": 5
+  "maxD\xE9lai": 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3687,6 +3790,7 @@ SceneRoots:
   - {fileID: 1015637689}
   - {fileID: 2086971442}
   - {fileID: 1308182193}
+  - {fileID: 2015113999}
   - {fileID: 1346583060}
   - {fileID: 1053825462}
   - {fileID: 2103810555}
