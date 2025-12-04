@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ZoneEclair : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class ZoneEclair : MonoBehaviour
         if (other.CompareTag("Player") && !dejaActive)
         {
             dejaActive = true;
-            lightningScript.TeleportToRandomPosition();
-            StartCoroutine(lightningScript.DoLightningEffect());
+            
+            lightningScript.StartCoroutine(lightningScript.TriggerAndResumeSequence()); 
+            
             enabled = false; 
         }
     }

@@ -6,20 +6,19 @@ public class LightningEffect : MonoBehaviour
     private Light sceneLight; 
 
     public float maxLightIntensity = 15000f; 
-
     public float preLightDuration = 0.02f;
     public float peakDuration = 0.05f;
     public float fadeDuration = 0.08f;
-
     public int minNumSubsequentStrokes = 2;
     public int maxNumSubsequentStrokes = 4;
     public float subsequentStrokeDelay = 0.08f;
     public float subsequentStrokeIntensityFactor = 0.4f;
 
     public Vector3[] strikeLocations = new Vector3[3];
-
     public float minDélai = 30f;
     public float maxDélai = 45f;
+
+    private Coroutine autoTriggerCoroutine;
 
     void Awake()
     {
@@ -33,10 +32,37 @@ public class LightningEffect : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(DoLightningEffect()); //Debug
-        StartCoroutine(AutoTriggerLoop());
+        StartAutoTrigger();
+    }
+    
+    public bool IsAutoTriggerRunning
+    {
+        get { return autoTriggerCoroutine != null; }
     }
 
+    public void StopAutoTrigger()
+    {
+        if (autoTriggerCoroutine != null)
+        {
+            StopCoroutine(autoTriggerCoroutine);
+            autoTriggerCoroutine = null;
+        }
+        
+        if (sceneLight != null)
+        {
+            sceneLight.intensity = 0;
+            sceneLight.enabled = false;
+        }
+    }
+
+    public void StartAutoTrigger()
+    {
+        if (autoTriggerCoroutine == null)
+        {
+            autoTriggerCoroutine = StartCoroutine(AutoTriggerLoop());
+        }
+    }
+    
     IEnumerator AutoTriggerLoop()
     {
         while (true)
@@ -51,6 +77,7 @@ public class LightningEffect : MonoBehaviour
         }
     }
 
+
     public void TeleportToRandomPosition()
     {
         if (strikeLocations.Length == 0) return;
@@ -58,7 +85,6 @@ public class LightningEffect : MonoBehaviour
         int randomIndex = Random.Range(0, strikeLocations.Length);
         
         transform.position = strikeLocations[randomIndex];
-        Debug.Log($"L'éclair frappe à la position : {transform.position}");
     }
 
     public IEnumerator DoLightningEffect()
@@ -121,5 +147,18 @@ public class LightningEffect : MonoBehaviour
         }
 
         sceneLight.enabled = false;
+    }
+
+    public IEnumerator TriggerAndResumeSequence()
+    {
+        if (IsAutoTriggerRunning)
+        {
+            StopAutoTrigger();
+        }
+        
+        TeleportToRandomPosition();
+        yield return StartCoroutine(DoLightningEffect());
+        
+        StartAutoTrigger();
     }
 }
