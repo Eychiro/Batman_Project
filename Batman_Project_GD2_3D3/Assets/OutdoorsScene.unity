@@ -11094,7 +11094,15 @@ PrefabInstance:
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -69.31
+=======
+      value: -33.92
+>>>>>>> Stashed changes
+=======
+      value: -33.92
+>>>>>>> Stashed changes
 =======
       value: -33.92
 >>>>>>> Stashed changes
@@ -11106,7 +11114,15 @@ PrefabInstance:
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 4.82
+=======
+      value: -21.29
+>>>>>>> Stashed changes
+=======
+      value: -21.29
+>>>>>>> Stashed changes
 =======
       value: -21.29
 >>>>>>> Stashed changes
