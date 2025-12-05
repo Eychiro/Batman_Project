@@ -6030,6 +6030,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5292579595881741880, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
+      propertyPath: monologueText
+      value: 
+      objectReference: {fileID: 1203320899}
+    - target: {fileID: 5292579595881741880, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
+      propertyPath: BackgroundMonologue
+      value: 
+      objectReference: {fileID: 1203320900}
     - target: {fileID: 5885468518523962392, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: m_Name
       value: PorteEnigme1
@@ -6614,6 +6622,8 @@ MonoBehaviour:
   preLightDuration: 0.02
   peakDuration: 0.05
   fadeDuration: 0.08
+  fadeDuration2: 1
+  secondEclairDelay: 1
   minNumSubsequentStrokes: 2
   maxNumSubsequentStrokes: 3
   subsequentStrokeDelay: 0.08
@@ -6622,8 +6632,8 @@ MonoBehaviour:
   - {x: 19.07, y: 15.84, z: 17.6}
   - {x: 13.54, y: 15.84, z: -30.8}
   - {x: -38.3, y: 27.94, z: -23.33}
-  "minD\xE9lai": 10
-  "maxD\xE9lai": 10
+  "minD\xE9lai": 40
+  "maxD\xE9lai": 50
   Son: {fileID: 1217224067}
 --- !u!114 &1217224064
 MonoBehaviour:
@@ -11052,7 +11062,7 @@ PrefabInstance:
       objectReference: {fileID: 750065193}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.52
+      value: -69.53
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11060,7 +11070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.97
+      value: 6.11
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11226,7 +11236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2043079366
 MonoBehaviour:
   m_ObjectHideFlags: 0
