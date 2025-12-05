@@ -5,6 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class CameraController : MonoBehaviour
 {
+    public Transform player;
     public Transform _camera;
     public Transform hand;
     public Light flashLight;
@@ -19,8 +20,12 @@ public class CameraController : MonoBehaviour
 
     public bool cameraLocked = false;
 
+    private IntroAndEndingController _textLampeTorche;
+    
     void Start()
     {
+        _textLampeTorche = player.GetComponent<IntroAndEndingController>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         flashlightSwitch = GetComponent<AudioSource>();
@@ -51,6 +56,9 @@ public class CameraController : MonoBehaviour
             flashlightSwitch.Play();
             flashLight.enabled = !flashLight.enabled;
             isFlashlightOn = flashLight.enabled;
+
+            if (_textLampeTorche.initiationLampeTorche != null)
+                _textLampeTorche.initiationLampeTorche.enabled = false;
 
             if (changementCouleurScript != null)
             {

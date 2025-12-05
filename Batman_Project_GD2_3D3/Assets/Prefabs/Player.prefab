@@ -149,6 +149,7 @@ MonoBehaviour:
   cameraSensitivity: 200
   cameraAcceleration: 4
   isFlashlightOn: 0
+  changementCouleurScript: {fileID: 0}
   cameraLocked: 0
 --- !u!1 &2392417113416867978
 GameObject:
@@ -328,12 +329,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3027631724664311837}
-  - component: {fileID: 1858184934786138536}
   - component: {fileID: 7790425129840923335}
   - component: {fileID: 299369503369672599}
+  - component: {fileID: 1858184934786138536}
   - component: {fileID: 3297816652908608080}
-  - component: {fileID: 5365149140180669409}
   - component: {fileID: 5070547614450371968}
+  - component: {fileID: 1839069067796107263}
+  - component: {fileID: 1173581709999061576}
+  - component: {fileID: 5365149140180669409}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -358,22 +361,6 @@ Transform:
   - {fileID: 9101975513367778640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 176.286, z: 0}
---- !u!114 &1858184934786138536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5286238395204218381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7871fec67f1be6408e3bff9c8231179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  head: {fileID: 7545905440932667113}
-  speed: 8
-  playerAcceleration: 8
-  movementLocked: 0
 --- !u!54 &7790425129840923335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -424,6 +411,22 @@ CapsuleCollider:
   m_Height: 2.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &1858184934786138536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286238395204218381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7871fec67f1be6408e3bff9c8231179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  head: {fileID: 7545905440932667113}
+  speed: 8
+  playerAcceleration: 8
+  movementLocked: 0
 --- !u!114 &3297816652908608080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +440,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   BatmanPos: {fileID: 0}
+--- !u!114 &5070547614450371968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286238395204218381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da18fa8f62a094049ab301203d25bd8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeartBeatController
+  batmanCouloir: {fileID: 0}
+  batmanClassique: {fileID: 0}
+  heartBeatScript: {fileID: 0}
+--- !u!114 &1839069067796107263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286238395204218381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752f2dab23e63c8419afc7f82c12fef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  introScreen: {fileID: 0}
+  textIntro: {fileID: 0}
+  textIntroString: 
+  endingScreen: {fileID: 0}
+  textEnding: {fileID: 0}
+  textEndingString: 
+  crawlingSound: {fileID: 0}
+  jumpingSound: {fileID: 0}
+  landingSound: {fileID: 0}
+--- !u!114 &1173581709999061576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286238395204218381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856f009ad8f9bb4488ec937fd7cf25c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockingPlayer
 --- !u!82 &5365149140180669409
 AudioSource:
   m_ObjectHideFlags: 0
@@ -534,18 +585,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5070547614450371968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5286238395204218381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da18fa8f62a094049ab301203d25bd8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HeartBeatController
 --- !u!1 &8182099756232803755
 GameObject:
   m_ObjectHideFlags: 0

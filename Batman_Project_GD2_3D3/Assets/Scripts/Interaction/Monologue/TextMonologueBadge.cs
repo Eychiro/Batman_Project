@@ -11,6 +11,7 @@ public class TextMonologueBadge : MonoBehaviour
     public Badge badge;
 
     private string monologueTextAvecBadge = "Héhé... Facile !";
+    private bool _firstTimeText = true;
 
     void Start()
     {
@@ -33,9 +34,10 @@ public class TextMonologueBadge : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!badge.badgeTaken)
+            if (!badge.badgeTaken && _firstTimeText)
             {
                 BackgroundMonologue.SetActive(true);
+                _firstTimeText = false;
                 monologueTextSansBadge.text = monologueString;
                 monologueTextSansBadge.enabled = true;
                 StartCoroutine(RemoveTextAfterDelay(4.0f));
