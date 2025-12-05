@@ -88,4 +88,18 @@ public class ChangementCouleur : MonoBehaviour
         _flashlight.color = couleurFinale;
         changementCouleur = null;
     }
+
+    public void StopAllFlashEffects()
+{
+    if (changementCouleur != null)
+    {
+        StopCoroutine(changementCouleur);
+        changementCouleur = null;
+    }
+    
+    if (_flashlight != null)
+    {
+        _flashlight.color = _isDangerMode ? dangerColor : safeColor;
+    }
+}
 }

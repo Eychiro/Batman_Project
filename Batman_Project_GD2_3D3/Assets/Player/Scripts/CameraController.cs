@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public float cameraSensitivity = 200.0f;
     public float cameraAcceleration = 5.0f;
     [HideInInspector] public bool isFlashlightOn = false;
+    public ChangementCouleur changementCouleurScript;
 
     private float rotationX;
     private float rotationY;
@@ -23,7 +24,7 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         flashlightSwitch = GetComponent<AudioSource>();
-        flashLight.gameObject.SetActive(false);
+        flashLight.enabled = false;
     }
 
     void Update()
@@ -48,15 +49,12 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             flashlightSwitch.Play();
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.enabled = !flashLight.enabled;
+            isFlashlightOn = flashLight.enabled;
 
-            if (flashLight.gameObject.activeSelf == true)
+            if (changementCouleurScript != null)
             {
-                isFlashlightOn = true;
-            }
-            else
-            {
-                isFlashlightOn = false;
+                changementCouleurScript.StopAllFlashEffects();
             }
 
             Debug.Log("Lampe allumée : " + isFlashlightOn);

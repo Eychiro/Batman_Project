@@ -10601,6 +10601,17 @@ Light:
   m_CorrespondingSourceObject: {fileID: 3791076381631708295, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
   m_PrefabInstance: {fileID: 2039844318}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1959884925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+  m_PrefabInstance: {fileID: 2039844318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba4e97d3dce2c24e9fc0a696edcc50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangementCouleur
 --- !u!114 &1962644787 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7402750936307715971, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
@@ -11073,6 +11084,10 @@ PrefabInstance:
       propertyPath: 'batmanAgents.Array.data[1]'
       value: 
       objectReference: {fileID: 750065193}
+    - target: {fileID: 1698720635708590246, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: changementCouleurScript
+      value: 
+      objectReference: {fileID: 1959884925}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69.53
@@ -11249,7 +11264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2043079366
 MonoBehaviour:
   m_ObjectHideFlags: 0
