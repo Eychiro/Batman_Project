@@ -55,6 +55,8 @@ public class RandomMovementV2test : MonoBehaviour
     public Vector3 positionStandby; //position déterminée dans le niveau, en dehors de tout contact pour éviter collision
 
     public GameObject GameoverObject;
+
+    public MovementController movementController;
     
 
     public bool IsAgentActive
@@ -384,7 +386,8 @@ public class RandomMovementV2test : MonoBehaviour
         agent.velocity = Vector3.zero;
 
         if (playerScript != null) 
-        playerScript.enabled = false;   
+        playerScript.enabled = false;
+        movementController.enabled = false;   
 
         yield return new WaitForSeconds(tempsJumpscare);
         Debug.Log("Normalement le jeu s'arrête là");

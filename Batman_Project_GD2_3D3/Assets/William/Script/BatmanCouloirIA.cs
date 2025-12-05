@@ -16,6 +16,8 @@ public class BatmanCouloirIA : MonoBehaviour
     private bool estArrive = false; 
     private bool estActif = false;
 
+    public MovementController movementController;
+
     public bool IsAgentActive
     {
         get { return estActif && !estArrive; }
@@ -81,7 +83,8 @@ public class BatmanCouloirIA : MonoBehaviour
         jeuFini = true;
 
         if (playerScript != null) 
-        playerScript.enabled = false;   
+        playerScript.enabled = false;
+        movementController.enabled = false;   
 
         yield return new WaitForSeconds(tempsJumpscare);
         Debug.Log("Normalement le jeu s'arrête là");

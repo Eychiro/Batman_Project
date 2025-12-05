@@ -849,6 +849,7 @@ MonoBehaviour:
   estCache: 0
   positionStandby: {x: -39.85, y: 36.26, z: -3.08}
   GameoverObject: {fileID: 1125884798}
+  movementController: {fileID: 1359520125}
 --- !u!195 &154567865
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4271,6 +4272,7 @@ MonoBehaviour:
   positionStandby: {x: -39.85, y: 36.26, z: 0.86}
   positionDebut: {x: -100.345, y: 1.134, z: 32.86}
   positionCible: {x: -100.345, y: 1.134, z: 60.863}
+  movementController: {fileID: 1359520125}
 --- !u!54 &750065194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7710,6 +7712,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4344efa1ca7e54d82bacbc5f5311bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1359520125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1858184934786138536, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+  m_PrefabInstance: {fileID: 2039844318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7871fec67f1be6408e3bff9c8231179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &1361869257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4186581745895945665, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
