@@ -7,6 +7,7 @@ public class PointerController : MonoBehaviour
     public RectTransform safeZone; // Reference safe Zone
     public float moveSpeed = 200f; // Vitesse du mouvement de la barre
     public CoffreFort coffreFort;
+    public BatmanCouloirIA batmanCouloirIA;
     
     private RectTransform pointerTransform;
     private Vector3 targetPosition;
@@ -114,6 +115,7 @@ public class PointerController : MonoBehaviour
             coffreFort.coffreFortText.enabled = false;
             coffreFort._isOpened = true;
             coffreFort.CoroutineMoveDoor();
+            Destroy(batmanCouloirIA.gameObject);
             }
         }
         else

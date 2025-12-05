@@ -1758,6 +1758,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.010792, y: 2.5851226, z: 1.1192684}
   m_Center: {x: 2.8609414, y: 2.5337589, z: -9.508955}
+--- !u!4 &314354202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4632715627414532548, guid: 6c4ba5136b423874e91b6828e2766426, type: 3}
+  m_PrefabInstance: {fileID: 1273061076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &373269473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,6 +1944,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -7.5670004, y: 1.5640001, z: 21.580002}
   m_TimeToStationary: 0.5
+--- !u!1 &423897420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423897421}
+  m_Layer: 0
+  m_Name: SpawnBCoffreFort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &423897421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423897420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -93.92, y: 0.1, z: 65.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &428117597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5270459046942389290, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
@@ -5538,6 +5574,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
   m_PrefabInstance: {fileID: 2039844318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166250940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166250941}
+  m_Layer: 0
+  m_Name: SpawnACoffreFort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1166250941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166250940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -104.27, y: 0.1, z: 66.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1173719230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5946,6 +6013,10 @@ PrefabInstance:
       propertyPath: coffreFort
       value: 
       objectReference: {fileID: 2103409023}
+    - target: {fileID: 4363333319064197201, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
+      propertyPath: batmanCouloirIA
+      value: 
+      objectReference: {fileID: 750065193}
     - target: {fileID: 4428552479755476196, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8142,7 +8213,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2557551095690448531, guid: 26b1b387dac49c249a7895fde0540fdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1899999624}
   m_SourcePrefab: {fileID: 100100000, guid: 26b1b387dac49c249a7895fde0540fdb, type: 3}
 --- !u!1 &1550855695 stripped
 GameObject:
@@ -8253,13 +8327,29 @@ PrefabInstance:
       value: SocleLevier
       objectReference: {fileID: 0}
     - target: {fileID: 6182536264825396643, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
+      propertyPath: batmanIA
+      value: 
+      objectReference: {fileID: 154567864}
+    - target: {fileID: 6182536264825396643, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
       propertyPath: textLevier
       value: 
       objectReference: {fileID: 1203320898}
     - target: {fileID: 6182536264825396643, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
+      propertyPath: nouveauSpawnA
+      value: 
+      objectReference: {fileID: 1166250941}
+    - target: {fileID: 6182536264825396643, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
+      propertyPath: nouveauSpawnB
+      value: 
+      objectReference: {fileID: 423897421}
+    - target: {fileID: 6182536264825396643, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
       propertyPath: coffreFortArtefact
       value: 
       objectReference: {fileID: 1899999619}
+    - target: {fileID: 6182536264825396643, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
+      propertyPath: nouveauCentrePoint
+      value: 
+      objectReference: {fileID: 314354202}
     - target: {fileID: 8031022500396145662, guid: 3ff33deffccacfb4b90a97426f0a95b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -90.249794
@@ -9639,6 +9729,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2557551095690448531, guid: 26b1b387dac49c249a7895fde0540fdb, type: 3}
   m_PrefabInstance: {fileID: 1550086194}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &1899999624
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899999619}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1909318720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7304412102217899710, guid: 6c4ba5136b423874e91b6828e2766426, type: 3}
@@ -10268,7 +10374,7 @@ PrefabInstance:
       objectReference: {fileID: 750065193}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -70.09
+      value: -100.1
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10276,7 +10382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.96
+      value: 68.9
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10385,7 +10491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2043079366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10917,3 +11023,5 @@ SceneRoots:
   - {fileID: 1554244306}
   - {fileID: 1550086194}
   - {fileID: 1217224066}
+  - {fileID: 1166250941}
+  - {fileID: 423897421}

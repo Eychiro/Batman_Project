@@ -11,6 +11,14 @@ public class Levier : MonoBehaviour
     public Trigger InteractionRange;
     public Trigger OutlinerRange;
 
+    public RandomMovementV2test batmanIA;
+
+    public Transform nouveauCentrePoint;
+    public float nouvelleRange = 50f;
+    public Transform nouveauSpawnA;
+    public Transform nouveauSpawnB;
+    public float delaiAvantApparition = 3.0f;
+
     private bool playerInRange = false;
     private bool _isUsed = false;
 
@@ -90,6 +98,7 @@ public class Levier : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         StartCoroutine(MoveCoffreFort());
+        batmanIA.ActiverEtChangerZone(nouveauCentrePoint, nouvelleRange, nouveauSpawnA, nouveauSpawnB, delaiAvantApparition);
     }
 
     IEnumerator MoveCoffreFort()
