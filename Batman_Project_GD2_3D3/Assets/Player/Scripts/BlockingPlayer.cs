@@ -12,7 +12,6 @@ public class BlockingPlayer : MonoBehaviour
         _playerMovement = Player.GetComponent<MovementController>();
     }
 
-
     public void LockingPlayer()
     {
         _playerMovement.movementLocked = true;

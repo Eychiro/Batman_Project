@@ -26,7 +26,7 @@ public class IntroAndEndingController : MonoBehaviour
     {
         _playerControllerMovement = Player.GetComponent<BlockingPlayer>();
         _playerControllerMovement.LockingPlayer();
-        
+
         if (initiationLampeTorche != null)
         {
             initiationLampeTorche.ForceMeshUpdate(true);
