@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5426082635700293954}
   - component: {fileID: 2441633612209080063}
-  - component: {fileID: 6775558346505787945}
+  - component: {fileID: 1160674587863052898}
   m_Layer: 0
   m_Name: MonologueColliderBadge
   m_TagString: Untagged
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6775558346505787945
+--- !u!114 &1160674587863052898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,9 +63,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2752322121111425764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96795cb070b7ced479d44799a93b31a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 29091acea05a7044db3dc1c9063f18fe, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::TextMonologueBadge
   BackgroundMonologue: {fileID: 0}
-  monologueText: {fileID: 0}
-  monologueString: "J'esp\xE8re que les autres sont pas rest\xE9s coinc\xE9s..."
+  monologueTextSansBadge: {fileID: 0}
+  monologueString: "S\xE9rieux ? Ils ont pas trouv\xE9 un moyen de d\xE9verrouiller
+    la porte ?"
+  badge: {fileID: 0}
