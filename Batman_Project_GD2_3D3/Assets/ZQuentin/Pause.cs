@@ -12,6 +12,7 @@ public class Pause : MonoBehaviour
     public TextMeshProUGUI VolumeText;
     public Slider SliderVolume;
     private float Volume;
+    public GameObject EventSys;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Pause : MonoBehaviour
         VolumeText.text = $"Volume: {Volume}%";
         SliderVolume.value = Volume;
         Debug.Log(Volume);
+        
 
         //PauseActiver();
     }
@@ -57,6 +59,7 @@ public class Pause : MonoBehaviour
         Son.pitch = 1 ;
         Son.Play();
         AudioListener.volume = Volume/100;
+        
     }
 
     public void PauseDeactiver()
@@ -68,6 +71,7 @@ public class Pause : MonoBehaviour
         Canva.SetActive(false);
         Son.pitch = 0.9f ;
         Son.Play();
+        
     }
 
     public void VolumeUpdate()

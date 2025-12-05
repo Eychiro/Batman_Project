@@ -10,11 +10,14 @@ public class GameOver : MonoBehaviour
     public GameObject Bouttons;
     public Image EcranNoir;
     public Image Jumpscare;
+    public GameObject EventSys;
 
 
     void Start()
     {
+        
         this.gameObject.SetActive(false);
+        
 
         //debug
         //LancerGameOver();
@@ -23,6 +26,7 @@ public class GameOver : MonoBehaviour
     public void LancerGameOver()
     {
         this.gameObject.SetActive(true);
+        
         Cursor.lockState = CursorLockMode.None ;
         Cursor.visible = true;
         StartCoroutine(GameOverRoutine());
