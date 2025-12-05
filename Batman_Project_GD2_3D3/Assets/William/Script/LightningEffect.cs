@@ -9,8 +9,10 @@ public class LightningEffect : MonoBehaviour
     public float preLightDuration = 0.02f;
     public float peakDuration = 0.05f;
     public float fadeDuration = 0.08f;
+    public float fadeDuration2 = 0.24f;
+    public float secondEclairDelay = 0.1f;
     public int minNumSubsequentStrokes = 2;
-    public int maxNumSubsequentStrokes = 4;
+    public int maxNumSubsequentStrokes = 3;
     public float subsequentStrokeDelay = 0.08f;
     public float subsequentStrokeIntensityFactor = 0.4f;
 
@@ -148,6 +150,37 @@ public class LightningEffect : MonoBehaviour
             }
             sceneLight.intensity = 0; 
         }
+
+        yield return new WaitForSeconds(secondEclairDelay);
+        
+        sceneLight.intensity = maxLightIntensity * 0.01f;
+        yield return new WaitForSeconds(preLightDuration);
+        Son.pitch = Random.Range(0.7f,1);
+        Son.Play();
+
+        float timer2 = 0f;
+        while (timer2 < peakDuration)
+        {
+            float intensity = Mathf.Lerp(maxLightIntensity * 0.01f, maxLightIntensity, timer2 / peakDuration);
+            sceneLight.intensity = intensity;
+            timer2 += Time.deltaTime;
+            yield return null;
+        }
+
+        sceneLight.intensity = maxLightIntensity;
+        yield return new WaitForSeconds(0.005f);
+
+        timer2 = 0f;
+        while (timer2 < fadeDuration2)
+        {
+            float intensity = Mathf.Lerp(maxLightIntensity, 0, timer2 / fadeDuration2);
+            sceneLight.intensity = intensity;
+            timer2 += Time.deltaTime;
+            yield return null;
+        }
+
+        sceneLight.intensity = 0; 
+
 
         sceneLight.enabled = false;
     }

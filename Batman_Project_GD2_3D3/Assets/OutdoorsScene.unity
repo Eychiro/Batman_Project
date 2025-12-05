@@ -6182,8 +6182,10 @@ MonoBehaviour:
   preLightDuration: 0.02
   peakDuration: 0.05
   fadeDuration: 0.08
+  fadeDuration2: 1.5
+  secondEclairDelay: 0.3
   minNumSubsequentStrokes: 2
-  maxNumSubsequentStrokes: 4
+  maxNumSubsequentStrokes: 3
   subsequentStrokeDelay: 0.08
   subsequentStrokeIntensityFactor: 0.4
   strikeLocations:
@@ -10555,7 +10557,7 @@ PrefabInstance:
       objectReference: {fileID: 750065193}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -100.1
+      value: -69.31
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10563,7 +10565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 68.9
+      value: 4.82
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalRotation.w
