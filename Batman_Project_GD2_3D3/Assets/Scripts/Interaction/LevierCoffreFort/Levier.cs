@@ -7,6 +7,7 @@ public class Levier : MonoBehaviour
 {
     public TextMeshProUGUI textLevier;
     public GameObject coffreFortArtefact;
+    public GameObject porteEnding;
 
     public Trigger InteractionRange;
     public Trigger OutlinerRange;
@@ -114,6 +115,7 @@ public class Levier : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         StartCoroutine(RotatePorteCoffreFort());
+        StartCoroutine(RotatePorteEnding());
     }
 
     IEnumerator RotatePorteCoffreFort()
@@ -125,6 +127,19 @@ public class Levier : MonoBehaviour
         {
             t += Time.deltaTime;
             porteCoffreFort.localRotation = Quaternion.Lerp(porteCoffreFort.localRotation, Quaternion.Euler(0, 90, 0), t);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    IEnumerator RotatePorteEnding()
+    {
+        float t = 0;
+        Transform porteCoffreFort = porteEnding.transform;
+
+        while (t < 0.5f)
+        {
+            t += Time.deltaTime;
+            porteCoffreFort.localRotation = Quaternion.Lerp(porteCoffreFort.localRotation, Quaternion.Euler(0, -60, 0), t);
             yield return new WaitForSeconds(0.01f);
         }
     }
