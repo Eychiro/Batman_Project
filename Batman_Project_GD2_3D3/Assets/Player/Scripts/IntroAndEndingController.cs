@@ -20,6 +20,9 @@ public class IntroAndEndingController : MonoBehaviour
 
     public TextMeshProUGUI initiationLampeTorche;
 
+    [Header("Introduction")]
+    public bool skipIntro = false;
+
     private BlockingPlayer _playerControllerMovement;
 
     void Start()
@@ -27,23 +30,32 @@ public class IntroAndEndingController : MonoBehaviour
         _playerControllerMovement = Player.GetComponent<BlockingPlayer>();
         _playerControllerMovement.LockingPlayer();
 
-        if (initiationLampeTorche != null)
+    if (!skipIntro)
         {
-            initiationLampeTorche.ForceMeshUpdate(true);
-            initiationLampeTorche.enabled = false;
+            if (initiationLampeTorche != null)
+            {
+                initiationLampeTorche.ForceMeshUpdate(true);
+                initiationLampeTorche.enabled = false;
+            }
+
+            if (textIntro != null && textEnding != null)
+            {
+                textIntro.text = textIntroString;
+                textIntro.enabled = true;
+
+                textEnding.text = textEndingString;
+                textEnding.enabled = false;
+                endingScreen.SetActive(false);
+            }        
+            StartCoroutine(RevealCharacters());
+            StartCoroutine(AudiosPlaying());
         }
-
-        if (textIntro != null && textEnding != null)
+        else
         {
-            textIntro.text = textIntroString;
-            textIntro.enabled = true;
-
-            textEnding.text = textEndingString;
-            textEnding.enabled = false;
+            _playerControllerMovement.UnlockingPlayer();
             endingScreen.SetActive(false);
-        }        
-        StartCoroutine(RevealCharacters());
-        StartCoroutine(AudiosPlaying());
+            introScreen.SetActive(false);
+        }
     }
 
     IEnumerator AudiosPlaying()
