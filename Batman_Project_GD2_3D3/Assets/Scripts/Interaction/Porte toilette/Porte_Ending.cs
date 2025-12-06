@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Porte_Ending : MonoBehaviour
 {
-    public TextMeshProUGUI emptyPourDésactiver;
+    public TextMeshProUGUI PorteSortieText;
+    public Levier levier;
+    public IntroAndEndingController introAndEndingController;
 
     private bool playerInRange = false;
-    private bool _isClosed = true;
 
     void Start()
     {
@@ -16,50 +17,36 @@ public class Porte_Ending : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && _isClosed)
+        if (other.CompareTag("Player") && levier.porteEndingOuverte)
         {
             playerInRange = true;
             
-            if (emptyPourDésactiver != null)
+            if (PorteSortieText != null)
             {
-                emptyPourDésactiver.enabled = true;
+                PorteSortieText.enabled = true;
             }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && _isClosed)
+        if (other.CompareTag("Player") && levier.porteEndingOuverte)
         {
             playerInRange = false;
             
-            if (emptyPourDésactiver != null)
+            if (PorteSortieText != null)
             {
-                emptyPourDésactiver.enabled = false;
+                PorteSortieText.enabled = false;
             }
-        }
-    }
-
-    IEnumerator MovePorte()
-    {
-        float time = 0;
-
-        while(time <= 1)
-        {
-            time += Time.deltaTime;
-            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(0, -90, 0), time);
-            yield return new WaitForSeconds(0.01f);
         }
     }
 
     void Update()
     {
-        if (playerInRange && _isClosed && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            _isClosed = false;
-            emptyPourDésactiver.enabled = false;
-
-            StartCoroutine(MovePorte());
+            PorteSortieText.enabled = false;
+            introAndEndingController.InitiateEnding();
         }
     }
 }

@@ -20,6 +20,8 @@ public class Levier : MonoBehaviour
     public Transform nouveauSpawnB;
     public float delaiAvantApparition = 3.0f;
 
+    [HideInInspector] public bool porteEndingOuverte = false;
+
     private bool playerInRange = false;
     private bool _isUsed = false;
 
@@ -135,6 +137,8 @@ public class Levier : MonoBehaviour
     {
         float t = 0;
         Transform porteCoffreFort = porteEnding.transform;
+
+        porteEndingOuverte = true;
 
         while (t < 0.5f)
         {

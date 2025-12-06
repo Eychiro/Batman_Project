@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IntroAndEndingController : MonoBehaviour
 {
@@ -13,22 +14,29 @@ public class IntroAndEndingController : MonoBehaviour
     public GameObject endingScreen;
     public TextMeshProUGUI textEnding;
     public string textEndingString;
-    
+
+    private string textEndingFin = "FIN";
+
     public AudioClip crawlingSound;
     public AudioClip jumpingSound;
     public AudioClip landingSound;
+    public AudioClip runningAwaySound;
 
     public TextMeshProUGUI initiationLampeTorche;
+
+    public RandomMovementV2test batmanIA;
 
     [Header("Introduction")]
     public bool skipIntro = false;
 
     private BlockingPlayer _playerControllerMovement;
+    private Image imageComponent;
 
     void Start()
     {
         _playerControllerMovement = Player.GetComponent<BlockingPlayer>();
         _playerControllerMovement.LockingPlayer();
+        imageComponent = endingScreen.GetComponent<Image>();
 
     if (!skipIntro)
         {
@@ -47,7 +55,7 @@ public class IntroAndEndingController : MonoBehaviour
                 textEnding.enabled = false;
                 endingScreen.SetActive(false);
             }        
-            StartCoroutine(RevealCharacters());
+            StartCoroutine(RevealCharactersIntro());
             StartCoroutine(AudiosPlaying());
         }
         else
@@ -68,7 +76,7 @@ public class IntroAndEndingController : MonoBehaviour
         AudioSource.PlayClipAtPoint(landingSound, transform.position);
     }
 
-    public IEnumerator FadeTextToZeroAlpha(float t, TextMeshProUGUI i)
+    public IEnumerator FadeTextIntroToZeroAlpha(float t, TextMeshProUGUI i)
         {
             i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
             while (i.color.a > 0.0f)
@@ -81,7 +89,7 @@ public class IntroAndEndingController : MonoBehaviour
             initiationLampeTorche.enabled = true;
         }
 
-    IEnumerator RevealCharacters()
+    IEnumerator RevealCharactersIntro()
     {
         // Nombre total de caractères dans le texte à révéler
         int totalCharacters = textIntroString.Length;
@@ -101,7 +109,82 @@ public class IntroAndEndingController : MonoBehaviour
         
         if (textIntro.maxVisibleCharacters == totalCharacters)
         {
-            StartCoroutine(FadeTextToZeroAlpha(3f, textIntro));
+            StartCoroutine(FadeTextIntroToZeroAlpha(3f, textIntro));
         }
+    }
+
+    public IEnumerator FadeTextEndingToZeroAlpha(float t, TextMeshProUGUI i)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+            while (i.color.a > 0.0f)
+            {
+                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+                yield return null;
+            }
+            
+            yield return new WaitForSeconds(1f);
+            
+            textEnding.text = textEndingFin;
+            textEnding.fontSize = 80;
+            StartCoroutine(FadeTextToFill(2, textEnding));
+        }
+
+    IEnumerator RevealCharactersEnding()
+    {
+        int totalCharacters = textEndingString.Length;
+        
+        textEnding.maxVisibleCharacters = 0; 
+        
+        for (int i = 1; i <= totalCharacters; i++)
+        {
+            textEnding.maxVisibleCharacters = i; 
+
+            yield return new WaitForSeconds(0.04f); 
+        }
+        textEnding.maxVisibleCharacters = totalCharacters;
+        
+        if (textEnding.maxVisibleCharacters == totalCharacters)
+        {
+            StartCoroutine(FadeTextEndingToZeroAlpha(3f, textEnding));
+        }
+    }
+
+    public IEnumerator FadeImageToFill(float t, Image i)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+            while (i.color.a < 1.0f)
+            {
+                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+                yield return null;
+            }
+            textEnding.text = textEndingString;
+            textEnding.enabled = true;
+            
+            AudioSource.PlayClipAtPoint(runningAwaySound, transform.position);
+
+            StartCoroutine(RevealCharactersEnding());
+        }
+
+    public IEnumerator FadeTextToFill(float t, TextMeshProUGUI i)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+            while (i.color.a < 1.0f)
+            {
+                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+                yield return null;
+            }
+            textEnding.text = textEndingFin;
+            textEnding.enabled = true;
+        }
+
+
+    public void InitiateEnding()
+    {
+        endingScreen.SetActive(true);
+
+        _playerControllerMovement.LockingPlayer();
+        batmanIA.DisparitionForcee();
+
+        StartCoroutine(FadeImageToFill(2, imageComponent));
     }
 }

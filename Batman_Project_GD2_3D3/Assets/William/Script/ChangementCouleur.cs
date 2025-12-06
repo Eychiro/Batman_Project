@@ -18,6 +18,8 @@ public class ChangementCouleur : MonoBehaviour
     private bool _isDangerMode = false;
     private Coroutine changementCouleur;
 
+    private bool flashlightOn = false;
+
     void Start()
     {
         _flashlight = GetComponent<Light>();
@@ -47,6 +49,7 @@ public class ChangementCouleur : MonoBehaviour
                 StopCoroutine(changementCouleur);
             }
 
+            flashlightOn = _flashlight.enabled;
             changementCouleur = StartCoroutine(SequenceScintillement(_isDangerMode));
         }
     }
@@ -87,6 +90,9 @@ public class ChangementCouleur : MonoBehaviour
 
         _flashlight.color = couleurFinale;
         changementCouleur = null;
+        
+        if (!flashlightOn)
+            _flashlight.enabled = false;
     }
 
     public void StopAllFlashEffects()
