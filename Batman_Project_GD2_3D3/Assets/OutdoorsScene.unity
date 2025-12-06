@@ -1061,6 +1061,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1135097028}
     - target: {fileID: 9057816725312919616, guid: 47e94552c17300d4eb18465c67a07a74, type: 3}
+      propertyPath: BatmanAI
+      value: 
+      objectReference: {fileID: 154567864}
+    - target: {fileID: 9057816725312919616, guid: 47e94552c17300d4eb18465c67a07a74, type: 3}
       propertyPath: flashLight
       value: 
       objectReference: {fileID: 1959884923}
@@ -8463,7 +8467,7 @@ Transform:
   m_GameObject: {fileID: 1467407840}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -76.73681, y: 16.15808, z: 31.86411}
+  m_LocalPosition: {x: -76.73681, y: -31.9, z: 31.86411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11314,6 +11318,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 154567864}
     - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672381141705278656, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: batmanCouloir
       value: 
       objectReference: {fileID: 750065193}
@@ -11350,6 +11358,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1135097028}
     - target: {fileID: 1698720635708590246, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: flashLight
+      value: 
+      objectReference: {fileID: 1959884923}
+    - target: {fileID: 1698720635708590246, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: changementCouleurScript
       value: 
       objectReference: {fileID: 1959884925}
@@ -11361,6 +11373,10 @@ PrefabInstance:
       propertyPath: hitSound
       value: 
       objectReference: {fileID: 8300000, guid: ab3c13bb14d73ad48906894e7850d8ec, type: 3}
+    - target: {fileID: 1839069067796107263, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1839069067796107263, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: skipIntro
       value: 1
@@ -11416,7 +11432,7 @@ PrefabInstance:
       objectReference: {fileID: 1008201419}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -97.75
+      value: -31.08
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11424,7 +11440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 78.13
+      value: -2.69
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11590,7 +11606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2043079366
 MonoBehaviour:
   m_ObjectHideFlags: 0

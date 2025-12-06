@@ -64,7 +64,7 @@ public class Cachette : MonoBehaviour
             Player.transform.position = transform.GetChild(0).position;
             cameraController.transform.rotation = transform.GetChild(0).rotation;
             cameraController._camera.localRotation = Quaternion.identity;
-            flashLight.gameObject.SetActive(false);
+            flashLight.enabled = false;
             _playerMovement.movementLocked = true;
             cachetteText.text = "Appuyer sur E pour sortir de la cachette";
 
