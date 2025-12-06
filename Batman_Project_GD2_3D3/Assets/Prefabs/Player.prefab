@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c9f856d69d6dd43a92ac22786f1854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  player: {fileID: 0}
   _camera: {fileID: 5696522492509171769}
   hand: {fileID: 9101975513367778640}
   flashLight: {fileID: 3791076381631708295}
@@ -210,13 +211,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4599153154617590839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7545905440932667113}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2428612161166534937
 Camera:
   m_ObjectHideFlags: 0
@@ -467,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752f2dab23e63c8419afc7f82c12fef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Player: {fileID: 0}
   introScreen: {fileID: 0}
   textIntro: {fileID: 0}
   textIntroString: 
@@ -476,6 +478,10 @@ MonoBehaviour:
   crawlingSound: {fileID: 0}
   jumpingSound: {fileID: 0}
   landingSound: {fileID: 0}
+  runningAwaySound: {fileID: 0}
+  initiationLampeTorche: {fileID: 0}
+  batmanIA: {fileID: 0}
+  skipIntro: 0
 --- !u!114 &1173581709999061576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856f009ad8f9bb4488ec937fd7cf25c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockingPlayer
+  Player: {fileID: 0}
+  cameraController: {fileID: 0}
 --- !u!82 &5365149140180669409
 AudioSource:
   m_ObjectHideFlags: 0
