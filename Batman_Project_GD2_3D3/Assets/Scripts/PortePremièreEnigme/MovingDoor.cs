@@ -17,9 +17,6 @@ public class MovingDoor : MonoBehaviour
     public CameraController cameraController;
     public TextMeshProUGUI _inputCode;
 
-    public GameObject BackgroundMonologue;
-    public TextMeshProUGUI monologueText;
-
     public TextMeshProUGUI TextInteraction;
 
     private Interactible _indice1;
@@ -97,13 +94,6 @@ public class MovingDoor : MonoBehaviour
         }
     }
 
-    IEnumerator RemoveTextAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        monologueText.enabled = false;
-        BackgroundMonologue.SetActive(false);
-    }
-
     void Update()
     {
         if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
@@ -130,11 +120,6 @@ public class MovingDoor : MonoBehaviour
                 gameObject.transform.position +=  Vector3.up * 3;
                 cameraController.cameraLocked = false;
                 keyPadCodePorte.SetActive(false);
-
-                BackgroundMonologue.SetActive(true);
-                monologueText.enabled = true;
-                monologueText.text = "Allez, allez ! Faut que je me barre d'ici !";
-                StartCoroutine(RemoveTextAfterDelay(2.0f));
 
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
