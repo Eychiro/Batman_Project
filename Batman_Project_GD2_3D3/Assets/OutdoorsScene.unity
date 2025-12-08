@@ -6355,7 +6355,7 @@ PrefabInstance:
     - target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1491559816}
+      objectReference: {fileID: 1491559821}
     - target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: _inputCode
       value: 
@@ -9518,7 +9518,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3076455828070085296, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
---- !u!114 &1491559816 stripped
+--- !u!114 &1491559821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1173581709999061576, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
   m_PrefabInstance: {fileID: 2039844318}
