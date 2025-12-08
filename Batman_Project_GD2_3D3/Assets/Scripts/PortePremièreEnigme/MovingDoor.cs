@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,6 +18,8 @@ public class MovingDoor : MonoBehaviour
     public GameObject BackgroundMonologue;
     public TextMeshProUGUI monologueText;
 
+    public TextMeshProUGUI TextInteraction;
+
     private Interactible _indice1;
     private Interactible _indice2;
     private Interactible _indice3;
@@ -27,13 +30,17 @@ public class MovingDoor : MonoBehaviour
     private string requiredCodeToString = "";
     private int nbrButtonsCliqued = 0;
 
-    private AudioSource audioSourceError;
-
     private Transform _targetToLook;
 
     void Start()
     {
-        audioSourceError = GetComponent<AudioSource>();
+
+        if (TextInteraction != null)
+        {
+            TextInteraction.ForceMeshUpdate(true); 
+            TextInteraction.enabled = false;
+        }
+
         _targetToLook = transform;
         
         keyPadCodePorte.SetActive(false);
@@ -67,6 +74,7 @@ public class MovingDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            TextInteraction.enabled = true;
         }
     }
     
@@ -75,6 +83,8 @@ public class MovingDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            TextInteraction.enabled = false;
+
             cameraController.cameraLocked = false;
             keyPadCodePorte.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
@@ -94,9 +104,7 @@ public class MovingDoor : MonoBehaviour
     void Update()
     {
         if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("tu viens de cliquer !");
-            
+        {            
             cameraController.transform.LookAt(_targetToLook.GetComponent<Renderer>().bounds.center);
             cameraController.ResetPos();
 
@@ -125,10 +133,12 @@ public class MovingDoor : MonoBehaviour
 
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+
+                GetComponents<AudioSource>()[0].Play();
             }
             else // Si le code écrit est mauvais
             {
-                audioSourceError.Play();
+                GetComponents<AudioSource>()[1].Play();
                 _inputCode.text = "";
                 nbrButtonsCliqued = 0;
             }

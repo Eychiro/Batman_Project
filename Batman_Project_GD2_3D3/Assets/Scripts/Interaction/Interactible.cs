@@ -91,6 +91,8 @@ public class Interactible : MonoBehaviour
             
                 if (_noteAffichee)
                 {
+                    _variables.cameraController.cameraLocked = false;
+                    
                     noteIndiceEnigme1.enabled = false;
                     backgroundNoteIndice.SetActive(false);
                     _noteAffichee = false;
