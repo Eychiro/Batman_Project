@@ -6098,7 +6098,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 7334914523384265467, guid: e6a08d38ae93e0741916fddd19b5d617, type: 2}
-    value: {fileID: 123344447}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1152995477
@@ -12735,7 +12735,7 @@ PrefabInstance:
       objectReference: {fileID: 1008201419}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -99.55
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y

@@ -427,6 +427,7 @@ MonoBehaviour:
   head: {fileID: 7545905440932667113}
   speed: 8
   playerAcceleration: 8
+  rb: {fileID: 0}
   movementLocked: 0
 --- !u!114 &3297816652908608080
 MonoBehaviour:
