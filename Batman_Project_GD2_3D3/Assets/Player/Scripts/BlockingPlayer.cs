@@ -14,12 +14,18 @@ public class BlockingPlayer : MonoBehaviour
 
     public void LockingPlayer()
     {
+        _playerMovement.rb.linearVelocity = Vector3.zero;
+        _playerMovement.rb.angularVelocity = Vector3.zero;
+
         _playerMovement.movementLocked = true;
         cameraController.cameraLocked = true;
     }
     
     public void UnlockingPlayer()
     {
+        _playerMovement.rb.linearVelocity = Vector3.zero;
+        _playerMovement.rb.angularVelocity = Vector3.zero;
+
         _playerMovement.movementLocked = false;
         cameraController.cameraLocked = false;
     }

@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
     public float speed = 4f;
     public float playerAcceleration = 2f;
 
-    private Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
     private Vector3 direction;
 
     public bool movementLocked = false;
@@ -23,5 +23,7 @@ public class MovementController : MonoBehaviour
             direction = Input.GetAxisRaw("Horizontal") * head.right + Input.GetAxisRaw("Vertical") * head.forward;
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, direction.normalized * speed + rb.linearVelocity.y * Vector3.up, playerAcceleration * Time.deltaTime);
         }
+        else
+            return;
     }
 }

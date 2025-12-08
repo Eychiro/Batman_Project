@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class MovingDoor : MonoBehaviour
 {
+    public BlockingPlayer player;
+
     public GameObject keyPadCodePorte;
     public GameObject Indice1;
     public GameObject Indice2;
@@ -85,7 +87,8 @@ public class MovingDoor : MonoBehaviour
             playerInRange = false;
             TextInteraction.enabled = false;
 
-            cameraController.cameraLocked = false;
+            player.UnlockingPlayer();
+
             keyPadCodePorte.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -104,12 +107,12 @@ public class MovingDoor : MonoBehaviour
     void Update()
     {
         if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
-        {            
+        {
+            player.LockingPlayer();
             cameraController.transform.LookAt(_targetToLook.GetComponent<Renderer>().bounds.center);
             cameraController.ResetPos();
 
             keyPadCodePorte.SetActive(true);
-            cameraController.cameraLocked = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             return;
@@ -121,7 +124,9 @@ public class MovingDoor : MonoBehaviour
             {
                 _inputCode.text = "";
                 nbrButtonsCliqued = 0;
-                
+
+                player.UnlockingPlayer();
+
                 gameObject.transform.position +=  Vector3.up * 3;
                 cameraController.cameraLocked = false;
                 keyPadCodePorte.SetActive(false);
@@ -146,7 +151,7 @@ public class MovingDoor : MonoBehaviour
         
         if (keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
-            cameraController.cameraLocked = false;
+            player.UnlockingPlayer();
             keyPadCodePorte.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

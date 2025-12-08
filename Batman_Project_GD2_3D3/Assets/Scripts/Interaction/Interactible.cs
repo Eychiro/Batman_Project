@@ -90,12 +90,11 @@ public class Interactible : MonoBehaviour
                 emptyPourDésactiver.enabled = false;
             
                 if (_noteAffichee)
-                {
-                    _variables.cameraController.cameraLocked = false;
-                    
+                {                    
                     noteIndiceEnigme1.enabled = false;
                     backgroundNoteIndice.SetActive(false);
                     _noteAffichee = false;
+                    _variables.player.UnlockingPlayer();
                 }
             }
         }
@@ -126,9 +125,9 @@ public class Interactible : MonoBehaviour
 
             if (noteIndiceEnigme1 != null)
             {
+                _variables.player.LockingPlayer();
                 _variables.cameraController.transform.LookAt(_targetToLook.GetComponent<Renderer>().bounds.center);
                 _variables.cameraController.ResetPos();
-                _variables.cameraController.cameraLocked = true;
 
                 _noteAffichee = true;
                 noteIndiceEnigme1.enabled = true;
@@ -141,12 +140,12 @@ public class Interactible : MonoBehaviour
 
         if (playerInRange && _noteAffichee && Input.GetKeyDown(KeyCode.E))
             {
-                _variables.cameraController.cameraLocked = false;
-                Debug.Log("tu veux te barrer !");
                 noteIndiceEnigme1.enabled = false;
                 emptyPourDésactiver.enabled = true;
                 backgroundNoteIndice.SetActive(false);
                 _noteAffichee = false;
+
+               _variables.player.UnlockingPlayer();
             }
     }
 }
