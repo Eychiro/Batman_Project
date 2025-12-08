@@ -118,6 +118,9 @@ public class RandomMovementV2test : MonoBehaviour
             etatTimer -= Time.deltaTime;
         }
 
+        if (cooldownTimer > 0)
+            cooldownTimer -= Time.deltaTime;
+
         if (etatActuel != Etat.Disparu)
         {
             if (etatActuel != Etat.Poursuite && etatActuel != Etat.PoursuiteLight) 

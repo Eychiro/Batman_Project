@@ -865,8 +865,8 @@ MonoBehaviour:
   maxTempsPoursuite: 10
   minTempsCooldown: 1
   maxTempsCooldown: 10
-  minTempsAvantDisparition: 10
-  maxTimeAvantDisparition: 15
+  minTempsAvantDisparition: 20
+  maxTimeAvantDisparition: 20
   disparitionDuree: 10
   spawnPointA: {fileID: 860580134}
   spawnPointB: {fileID: 1106119980}
@@ -887,7 +887,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -7654,8 +7654,8 @@ MonoBehaviour:
   - {x: 19.07, y: 15.84, z: 17.6}
   - {x: 13.54, y: 15.84, z: -30.8}
   - {x: -38.3, y: 27.94, z: -23.33}
-  "minD\xE9lai": 5
-  "maxD\xE9lai": 5
+  "minD\xE9lai": 25
+  "maxD\xE9lai": 30
 --- !u!114 &1217224064
 MonoBehaviour:
   m_ObjectHideFlags: 0
