@@ -20,6 +20,8 @@ public class Levier : MonoBehaviour
     public Transform nouveauSpawnB;
     public float delaiAvantApparition = 3.0f;
 
+    public AudioClip LevierSliding;
+
     [HideInInspector] public bool porteEndingOuverte = false;
 
     private bool playerInRange = false;
@@ -153,6 +155,8 @@ public class Levier : MonoBehaviour
     {
         if (playerInRange && !_isUsed && Input.GetKeyDown(KeyCode.E))
         {
+            AudioSource.PlayClipAtPoint(LevierSliding, transform.position);
+
             _isUsed = true;
             textLevier.enabled = false;
             gameObject.layer = 0;
