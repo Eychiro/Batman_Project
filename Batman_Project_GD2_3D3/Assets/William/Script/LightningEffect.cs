@@ -19,7 +19,6 @@ public class LightningEffect : MonoBehaviour
     public Vector3[] strikeLocations = new Vector3[3];
     public float minDélai = 30f;
     public float maxDélai = 45f;
-    public AudioSource Son;
 
     private Coroutine autoTriggerCoroutine;
 
@@ -98,8 +97,8 @@ public class LightningEffect : MonoBehaviour
 
         sceneLight.intensity = maxLightIntensity * 0.01f;
         yield return new WaitForSeconds(preLightDuration);
-        Son.pitch = Random.Range(0.7f,1);
-        Son.Play();
+        GetComponents<AudioSource>()[0].pitch = Random.Range(0.3f,0.5f);
+        GetComponents<AudioSource>()[0].Play();
 
         float timer = 0f;
         while (timer < peakDuration)
@@ -155,8 +154,8 @@ public class LightningEffect : MonoBehaviour
         
         sceneLight.intensity = maxLightIntensity * 0.01f;
         yield return new WaitForSeconds(preLightDuration);
-        Son.pitch = Random.Range(0.7f,1);
-        Son.Play();
+        GetComponents<AudioSource>()[1].pitch = Random.Range(0.7f,1f);
+        GetComponents<AudioSource>()[1].Play();
 
         float timer2 = 0f;
         while (timer2 < peakDuration)

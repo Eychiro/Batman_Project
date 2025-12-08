@@ -57,6 +57,9 @@ public class RandomMovementV2test : MonoBehaviour
     public GameObject GameoverObject;
 
     public MovementController movementController;
+
+    private float cooldownIncrease = 30f;
+    private float cooldownTimer = 0f;
     
 
     public bool IsAgentActive
@@ -86,6 +89,20 @@ public class RandomMovementV2test : MonoBehaviour
         Debug.Log("Prochaine disparition de Batman dans: " + disparitionCountdownTimer + " secondes.");
     }
 
+    void IncreaseDisappearCountdown()
+    {
+        if (cooldownTimer > 0)
+        {
+            return;
+        }
+        
+        float nouveauTemps = disparitionCountdownTimer + 10f;
+        disparitionCountdownTimer = Mathf.Min(nouveauTemps, maxTimeAvantDisparition);
+    
+        cooldownTimer = cooldownIncrease;
+        Debug.Log("Prochaine disparition de Batman dans: " + disparitionCountdownTimer + " secondes.");
+    }
+
     void Update()
     {
         if (jeuFini || isDormant) 
@@ -103,10 +120,14 @@ public class RandomMovementV2test : MonoBehaviour
 
         if (etatActuel != Etat.Disparu)
         {
-            if (disparitionCountdownTimer > 0)
+            if (etatActuel != Etat.Poursuite && etatActuel != Etat.PoursuiteLight) 
             {
-                disparitionCountdownTimer -= Time.deltaTime;
+                if (disparitionCountdownTimer > 0)
+                {
+                    disparitionCountdownTimer -= Time.deltaTime;
+                }
             }
+
             if (disparitionCountdownTimer <= 0)
             {
                 SwitchToDisparu();
@@ -163,6 +184,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatTimer = Random.Range(minTempsPoursuite, maxTempsPoursuite);
         agent.stoppingDistance = stopDistance;
         detecteAvantCache = true;
+        IncreaseDisappearCountdown();
         Debug.Log("Début de la poursuite pour : " + etatTimer + " secondes");
     }
 
@@ -170,6 +192,7 @@ public class RandomMovementV2test : MonoBehaviour
     {
         etatActuel = Etat.PoursuiteLight;
         agent.stoppingDistance = stopDistance;
+        IncreaseDisappearCountdown();
         Debug.Log("Début de la poursuite (light)");
     }
 
