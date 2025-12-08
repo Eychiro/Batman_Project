@@ -7,13 +7,7 @@ public class LancementCinematic : MonoBehaviour
 {
     public PlayableDirector playableDirector;
     public Transform player;
-
-    // private float duration;
-
-    // void Start()
-    // {
-    //     duration = Convert.ToSingle(playableDirector.duration);
-    // }
+    public Transform head;
 
     IEnumerator UnlockingMovementAfterCinematic()
     {
@@ -26,6 +20,9 @@ public class LancementCinematic : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            head.rotation = Quaternion.Euler(head.rotation.eulerAngles.x, -90, head.rotation.eulerAngles.z);
+            head.GetComponent<CameraController>().ResetPos();
+            
             playableDirector.Play();
             player.GetComponent<BlockingPlayer>().LockingPlayer();
 

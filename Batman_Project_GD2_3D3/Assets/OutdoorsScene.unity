@@ -12900,7 +12900,7 @@ PrefabInstance:
       objectReference: {fileID: 1008201419}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -76.56
+      value: -52.7
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13609,6 +13609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColliderCine
       objectReference: {fileID: 0}
+    - target: {fileID: 5493911571167933292, guid: 478164e69b5b7d7479bf445e02ec0fde, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 2039844319}
     - target: {fileID: 5493911571167933292, guid: 478164e69b5b7d7479bf445e02ec0fde, type: 3}
       propertyPath: player
       value: 
