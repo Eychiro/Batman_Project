@@ -5,7 +5,7 @@ public class PointerController : MonoBehaviour
     public Transform pointA; // Reference point de départ
     public Transform pointB; // Reference point de fin
     public RectTransform safeZone; // Reference safe Zone
-    public float moveSpeed = 200f; // Vitesse du mouvement de la barre
+    public float moveSpeed = 300f; // Vitesse du mouvement de la barre
     public CoffreFort coffreFort;
     public BatmanCouloirIA batmanCouloirIA;
     

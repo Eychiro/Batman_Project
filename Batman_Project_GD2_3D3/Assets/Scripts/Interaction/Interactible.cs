@@ -15,6 +15,8 @@ public class Interactible : MonoBehaviour
     public string TextItem = "Appuyer sur E pour interagir";
     public int RandomNbr {get;private set;}
 
+    public AudioClip pageFlipping;
+
     public string prefixePhrase;
     public string suffixePhrase;
 
@@ -125,6 +127,8 @@ public class Interactible : MonoBehaviour
 
             if (noteIndiceEnigme1 != null)
             {
+                AudioSource.PlayClipAtPoint(pageFlipping, transform.position);
+
                 _variables.player.LockingPlayer();
                 _variables.cameraController.transform.LookAt(_targetToLook.GetComponent<Renderer>().bounds.center);
                 _variables.cameraController.ResetPos();

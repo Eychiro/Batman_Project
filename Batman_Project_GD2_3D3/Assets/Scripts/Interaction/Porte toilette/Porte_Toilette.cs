@@ -5,6 +5,7 @@ using UnityEngine;
 public class Porte_Toilette : MonoBehaviour
 {
     public TextMeshProUGUI emptyPourDésactiver;
+    public AudioClip openingDoor;
 
     private bool playerInRange = false;
     private bool _isClosed = true;
@@ -56,6 +57,7 @@ public class Porte_Toilette : MonoBehaviour
     {
         if (playerInRange && _isClosed && Input.GetKeyDown(KeyCode.E))
         {
+            AudioSource.PlayClipAtPoint(openingDoor, transform.position);
             _isClosed = false;
             emptyPourDésactiver.enabled = false;
 
