@@ -7,11 +7,11 @@ public class BlockingPlayer : MonoBehaviour
     private MovementController _playerMovement;
 
 
-    void Start()
+    void Awake()
     {
         _playerMovement = Player.GetComponent<MovementController>();
     }
-
+    
     public void LockingPlayer()
     {
         _playerMovement.rb.linearVelocity = Vector3.zero;

@@ -6359,7 +6359,7 @@ PrefabInstance:
     - target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1491559821}
+      objectReference: {fileID: 1915109273}
     - target: {fileID: 3832517617356163785, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: _inputCode
       value: 
@@ -9175,6 +9175,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Object
       objectReference: {fileID: 0}
+    - target: {fileID: 4080112805609348776, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: EventSys
+      value: 
+      objectReference: {fileID: 723275173}
+    - target: {fileID: 4080112805609348776, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: endingText
+      value: 
+      objectReference: {fileID: 1781206361}
     - target: {fileID: 4168554131335932961, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 600
@@ -9586,17 +9594,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3076455828070085296, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
---- !u!114 &1491559821 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1173581709999061576, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
-  m_PrefabInstance: {fileID: 2039844318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 856f009ad8f9bb4488ec937fd7cf25c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BlockingPlayer
 --- !u!1 &1511891606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6204445703131989989, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
@@ -12144,6 +12141,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -5.7860003, y: 1.6560001, z: 7.4750004}
   m_TimeToStationary: 0.5
+--- !u!114 &1915109273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1173581709999061576, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+  m_PrefabInstance: {fileID: 2039844318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856f009ad8f9bb4488ec937fd7cf25c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockingPlayer
 --- !u!1 &1921662792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4839763414661393964, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
@@ -12770,6 +12778,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1135097028}
     - target: {fileID: 1173581709999061576, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173581709999061576, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 2094618864}
@@ -12900,7 +12912,7 @@ PrefabInstance:
       objectReference: {fileID: 1008201419}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -102.4
+      value: -31.2
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12908,7 +12920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.7
+      value: -22.2
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalRotation.w
