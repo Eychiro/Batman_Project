@@ -13,7 +13,6 @@ public class Pause : MonoBehaviour
     public Slider SliderVolume;
     private float Volume;
     public GameObject EventSys;
-    public GameObject endingText;
 
     void Start()
     {
@@ -92,8 +91,6 @@ public class Pause : MonoBehaviour
     public void Recommencer()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        endingText.SetActive(false);
     }
 
     public void Quitter()
