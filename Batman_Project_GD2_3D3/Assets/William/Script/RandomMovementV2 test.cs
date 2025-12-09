@@ -60,7 +60,11 @@ public class RandomMovementV2test : MonoBehaviour
 
     private float cooldownIncrease = 30f;
     private float cooldownTimer = 0f;
-    
+
+    public Renderer leftEyeRenderer;
+    public Renderer rightEyeRenderer;
+    public Material normalMaterial;
+    public Material glowingMaterial;
 
     public bool IsAgentActive
     {
@@ -188,6 +192,7 @@ public class RandomMovementV2test : MonoBehaviour
         agent.stoppingDistance = stopDistance;
         detecteAvantCache = true;
         IncreaseDisappearCountdown();
+        SetEyesMaterial(glowingMaterial);
         Debug.Log("Début de la poursuite pour : " + etatTimer + " secondes");
     }
 
@@ -196,6 +201,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatActuel = Etat.PoursuiteLight;
         agent.stoppingDistance = stopDistance;
         IncreaseDisappearCountdown();
+        SetEyesMaterial(glowingMaterial);
         Debug.Log("Début de la poursuite (light)");
     }
 
@@ -203,6 +209,7 @@ public class RandomMovementV2test : MonoBehaviour
     {
         etatActuel = Etat.Cooldown;
         etatTimer = Random.Range(minTempsCooldown, maxTempsCooldown);
+        SetEyesMaterial(normalMaterial);
         Debug.Log("Fatigué ! Repos pour : " + etatTimer + " secondes");
     }
 
@@ -212,6 +219,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatTimer = 0;
         agent.stoppingDistance = 0.1f;
         detecteAvantCache = false;
+        SetEyesMaterial(normalMaterial);
         Debug.Log("Retour en patrouille active");
     }
     
@@ -472,6 +480,12 @@ public class RandomMovementV2test : MonoBehaviour
     
     etatTimer = float.MaxValue; 
     disparitionCountdownTimer = -1f;
+}
+
+    private void SetEyesMaterial(Material mat)
+{
+    if (leftEyeRenderer != null) leftEyeRenderer.material = mat;
+    if (rightEyeRenderer != null) rightEyeRenderer.material = mat;
 }
     
     //Juste pour vérifier la détection, pour playtest et balance
