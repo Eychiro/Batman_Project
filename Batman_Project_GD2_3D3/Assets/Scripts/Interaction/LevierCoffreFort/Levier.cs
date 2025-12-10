@@ -22,6 +22,8 @@ public class Levier : MonoBehaviour
 
     public AudioClip LevierSliding;
 
+    public GameObject cinematicEnding;
+
     [HideInInspector] public bool porteEndingOuverte = false;
 
     private bool playerInRange = false;
@@ -126,6 +128,8 @@ public class Levier : MonoBehaviour
     {
         float t = 0;
         Transform porteCoffreFort = coffreFortArtefact.transform.GetChild(0);
+
+        cinematicEnding.SetActive(true);
 
         while (t < 0.5f)
         {
