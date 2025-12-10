@@ -410,7 +410,7 @@ public class RandomMovementV2test : MonoBehaviour
         }
     }
 
-    IEnumerator GameOverSequence()
+    public IEnumerator GameOverSequence()
     {
         if (jeuFini)
         yield break;

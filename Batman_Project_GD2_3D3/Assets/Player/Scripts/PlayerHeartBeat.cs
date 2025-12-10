@@ -21,7 +21,7 @@ public class PlayerHeartBeat : MonoBehaviour
             }
             return;
         }
-        
+
         float distance = Vector3.Distance(transform.position, BatmanPos.position);
 
         if (distance < 30f)
