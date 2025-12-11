@@ -13120,7 +13120,7 @@ PrefabInstance:
     - target: {fileID: 299369503369672599, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 13400000, guid: 757decdf7ce795f418d629975b88fd56, type: 2}
     - target: {fileID: 1173581709999061576, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: Player
       value: 
