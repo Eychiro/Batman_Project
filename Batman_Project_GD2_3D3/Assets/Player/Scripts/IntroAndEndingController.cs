@@ -37,8 +37,11 @@ public class IntroAndEndingController : MonoBehaviour
         _playerControllerMovement = Player.GetComponent<BlockingPlayer>();
         _playerControllerMovement.LockingPlayer();
         imageComponent = endingScreen.GetComponent<Image>();
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
-    if (!skipIntro)
+        if (!skipIntro)
         {
             if (initiationLampeTorche != null)
             {
@@ -66,28 +69,50 @@ public class IntroAndEndingController : MonoBehaviour
         }
     }
 
+    public void SkipIntro()
+    {
+        skipIntro = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        _playerControllerMovement.UnlockingPlayer();
+        endingScreen.SetActive(false);
+        introScreen.SetActive(false);
+
+        GetComponents<AudioSource>()[1].Stop();
+        GetComponents<AudioSource>()[2].Stop();
+        GetComponents<AudioSource>()[3].Stop();
+
+    }
+
     IEnumerator AudiosPlaying()
     {
         yield return new WaitForSeconds(1f);
-        AudioSource.PlayClipAtPoint(crawlingSound, transform.position);
+        GetComponents<AudioSource>()[1].Play();
 
         yield return new WaitForSeconds(20f);
-        AudioSource.PlayClipAtPoint(jumpingSound, transform.position);
-        AudioSource.PlayClipAtPoint(landingSound, transform.position);
+        GetComponents<AudioSource>()[2].Play();
+        GetComponents<AudioSource>()[3].Play();
     }
 
     public IEnumerator FadeTextIntroToZeroAlpha(float t, TextMeshProUGUI i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
         {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
-            while (i.color.a > 0.0f)
-            {
-                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
-                yield return null;
-            }
-            introScreen.SetActive(false);
-            _playerControllerMovement.UnlockingPlayer();
-            initiationLampeTorche.enabled = true;
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
         }
+        introScreen.SetActive(false);
+        _playerControllerMovement.UnlockingPlayer();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (!skipIntro)
+            initiationLampeTorche.enabled = true;
+    }
 
     IEnumerator RevealCharactersIntro()
     {

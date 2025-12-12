@@ -28,7 +28,7 @@ public class Interactible : MonoBehaviour
 
     public int GetRandomInt()
     {
-        return Random.Range(1, 9);
+        return Random.Range(2, 9);
     }
 
     void Awake()

@@ -26,8 +26,6 @@ public class CameraController : MonoBehaviour
     {
         _textLampeTorche = player.GetComponent<IntroAndEndingController>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         flashlightSwitch = GetComponent<AudioSource>();
         flashLight.enabled = false;
     }

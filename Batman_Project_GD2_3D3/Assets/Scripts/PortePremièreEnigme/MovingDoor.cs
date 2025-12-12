@@ -1,7 +1,4 @@
-using System.Collections;
 using TMPro;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
