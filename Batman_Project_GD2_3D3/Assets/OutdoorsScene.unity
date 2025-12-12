@@ -6360,7 +6360,7 @@ PrefabInstance:
     - target: {fileID: 4383411678513836368, guid: b424f753ae6c6f4488b5b83c84a8c5f9, type: 3}
       propertyPath: introAndEndingController
       value: 
-      objectReference: {fileID: 1359520128}
+      objectReference: {fileID: 1915109282}
     - target: {fileID: 8701620674691292414, guid: b424f753ae6c6f4488b5b83c84a8c5f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -110.36
@@ -6679,7 +6679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248445995757371803, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.58
+      value: 7.3
       objectReference: {fileID: 0}
     - target: {fileID: 7248445995757371803, guid: 1d292bf07a3bf754aa838d0a5e214093, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7020,6 +7020,10 @@ PrefabInstance:
     - target: {fileID: 858633318503186543, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_SizeDelta.y
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 858633318503186543, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 858633318503186543, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7590,6 +7594,10 @@ PrefabInstance:
       value: ButtonPressed
       objectReference: {fileID: 0}
     - target: {fileID: 6298025130561116710, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
+      propertyPath: m_text
+      value: "Salut c'est un bug si tu vois \xE7a !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298025130561116710, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_fontSize
       value: 40
       objectReference: {fileID: 0}
@@ -7696,7 +7704,7 @@ PrefabInstance:
     - target: {fileID: 6941242540682909384, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1359520128}
+      objectReference: {fileID: 1915109282}
     - target: {fileID: 6941242540682909384, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -7906,6 +7914,10 @@ PrefabInstance:
     - target: {fileID: 9031674975141001362, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140354236123489777, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9201453925810390569, guid: bed09ecaf2c55a245b8ef5b69412fbb1, type: 3}
       propertyPath: m_SizeDelta.x
@@ -9293,17 +9305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7871fec67f1be6408e3bff9c8231179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
---- !u!114 &1359520128 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1839069067796107263, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
-  m_PrefabInstance: {fileID: 2039844318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752f2dab23e63c8419afc7f82c12fef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &1361869257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4186581745895945665, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
@@ -9549,6 +9550,10 @@ PrefabInstance:
     - target: {fileID: 4657036288891982052, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
       propertyPath: m_fontSizeBase
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030164310728271006, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336690003430480888, guid: 68dbfd0c76203cb45823edd457d173b2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12661,6 +12666,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856f009ad8f9bb4488ec937fd7cf25c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockingPlayer
+--- !u!114 &1915109282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1839069067796107263, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
+  m_PrefabInstance: {fileID: 2039844318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752f2dab23e63c8419afc7f82c12fef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1921662792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4839763414661393964, guid: 0dfbd73bc9d3d4e42b8c964ccc9dee72, type: 3}
@@ -13601,7 +13617,7 @@ PrefabInstance:
       objectReference: {fileID: 1008201419}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -99.1
+      value: -33.1
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13609,7 +13625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.9
+      value: -22.9
       objectReference: {fileID: 0}
     - target: {fileID: 3027631724664311837, guid: 5d68f4628e828ea42bbbfe1edf36e821, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13823,6 +13839,10 @@ PrefabInstance:
     - target: {fileID: 4752641298529079042, guid: 34b598594e1d65c4fb0b2cc163f42a34, type: 3}
       propertyPath: m_Name
       value: GameOver Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449876441098010801, guid: 34b598594e1d65c4fb0b2cc163f42a34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8950716283763020033, guid: 34b598594e1d65c4fb0b2cc163f42a34, type: 3}
       propertyPath: m_SizeDelta.x

@@ -9,13 +9,11 @@ public class IntroAndEndingController : MonoBehaviour
 
     public GameObject introScreen;
     public TextMeshProUGUI textIntro;
-    public string textIntroString;
+    public string textIntroString = "";
 
     public GameObject endingScreen;
     public TextMeshProUGUI textEnding;
-    public string textEndingString;
-
-    private string textEndingFin = "FIN";
+    public string textEndingString = "";
 
     public AudioClip crawlingSound;
     public AudioClip jumpingSound;
@@ -29,17 +27,20 @@ public class IntroAndEndingController : MonoBehaviour
     [Header("Introduction")]
     public bool skipIntro = false;
 
+    private string textEndingFin = "FIN";
+
     private BlockingPlayer _playerControllerMovement;
     private Image imageComponent;
 
+    private AudioSource[] audioSources;
+
     void Start()
     {
-        _playerControllerMovement = Player.GetComponent<BlockingPlayer>();
-        _playerControllerMovement.LockingPlayer();
+        _playerControllerMovement =  GetComponent<BlockingPlayer>();
+        // _playerControllerMovement.LockingPlayer();
         imageComponent = endingScreen.GetComponent<Image>();
-        
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+
+        audioSources = GetComponents<AudioSource>();
 
         if (!skipIntro)
         {
@@ -51,6 +52,7 @@ public class IntroAndEndingController : MonoBehaviour
 
             if (textIntro != null && textEnding != null)
             {
+                textIntro.ForceMeshUpdate(true);
                 textIntro.text = textIntroString;
                 textIntro.enabled = true;
 
@@ -63,7 +65,8 @@ public class IntroAndEndingController : MonoBehaviour
         }
         else
         {
-            _playerControllerMovement.UnlockingPlayer();
+            GetComponent<BlockingPlayer>().UnlockingPlayer();
+            //_playerControllerMovement.UnlockingPlayer();
             endingScreen.SetActive(false);
             introScreen.SetActive(false);
         }
@@ -76,24 +79,29 @@ public class IntroAndEndingController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _playerControllerMovement.UnlockingPlayer();
+        GetComponent<BlockingPlayer>().UnlockingPlayer();
+        //_playerControllerMovement.UnlockingPlayer();
         endingScreen.SetActive(false);
         introScreen.SetActive(false);
 
-        GetComponents<AudioSource>()[1].Stop();
-        GetComponents<AudioSource>()[2].Stop();
-        GetComponents<AudioSource>()[3].Stop();
-
+        audioSources[1].Stop();
+        audioSources[2].Stop();
+        audioSources[3].Stop();
     }
 
     IEnumerator AudiosPlaying()
     {
         yield return new WaitForSeconds(1f);
-        GetComponents<AudioSource>()[1].Play();
+        audioSources[1].Play();
+        
+        introScreen.transform.GetChild(1).gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(20f);
-        GetComponents<AudioSource>()[2].Play();
-        GetComponents<AudioSource>()[3].Play();
+        yield return new WaitForSeconds(18f);
+        if (!skipIntro)
+        {
+            audioSources[2].Play();
+            audioSources[3].Play();
+        }
     }
 
     public IEnumerator FadeTextIntroToZeroAlpha(float t, TextMeshProUGUI i)
@@ -105,7 +113,7 @@ public class IntroAndEndingController : MonoBehaviour
             yield return null;
         }
         introScreen.SetActive(false);
-        _playerControllerMovement.UnlockingPlayer();
+        GetComponent<BlockingPlayer>().UnlockingPlayer();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -120,7 +128,7 @@ public class IntroAndEndingController : MonoBehaviour
         int totalCharacters = textIntroString.Length;
         
         textIntro.maxVisibleCharacters = 0; 
-        
+
         // Boucle pour révéler chaque caractère un par un
         for (int i = 1; i <= totalCharacters; i++)
         {
@@ -201,7 +209,6 @@ public class IntroAndEndingController : MonoBehaviour
             textEnding.text = textEndingFin;
             textEnding.enabled = true;
         }
-
 
     public void InitiateEnding()
     {
