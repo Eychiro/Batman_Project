@@ -44,12 +44,13 @@ public class PorteBadge : MonoBehaviour
     {
         float time = 0;
 
-        while(time <= 1)
+        while(time <= 0.5)
         {
             time += Time.deltaTime;
-            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(0, 90, 0), time);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.localPosition + Vector3.up, time);
             yield return new WaitForSeconds(0.01f);
         }
+        GetComponent<Renderer>().enabled = false;
     }
 
     void Update()

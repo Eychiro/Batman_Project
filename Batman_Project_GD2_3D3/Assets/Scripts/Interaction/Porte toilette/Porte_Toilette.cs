@@ -48,7 +48,7 @@ public class Porte_Toilette : MonoBehaviour
         while(time <= 1)
         {
             time += Time.deltaTime;
-            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(0, -90, 0), time);
+            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(0, 180, 0), time);
             yield return new WaitForSeconds(0.01f);
         }
     }

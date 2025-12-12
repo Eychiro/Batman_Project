@@ -100,7 +100,7 @@ public class Badge : MonoBehaviour
         {
             badgeTaken = true;
             emptyBadgeText.enabled = false;
-            Destroy(gameObject);
+            transform.parent.localPosition += Vector3.down * 4;
         }
     }
 }
