@@ -61,24 +61,24 @@ public class CoffreFort : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveDoor()
+    private IEnumerator MoveDoors()
     {
-        float time = 0f;
-        Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 3, transform.localPosition.z);
+        float doorOpenDuration = 20f;
+        float time = 0;
 
-        while(time <= durationOpeningDoor)
+        while(time <= 1)
         {
-            float t = time / durationOpeningDoor;
-            time += Time.deltaTime;
+            time += Time.deltaTime / doorOpenDuration;
 
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, t);
+            transform.GetChild(0).localRotation = Quaternion.Lerp(transform.GetChild(0).localRotation, Quaternion.Euler(0, -95, 0), time);
+            transform.GetChild(1).localRotation = Quaternion.Lerp(transform.GetChild(1).localRotation, Quaternion.Euler(0, 115, 0), time);
             yield return new WaitForSeconds(0.01f);
         }
     }
     
     public void CoroutineMoveDoor()
     {
-        StartCoroutine(MoveDoor());
+        StartCoroutine(MoveDoors());
     }
 
     void Update()

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -91,6 +92,22 @@ public class MovingDoor : MonoBehaviour
         }
     }
 
+    IEnumerator MovePortes()
+    {
+        float doorOpenDuration = 20f;
+        float time = 0;
+
+        while(time <= 1)
+        {
+            time += Time.deltaTime / doorOpenDuration;
+
+            transform.GetChild(0).localRotation = Quaternion.Lerp(transform.GetChild(0).localRotation, Quaternion.Euler(0, 0, 0), time);
+            transform.GetChild(1).localRotation = Quaternion.Lerp(transform.GetChild(1).localRotation, Quaternion.Euler(0, 180, 0), time);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+
     void Update()
     {
         if(playerInRange && !keyPadCodePorte.activeSelf && Input.GetKeyDown(KeyCode.E))
@@ -109,12 +126,17 @@ public class MovingDoor : MonoBehaviour
         {        // Si le code est bon
             if (_inputCode.text == requiredCodeToString)
             {
+                Destroy(GetComponents<Collider>()[1]);
+                playerInRange = false;
+                TextInteraction.enabled = false;
+
                 _inputCode.text = "";
                 nbrButtonsCliqued = 0;
 
                 player.UnlockingPlayer();
 
-                gameObject.transform.position +=  Vector3.up * 3;
+                StartCoroutine(MovePortes());
+
                 cameraController.cameraLocked = false;
                 keyPadCodePorte.SetActive(false);
 

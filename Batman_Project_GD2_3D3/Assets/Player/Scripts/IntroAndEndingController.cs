@@ -96,7 +96,7 @@ public class IntroAndEndingController : MonoBehaviour
         
         introScreen.transform.GetChild(1).gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(18f);
+        yield return new WaitForSeconds(20f);
         if (!skipIntro)
         {
             audioSources[2].Play();

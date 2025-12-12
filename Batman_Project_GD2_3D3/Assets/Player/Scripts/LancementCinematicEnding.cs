@@ -47,7 +47,7 @@ public class LancementCinematicEnding : MonoBehaviour
     {
         yield return new WaitForSeconds(Convert.ToSingle(playableDirector.duration - 1));
 
-        batman.transform.position = coffreFortArtefact.GetChild(2).position + Vector3.up;
+        batman.transform.position = coffreFortArtefact.GetChild(1).position + Vector3.up;
         batman.agent.enabled = true;
         batman.GetComponent<Renderer>().enabled = true;
         batman.GetComponent<Collider>().enabled = false;
@@ -85,7 +85,7 @@ public class LancementCinematicEnding : MonoBehaviour
             flashLight.enabled = false;
             InteractionText.enabled = false;
 
-            player.position = coffreFortArtefact.GetChild(1).position;
+            player.position = coffreFortArtefact.GetChild(0).position;
 
             head.rotation = Quaternion.Euler(head.rotation.eulerAngles.x, 180, head.rotation.eulerAngles.z);
             head.GetComponent<CameraController>().ResetPos();

@@ -101,7 +101,7 @@ public class Levier : MonoBehaviour
         while (t < 0.5f)
         {
             t += Time.deltaTime;
-            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(45, 0, 0), t);
+            transform.parent.localRotation = Quaternion.Lerp(transform.parent.localRotation, Quaternion.Euler(-75, 0, 0), t);
             yield return new WaitForSeconds(0.01f);
         }
         StartCoroutine(MoveCoffreFort());
@@ -111,7 +111,7 @@ public class Levier : MonoBehaviour
     IEnumerator MoveCoffreFort()
     {
         float t = 0;
-        Vector3 targetPosition = new Vector3(coffreFortArtefact.transform.localPosition.x, coffreFortArtefact.transform.localPosition.y - 4, coffreFortArtefact.transform.localPosition.z);
+        Vector3 targetPosition = new Vector3(coffreFortArtefact.transform.localPosition.x, coffreFortArtefact.transform.localPosition.y - 1.65f, coffreFortArtefact.transform.localPosition.z);
 
         while (t < 0.5f)
         {
@@ -127,14 +127,16 @@ public class Levier : MonoBehaviour
     IEnumerator RotatePorteCoffreFort()
     {
         float t = 0;
-        Transform porteCoffreFort = coffreFortArtefact.transform.GetChild(0);
+        float openingTime = 20f;
+        Transform porteCoffreFort = coffreFortArtefact.transform.GetChild(1);
 
         cinematicEnding.SetActive(true);
 
         while (t < 0.5f)
         {
-            t += Time.deltaTime;
-            porteCoffreFort.localRotation = Quaternion.Lerp(porteCoffreFort.localRotation, Quaternion.Euler(0, 90, 0), t);
+            t += Time.deltaTime / openingTime;
+            
+            porteCoffreFort.localRotation = Quaternion.Lerp(porteCoffreFort.localRotation, Quaternion.Euler(0, -90, 0), t);
             yield return new WaitForSeconds(0.01f);
         }
     }
@@ -142,13 +144,15 @@ public class Levier : MonoBehaviour
     IEnumerator RotatePorteEnding()
     {
         float t = 0;
+        float openingTime = 20f;
         Transform porteCoffreFort = porteEnding.transform;
 
         porteEndingOuverte = true;
 
         while (t < 0.5f)
         {
-            t += Time.deltaTime;
+            t += Time.deltaTime / openingTime;
+
             porteCoffreFort.localRotation = Quaternion.Lerp(porteCoffreFort.localRotation, Quaternion.Euler(0, -60, 0), t);
             yield return new WaitForSeconds(0.01f);
         }

@@ -20,7 +20,7 @@ public class LancementCinematic : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            head.rotation = Quaternion.Euler(head.rotation.eulerAngles.x, -90, head.rotation.eulerAngles.z);
+            head.rotation = Quaternion.Euler(head.rotation.eulerAngles.x, 90, head.rotation.eulerAngles.z);
             head.GetComponent<CameraController>().ResetPos();
             
             playableDirector.Play();
