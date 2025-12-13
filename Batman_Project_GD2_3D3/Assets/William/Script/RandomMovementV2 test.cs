@@ -61,10 +61,11 @@ public class RandomMovementV2test : MonoBehaviour
     private float cooldownIncrease = 30f;
     private float cooldownTimer = 0f;
 
-    public Renderer leftEyeRenderer;
-    public Renderer rightEyeRenderer;
     public Material normalMaterial;
     public Material glowingMaterial;
+
+    public float vitesseMontee = 0.1f;
+    public float offsetDepartY = -20f;
 
     public bool IsAgentActive
     {
@@ -84,7 +85,7 @@ public class RandomMovementV2test : MonoBehaviour
 
         agent.enabled = false;
         //GetComponent<Collider>().enabled = false;
-        GetComponent<Renderer>().enabled = false;
+        GetComponentInChildren<Renderer>().enabled = false;
     }
 
     void ResetDisappearCountdown()
@@ -178,7 +179,7 @@ public class RandomMovementV2test : MonoBehaviour
         etatActuel = Etat.Disparu;
         etatTimer = disparitionDuree;
         agent.Warp(positionStandby);
-        GetComponent<Renderer>().enabled = false;
+        GetComponentInChildren<Renderer>().enabled = false;
         //GetComponent<Collider>().enabled = false;
         agent.enabled = false; 
         
@@ -235,7 +236,7 @@ public class RandomMovementV2test : MonoBehaviour
     {
         if (etatTimer <= 0)
         {
-            GetComponent<Renderer>().enabled = true;
+            GetComponentInChildren<Renderer>().enabled = true;
             GetComponent<Collider>().enabled = true;
             agent.enabled = true; 
             Vector3 positionApparition = ChoixSpawn();
@@ -460,7 +461,23 @@ public class RandomMovementV2test : MonoBehaviour
         SwitchToDisparu(); 
         yield return new WaitForSeconds(delai);
 
-        GetComponent<Renderer>().enabled = true;
+        GetComponentInChildren<Renderer>().enabled = true;
+
+        Vector3 positionFinale = ChoixSpawn();
+        Vector3 positionDepart = positionFinale + new Vector3(0, offsetDepartY, 0);
+
+        float progression = 0f;
+        while (progression < 1f)
+        {
+        progression += Time.deltaTime * vitesseMontee;
+        transform.position = Vector3.Lerp(positionDepart, positionFinale + new Vector3(0, 1, 0), progression);
+        
+        yield return null;
+        }
+
+        transform.position = positionFinale + new Vector3(0, 1, 0);
+        yield return new WaitForEndOfFrame();
+
         GetComponent<Collider>().enabled = true;
         agent.enabled = true; 
 
@@ -484,8 +501,15 @@ public class RandomMovementV2test : MonoBehaviour
 
     private void SetEyesMaterial(Material mat)
 {
-    if (leftEyeRenderer != null) leftEyeRenderer.material = mat;
-    if (rightEyeRenderer != null) rightEyeRenderer.material = mat;
+    Renderer myRenderer = GetComponentInChildren<Renderer>();
+
+    if (myRenderer != null)
+    {
+        
+        Material[] mats = myRenderer.materials;
+        mats[0] = mat; 
+        myRenderer.materials = mats;
+    }
 }
     
     //Juste pour vérifier la détection, pour playtest et balance

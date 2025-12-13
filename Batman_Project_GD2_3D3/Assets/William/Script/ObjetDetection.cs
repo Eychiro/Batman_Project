@@ -7,10 +7,12 @@ public class ObjetDetection : MonoBehaviour
 
     public float cooldown = 3f;
     private float prochaineActivation = 0f;
+    public AudioClip SonAlerte;
+    private AudioSource audioSource;
 
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,7 +26,8 @@ public class ObjetDetection : MonoBehaviour
         { 
             if (BatmanIA != null)
             {
-                BatmanIA.ObjetDetected(transform.position); 
+                BatmanIA.ObjetDetected(transform.position);
+                audioSource.PlayOneShot(SonAlerte);
                 prochaineActivation = Time.time + cooldown;
             }
         }
